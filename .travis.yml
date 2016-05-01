@@ -14,3 +14,6 @@ android:
     # Extra repositories
     - extra-android-m2repository
     - extra-android-m2repository
+
+    # System images
+    - sys-img-armeabi-v7a-android-21
