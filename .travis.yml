@@ -1,0 +1,37 @@
+language: android
+android:
+  components:
+    # Use the latest revision of Android SDK Tools
+    - platform-tools
+    - tools
+
+    # The BuildTools version used by the project
+    - build-tools-23.0.3
+
+    # The SDK version used to compile the project
+    - android-23
+
+    # Extra repositories
+    - extra-android-m2repository
+    - extra-android-m2repository
+
+    # System images
+    - sys-img-armeabi-v7a-android-21
+
+# Configuration below copied from:
+# http://stackoverflow.com/questions/31264136/travis-ci-android-tests-no-connected-devices
+env:
+  global:
+   # install timeout in minutes (2 minutes by default)
+    - ADB_INSTALL_TIMEOUT=8
+
+# Emulator Management: Create, Start and Wait
+before_script:
+  - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
+  - emulator -avd test -no-skin -no-audio -no-window &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &
+
+script:
+  - android list target
+  - ./gradlew build connectedCheck
