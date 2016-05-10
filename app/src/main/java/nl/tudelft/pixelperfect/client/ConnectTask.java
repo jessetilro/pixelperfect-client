@@ -14,6 +14,7 @@ import java.io.IOException;
 public class ConnectTask extends AsyncTask<String, Void, Client> {
 
     private Exception exception;
+    public ConnectResponse delegate;
 
     protected Client doInBackground(String... ip) {
         Client client;
@@ -29,7 +30,6 @@ public class ConnectTask extends AsyncTask<String, Void, Client> {
     }
 
     protected void onPostExecute(Client client) {
-        // TODO: check this.exception
-        // TODO: do something with the feed
+        delegate.connectFinish(client);
     }
 }

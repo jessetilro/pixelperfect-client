@@ -14,7 +14,6 @@ public class GameClient {
 
     private Client client;
     private GameActivity activity;
-    private String ip;
     private boolean connected = false;
 
     private static volatile GameClient instance;
@@ -45,8 +44,16 @@ public class GameClient {
         this.activity = activity;
     }
 
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
     public void connectToServer(String ip) {
         new ConnectTask().execute(ip);
+    }
+
+    public boolean isConnected() {
+        return (client != null);
     }
 
 }
