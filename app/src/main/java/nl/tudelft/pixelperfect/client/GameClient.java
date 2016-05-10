@@ -13,8 +13,6 @@ import java.io.IOException;
 public class GameClient {
 
     private Client client;
-    private GameActivity activity;
-    private boolean connected = false;
 
     private static volatile GameClient instance;
 
@@ -40,16 +38,21 @@ public class GameClient {
         return instance;
     }
 
-    public void setActivity(GameActivity activity) {
-        this.activity = activity;
-    }
-
     public void setClient(Client client) {
         this.client = client;
     }
 
-    public void connectToServer(String ip) {
-        new ConnectTask().execute(ip);
+    public void connect(String ip, ConnectResponse delegate) {
+        ConnectTask connect = new ConnectTask();
+        connect.delegate = delegate;
+        connect.execute(ip);
+    }
+
+    public void disconnect() {
+        if (isConnected()) {
+            client.close();
+            client = null;
+        }
     }
 
     public boolean isConnected() {

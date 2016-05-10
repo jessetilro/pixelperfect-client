@@ -1,6 +1,7 @@
 package nl.tudelft.pixelperfect.pixelperfect;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,11 +12,9 @@ import android.widget.Toast;
 import com.jme3.network.Client;
 
 import nl.tudelft.pixelperfect.client.ConnectResponse;
-import nl.tudelft.pixelperfect.client.ConnectTask;
-import nl.tudelft.pixelperfect.client.GameActivity;
 import nl.tudelft.pixelperfect.client.GameClient;
 
-public class MainActivity extends AppCompatActivity implements GameActivity, ConnectResponse {
+public class MainActivity extends AppCompatActivity implements ConnectResponse {
 
     private GameClient game;
     private AlertDialog dialog;
@@ -25,7 +24,6 @@ public class MainActivity extends AppCompatActivity implements GameActivity, Con
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         game = GameClient.getInstance();
-        game.setActivity(this);
         buildDialog();
     }
 
@@ -36,17 +34,9 @@ public class MainActivity extends AppCompatActivity implements GameActivity, Con
         dialog = builder.create();
     }
 
-    public void connect(View view) {
-        if (game.isConnected()) {
-            showMessage("Already connected!");
-            return;
-        }
-        EditText text = (EditText) findViewById(R.id.ip_address);
-        String ip = text.getText().toString();
-        dialog.show();
-        ConnectTask connect = new ConnectTask();
-        connect.delegate = this;
-        connect.execute(ip);
+    private void startGame() {
+        Intent intent = new Intent(this, GameActivity.class);
+        startActivity(intent);
     }
 
     public void showMessage(CharSequence text) {
@@ -57,13 +47,30 @@ public class MainActivity extends AppCompatActivity implements GameActivity, Con
         toast.show();
     }
 
+    public void connect(View view) {
+        if (game.isConnected()) {
+            showMessage("Already connected!");
+            startGame();
+            return;
+        }
+        EditText text = (EditText) findViewById(R.id.ip_address);
+        String ip = text.getText().toString();
+        if (ip.equals("")) {
+            showMessage("Please enter an IP-Address");
+            return;
+        }
+        dialog.show();
+        game.connect(ip, this);
+    }
+
     public void connectFinish(Client client) {
+        dialog.dismiss();
         if (client != null) {
             game.setClient(client);
             showMessage("Connection established!");
+            startGame();
         } else {
             showMessage("Connection failed...");
         }
-        dialog.dismiss();
     }
 }
