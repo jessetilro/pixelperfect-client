@@ -10,36 +10,53 @@ import java.io.IOException;
 /**
  * Created by jesse on 9-5-2016.
  */
-public class GameClient extends com.jme3.app.SimpleApplication {
+public class GameClient {
 
     private Client client;
 
+    private static volatile GameClient instance;
+
     /**
-     * Launch the PixelPerfect jMonkeyEngine client application.
-     *
-     * @param args Parameters for the process.
+     * Whenever the RouteGenerator is created a new Route will be created (in this factory).
      */
-    public static void main(String[] args) {
-        GameClient app = new GameClient();
-        app.start(JmeContext.Type.Display);
+    private GameClient() {
     }
 
     /**
-     * Initialise the application, settings up the network client to connect to the server.
+     * Creates a new RouteGenerator instance if it has not yet been instantiated.
+     *
+     * @return The single RouteGenerator instance.
      */
-    @Override
-    public void simpleInitApp() {
-        try {
-            client = Network.connectToServer("192.168.1.248", 6143);
-            Serializer.registerClass(HelloMessage.class);
-            client.start();
-            client.addMessageListener(new ClientListener(), HelloMessage.class);
-        } catch (IOException e) {
-            // Show a message.
-        } finally {
-            // Do some other stuff.
+    public static GameClient getInstance() {
+        if (instance == null) {
+            synchronized (GameClient.class) {
+                if (instance == null) {
+                    instance = new GameClient();
+                }
+            }
         }
+        return instance;
+    }
 
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public void connect(String ip, ConnectResponse delegate) {
+        ConnectTask connect = new ConnectTask();
+        connect.delegate = delegate;
+        connect.execute(ip);
+    }
+
+    public void disconnect() {
+        if (isConnected()) {
+            client.close();
+            client = null;
+        }
+    }
+
+    public boolean isConnected() {
+        return (client != null);
     }
 
 }
