@@ -27,7 +27,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:design:23.3.0'
-    compile 'com.jme3:jme3-android:3.1.+'
-    compile 'com.jme3:jme3-core:3.1.+'
-    compile 'com.jme3:jme3-networking:3.1.+'
+    compile 'org.jmonkeyengine:jme3-android:3.1.0-alpha5'
+    compile 'org.jmonkeyengine:jme3-core:3.1.0-alpha5'
+    compile 'org.jmonkeyengine:jme3-networking:3.1.0-alpha5'
 }
