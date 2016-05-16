@@ -2,6 +2,7 @@ package nl.tudelft.pixelperfect.pixelperfect;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -21,6 +22,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         button.setOnClickListener(this);
 
         game = GameClient.getInstance();
+
     }
 
     @Override
@@ -29,7 +31,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void sendMessage(){
-        EventCompletedMessage eventCompleted = new EventCompletedMessage(new AsteroidFieldEvent(1, "Hello Messages!", "Description", 10, 20, 0));
+        EventCompletedMessage eventCompleted = new EventCompletedMessage("Hello Message!");
         game.sendMessage(eventCompleted);
     }
 }

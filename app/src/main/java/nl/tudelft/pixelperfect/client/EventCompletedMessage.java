@@ -12,13 +12,30 @@ import nl.tudelft.pixelperfect.event.Event;
  */
 @Serializable
 public class EventCompletedMessage extends AbstractMessage {
-    private Event completed;
+    private String completed;
 
+    /**
+     * The EventCompletedMessage constructor.
+     */
     public EventCompletedMessage() {
 
     }
 
-    public EventCompletedMessage(Event completed){
+    /**
+     * The constructor with a specific Event completed.
+     *
+     * @param completed , a completed Event.
+     */
+    public EventCompletedMessage(String completed) {
         this.completed = completed;
+    }
+
+    /**
+     * Gets the Event that was completed.
+     *
+     * @return a completed Event.
+     */
+    public String getCompletedEvent() {
+        return completed;
     }
 }
