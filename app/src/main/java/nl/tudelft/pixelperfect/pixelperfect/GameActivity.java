@@ -21,16 +21,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         button.setOnClickListener(this);
 
         game = GameClient.getInstance();
-
-    }
-
-    private void sendMessage(){
-        EventCompletedMessage eventCompleted = new EventCompletedMessage(new AsteroidFieldEvent(1, "Hello Messages!", "Description", 10, 20, 0));
-        game.sendMessage(eventCompleted);
     }
 
     @Override
     public void onClick(View v) {
         sendMessage();
+    }
+
+    private void sendMessage(){
+        EventCompletedMessage eventCompleted = new EventCompletedMessage(new AsteroidFieldEvent(1, "Hello Messages!", "Description", 10, 20, 0));
+        game.sendMessage(eventCompleted);
     }
 }
