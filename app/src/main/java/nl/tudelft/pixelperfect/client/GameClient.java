@@ -1,6 +1,7 @@
 package nl.tudelft.pixelperfect.client;
 
 import com.jme3.network.Client;
+import com.jme3.network.Message;
 import com.jme3.network.Network;
 import com.jme3.network.serializing.Serializer;
 import com.jme3.system.JmeContext;
@@ -46,6 +47,10 @@ public class GameClient {
         ConnectTask connect = new ConnectTask();
         connect.delegate = delegate;
         connect.execute(ip);
+    }
+
+    public void sendMessage(Message message) {
+        client.send(message);
     }
 
     public void disconnect() {

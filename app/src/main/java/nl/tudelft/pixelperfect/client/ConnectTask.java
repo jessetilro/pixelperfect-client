@@ -21,8 +21,10 @@ public class ConnectTask extends AsyncTask<String, Void, Client> {
         try {
             client = Network.connectToServer(ip[0], 6143);
             Serializer.registerClass(HelloMessage.class);
+            Serializer.registerClass(EventCompletedMessage.class);
             client.start();
             client.addMessageListener(new ClientListener(), HelloMessage.class);
+            client.addMessageListener(new ClientListener(), EventCompletedMessage.class);
         } catch (IOException e) {
             client = null;
         }

@@ -13,6 +13,8 @@ public class ClientListener implements MessageListener<Client> {
             // do something with the message
             HelloMessage helloMessage = (HelloMessage) message;
             System.out.println("Client #"+source.getId()+" received: '"+helloMessage.getSomething()+"'");
-        } // else...
+        } else if (message instanceof EventCompletedMessage) {
+            //Not implented
+        }
     }
 }
