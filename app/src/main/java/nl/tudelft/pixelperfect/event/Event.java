@@ -9,7 +9,7 @@ import com.jme3.scene.Geometry;
  *
  */
 @SuppressWarnings({"CanBeFinal", "EmptyMethod"})
-abstract class Event {
+public abstract class Event {
     private String summary;
     private String description;
     private int id;
@@ -35,7 +35,7 @@ abstract class Event {
      * @param damage
      *          The damage done to the ship on even failure.
      */
-    Event(int id, String summary, String description, long timestamp, long duration,
+    public Event(int id, String summary, String description, long timestamp, long duration,
           double damage) {
         this.id = id;
         this.summary = summary;
