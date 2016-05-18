@@ -40,7 +40,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
      */
     @Override
     public void onClick(View v) {
-        EventCompletedMessage eventCompleted = new EventCompletedMessage("Hello Message!");
+        EventCompletedMessage eventCompleted = new EventCompletedMessage("0");
         game.sendMessage(eventCompleted);
     }
 }
