@@ -16,8 +16,10 @@ public class ClientListener implements MessageListener<Client> {
             // do something with the message
             HelloMessage helloMessage = (HelloMessage) message;
             System.out.println("Client #"+source.getId()+" received: '"+helloMessage.getSomething()+"'");
-        } else if (message instanceof EventCompletedMessage) {
-            //Not implented
+        } else if (message instanceof EventsMessage) {
+            EventsMessage eve = (EventsMessage) message;
+            System.out.println("Client #"+source.getId()+" received event: '"+eve.getEvent()+"'");
+            String[] keys = eve.getEvent().split(" ");
         }
     }
 }
