@@ -9,7 +9,10 @@ import com.jme3.system.JmeContext;
 import java.io.IOException;
 
 /**
- * Created by jesse on 9-5-2016.
+ * The GameClient within the Android app.
+ *
+ * @author Jesse Tilro
+ * @author Floris Doolaard
  */
 public class GameClient {
 
@@ -43,16 +46,30 @@ public class GameClient {
         this.client = client;
     }
 
+    /**
+     * Connects with the Server.
+     *
+     * @param ip , the ip of the server.
+     * @param delegate , a ConnectResponse.
+     */
     public void connect(String ip, ConnectResponse delegate) {
         ConnectTask connect = new ConnectTask();
         connect.delegate = delegate;
         connect.execute(ip);
     }
 
+    /**
+     * Sends a message from the Client through the GameClient.
+     *
+     * @param message the message sent.
+     */
     public void sendMessage(Message message) {
         client.send(message);
     }
 
+    /**
+     * Disconnect from the Server.
+     */
     public void disconnect() {
         if (isConnected()) {
             client.close();
@@ -60,6 +77,11 @@ public class GameClient {
         }
     }
 
+    /**
+     * Checks whether there is a connection.
+     *
+     * @return a Boolean.
+     */
     public boolean isConnected() {
         return (client != null);
     }

@@ -5,7 +5,10 @@ import com.jme3.network.Message;
 import com.jme3.network.MessageListener;
 
 /**
+ * The ClientListenere waits for incoming messages from the server and interps them.
+ *
  * @author Jesse Tilro
+ * @author Floris Doolaard
  */
 public class ClientListener implements MessageListener<Client> {
     public void messageReceived(Client source, Message message) {

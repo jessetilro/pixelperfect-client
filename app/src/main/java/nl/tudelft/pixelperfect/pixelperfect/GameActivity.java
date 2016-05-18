@@ -10,9 +10,17 @@ import nl.tudelft.pixelperfect.client.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.AsteroidFieldEvent;
 
+/**
+ * The GameActivity page is a page where game starts. It is the main menu of the Android app.
+ */
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
     private GameClient game;
 
+    /**
+     * This method shows what happens when this Activity is created.
+     *
+     * @param savedInstanceState , a Bundle.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,12 +33,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    /**
+     * Sends a message to the Server when clicked on the button_complete_event Button.
+     *
+     * @param v , the View of the activity.
+     */
     @Override
     public void onClick(View v) {
-        sendMessage();
-    }
-
-    private void sendMessage(){
         EventCompletedMessage eventCompleted = new EventCompletedMessage("Hello Message!");
         game.sendMessage(eventCompleted);
     }

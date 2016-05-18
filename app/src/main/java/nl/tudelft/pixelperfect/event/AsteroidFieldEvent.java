@@ -6,7 +6,7 @@ import com.jme3.scene.Geometry;
  * A type of Event, imposing a dangerous Asteroid Field.
  *
  * @author Wouter Zirkzee
- *
+ * @author Floris Doolaard
  */
 public class AsteroidFieldEvent extends Event {
 
