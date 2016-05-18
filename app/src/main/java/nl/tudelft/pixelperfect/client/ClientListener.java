@@ -5,7 +5,7 @@ import com.jme3.network.Message;
 import com.jme3.network.MessageListener;
 
 /**
- * The ClientListenere waits for incoming messages from the server and interps them.
+ * The ClientListeners waits for incoming messages from the server and interpret them.
  *
  * @author Jesse Tilro
  * @author Floris Doolaard
@@ -17,7 +17,7 @@ public class ClientListener implements MessageListener<Client> {
             HelloMessage helloMessage = (HelloMessage) message;
             System.out.println("Client #"+source.getId()+" received: '"+helloMessage.getSomething()+"'");
         } else if (message instanceof EventCompletedMessage) {
-            //Not implented
+            //Not implemented
         }
     }
 }

@@ -8,7 +8,7 @@ import com.jme3.scene.Geometry;
  * @author David Alderliesten
  *
  */
-public abstract class Event {
+abstract class Event {
     private String summary;
     private String description;
     private int id;

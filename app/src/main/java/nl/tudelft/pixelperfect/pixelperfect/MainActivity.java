@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements ConnectResponse {
      * Whenever this activity is created, the game will be initialized and a dialog will lead
      * the user to the next page.
      *
-     * @param savedInstanceState
+     * @param savedInstanceState , a Bundle.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements ConnectResponse {
      *
      * @param text the text to be shown.
      */
-    public void showMessage(CharSequence text) {
+    private void showMessage(CharSequence text) {
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
 

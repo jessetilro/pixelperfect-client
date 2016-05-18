@@ -7,7 +7,7 @@ import com.jme3.network.serializing.Serializable;
  * @author Jesse Tilro
  */
 @Serializable
-public class HelloMessage extends AbstractMessage {
+class HelloMessage extends AbstractMessage {
 
     private String hello;
 

@@ -2,13 +2,11 @@ package nl.tudelft.pixelperfect.pixelperfect;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
 import nl.tudelft.pixelperfect.client.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
-import nl.tudelft.pixelperfect.event.AsteroidFieldEvent;
 
 /**
  * The GameActivity page is a page where game starts. It is the main menu of the Android app.

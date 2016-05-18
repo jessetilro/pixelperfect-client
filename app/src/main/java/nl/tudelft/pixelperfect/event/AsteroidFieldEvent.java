@@ -11,7 +11,7 @@ import com.jme3.scene.Geometry;
 public class AsteroidFieldEvent extends Event {
 
     /**
-     * Constructor for AstroidField event.
+     * Constructor for AsteroidField event.
      *
      * @param id
      *          The desired id.

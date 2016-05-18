@@ -2,11 +2,6 @@ package nl.tudelft.pixelperfect.client;
 
 import com.jme3.network.Client;
 import com.jme3.network.Message;
-import com.jme3.network.Network;
-import com.jme3.network.serializing.Serializer;
-import com.jme3.system.JmeContext;
-
-import java.io.IOException;
 
 /**
  * The GameClient within the Android app.
