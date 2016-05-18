@@ -10,7 +10,7 @@ import com.jme3.network.MessageListener;
  * @author Jesse Tilro
  * @author Floris Doolaard
  */
-public class ClientListener implements MessageListener<Client> {
+class ClientListener implements MessageListener<Client> {
     public void messageReceived(Client source, Message message) {
         if (message instanceof HelloMessage) {
             // do something with the message
