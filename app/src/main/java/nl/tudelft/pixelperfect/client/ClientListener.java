@@ -15,6 +15,7 @@ import nl.tudelft.pixelperfect.event.PlasmaLeakEvent;
  *
  * @author Jesse Tilro
  * @author Floris Doolaard
+ * @author Dmitry Malarev
  */
 public class ClientListener implements MessageListener<Client> {
     public void messageReceived(Client source, Message message) {
@@ -25,20 +26,19 @@ public class ClientListener implements MessageListener<Client> {
         } else if (message instanceof EventsMessage) {
             Event mission;
             EventsMessage eve = (EventsMessage) message;
-            System.out.println("Client #"+source.getId()+" received event: '"+eve.getEvent()+"'");
-            String[] keys = eve.getEvent().split(" ");
-            switch (keys[1]) {
+            System.out.println("Client #"+source.getId()+" received event: '"+eve.getType()+"'");
+            switch (eve.getType()) {
                 case "FireEvent":
-                    mission = new FireEvent(Integer.getInteger(keys[0]), "", "", Long.getLong(keys[2]), Long.getLong(keys[3]), 0);
+                    mission = new FireEvent(eve.getID(), "", "", eve.getTime(), eve.getDuration(), 0);
                     break;
                 case "AsteroidFieldEvent":
-                    mission = new AsteroidFieldEvent(Integer.getInteger(keys[0]), "", "", Long.getLong(keys[2]), Long.getLong(keys[3]), 0);
+                    mission = new AsteroidFieldEvent(eve.getID(), "", "", eve.getTime(), eve.getDuration(), 0);
                     break;
                 case "HostileShipEvent":
-                    mission = new HostileShipEvent(Integer.getInteger(keys[0]), "", "", Long.getLong(keys[2]), Long.getLong(keys[3]), 0);
+                    mission = new HostileShipEvent(eve.getID(), "", "", eve.getTime(), eve.getDuration(), 0);
                     break;
                 case "PlasmaLeakEvent":
-                    mission = new PlasmaLeakEvent(Integer.getInteger(keys[0]), "", "", Long.getLong(keys[2]), Long.getLong(keys[3]), 0);
+                    mission = new PlasmaLeakEvent(eve.getID(), "", "", eve.getTime(), eve.getDuration(), 0);
                     break;
                 default:
                     mission = null;
