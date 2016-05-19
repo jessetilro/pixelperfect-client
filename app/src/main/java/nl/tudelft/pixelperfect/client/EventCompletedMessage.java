@@ -11,6 +11,7 @@ import com.jme3.network.serializing.Serializable;
 @Serializable
 public class EventCompletedMessage extends AbstractMessage {
     private int completed;
+    private String label;
 
     /**
      * The EventCompletedMessage constructor.
@@ -24,7 +25,8 @@ public class EventCompletedMessage extends AbstractMessage {
      *
      * @param completed , a completed Event.
      */
-    public EventCompletedMessage(@SuppressWarnings("SameParameterValue") int completed) {
+    public EventCompletedMessage(String labe, @SuppressWarnings("SameParameterValue") int completed) {
+        this.label = label;
         this.completed = completed;
     }
 
@@ -35,5 +37,14 @@ public class EventCompletedMessage extends AbstractMessage {
      */
     public int getCompletedEvent() {
         return completed;
+    }
+
+    /**
+     * Retrieves the label of the completed event.
+     *
+     * @return , a String.
+     */
+    public String getLabel() {
+        return label;
     }
 }

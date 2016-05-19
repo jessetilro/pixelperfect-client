@@ -43,7 +43,7 @@ public class GameActivity extends AppCompatActivity {
      */
     public void completeAsteroidFieldEvent(View view){
         if(eventLog.contains(0)){
-            game.sendMessage(new EventCompletedMessage(eventLog.pop(0).getId()));
+            game.sendMessage(new EventCompletedMessage("Asteroid Field Event", eventLog.pop(0).getId()));
         }
     }
 
@@ -54,7 +54,7 @@ public class GameActivity extends AppCompatActivity {
      */
     public void completeFireEvent(View view){
         if(eventLog.contains(1)){
-            game.sendMessage(new EventCompletedMessage(eventLog.pop(0).getId()));
+            game.sendMessage(new EventCompletedMessage("Fire Event", eventLog.pop(1).getId()));
         }
     }
 
@@ -65,7 +65,7 @@ public class GameActivity extends AppCompatActivity {
      */
     public void completeHostileShipEvent(View view){
         if(eventLog.contains(2)){
-            game.sendMessage(new EventCompletedMessage(eventLog.pop(0).getId()));
+            game.sendMessage(new EventCompletedMessage("Hostile Shipe Event", eventLog.pop(2).getId()));
         }
     }
 
@@ -76,7 +76,7 @@ public class GameActivity extends AppCompatActivity {
      */
     public void completePlasmaLeakEvent(View view){
         if(eventLog.contains(3)){
-            game.sendMessage(new EventCompletedMessage(eventLog.pop(0).getId()));
+            game.sendMessage(new EventCompletedMessage("Plasma Leak Event", eventLog.pop(3).getId()));
         }
     }
 
