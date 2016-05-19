@@ -24,41 +24,12 @@ public class EventLog {
         events.add(event);
     }
 
-    public Boolean contains(int id) {
-        switch(id) {
-            case 0:
-                for(Event event : events) {
-                    if(event instanceof AsteroidFieldEvent){
-                        return true;
-                    }
-                }
-                return false;
-            case 1:
-                for(Event event : events) {
-                    if(event instanceof FireEvent){
-                        return true;
-                    }
-                }
-                return false;
-            case 2:
-                for(Event event : events) {
-                    if(event instanceof HostileShipEvent){
-                        return true;
-                    }
-                }
-                return false;
-            case 3:
-                for(Event event : events) {
-                    if(event instanceof PlasmaLeakEvent){
-                        return true;
-                    }
-                }
-        }
-        return false;
+    public Boolean contains(Events type) {
+        return type.contains(events);
     }
 
     /**
-     * Pops the first item from the start that has the right type.
+     * Pops the first item from the start that has   right type.
      *
      * @param id , the id of the type.
      * @return the event that was popped.
