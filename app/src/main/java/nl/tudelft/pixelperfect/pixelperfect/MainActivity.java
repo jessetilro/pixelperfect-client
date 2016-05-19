@@ -15,7 +15,7 @@ import nl.tudelft.pixelperfect.client.ConnectResponse;
 import nl.tudelft.pixelperfect.client.GameClient;
 
 /**
- * This is the first screen for the app on which one can insert an ip-adres of the server.
+ * This is the first screen for the app on which one can insert an ip-address of the server.
  *
  * @author Floris Doolaard
  */
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements ConnectResponse {
      * Whenever this activity is created, the game will be initialized and a dialog will lead
      * the user to the next page.
      *
-     * @param savedInstanceState
+     * @param savedInstanceState , a Bundle.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements ConnectResponse {
      *
      * @param text the text to be shown.
      */
-    public void showMessage(CharSequence text) {
+    private void showMessage(CharSequence text) {
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
 
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements ConnectResponse {
     }
 
     /**
-     * Manages the connection through the user. The user must enter an ip-adress in order to
+     * Manages the connection through the user. The user must enter an ip-address in order to
      * connect.
      * @param view , a basic block of user interface components.
      */

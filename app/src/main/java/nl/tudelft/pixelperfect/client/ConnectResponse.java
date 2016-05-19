@@ -3,7 +3,10 @@ package nl.tudelft.pixelperfect.client;
 import com.jme3.network.Client;
 
 /**
- * Created by jesse on 10-5-2016.
+ * The interface for MainActivity.
+ *
+ * @author Jesse Tilro
+ * @author Floris Doolaard
  */
 public interface ConnectResponse {
     void connectFinish(Client client);

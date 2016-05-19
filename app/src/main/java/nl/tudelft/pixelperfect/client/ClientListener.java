@@ -11,13 +11,13 @@ import nl.tudelft.pixelperfect.event.HostileShipEvent;
 import nl.tudelft.pixelperfect.event.PlasmaLeakEvent;
 
 /**
- * The ClientListener waits for incoming messages from the server and interps them.
+ * The ClientListeners waits for incoming messages from the server and interpret them.
  *
  * @author Jesse Tilro
  * @author Floris Doolaard
  * @author Dmitry Malarev
  */
-public class ClientListener implements MessageListener<Client> {
+class ClientListener implements MessageListener<Client> {
     public void messageReceived(Client source, Message message) {
         if (message instanceof HelloMessage) {
             // do something with the message
@@ -44,7 +44,6 @@ public class ClientListener implements MessageListener<Client> {
                     mission = null;
                     break;
             }
-
         }
     }
 }
