@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import nl.tudelft.pixelperfect.client.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.AsteroidFieldEvent;
 import nl.tudelft.pixelperfect.event.Event;
@@ -40,8 +41,37 @@ public class GameActivity extends AppCompatActivity {
      *
      * @param view , the view of the page.
      */
-    public void completeAsteroid(View view){
-        AsteroidFieldEvent asteroidFieldEvent = new AsteroidFieldEvent(0, "An asteroid field", "Very dangerous", )
+    public void completeAsteroidFieldEvent(View view){
+        if(eventLog.contains(0)){
+            game.sendMessage(new EventCompletedMessage(eventLog.pop(0).getId()));
+        }
+    }
+
+    /**
+     * Whenever the button to complete the Asteroid Field Event is pressed this will happen.
+     *
+     * @param view , the view of the page.
+     */
+    public void completeFireEvent(View view){
+
+    }
+
+    /**
+     * Whenever the button to complete the Asteroid Field Event is pressed this will happen.
+     *
+     * @param view , the view of the page.
+     */
+    public void completeHostileShipEvent(View view){
+
+    }
+
+    /**
+     * Whenever the button to complete the Asteroid Field Event is pressed this will happen.
+     *
+     * @param view , the view of the page.
+     */
+    public void completePlasmaLeakEvent(View view){
+
     }
 
 }
