@@ -8,6 +8,7 @@ import nl.tudelft.pixelperfect.client.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.Event;
 import nl.tudelft.pixelperfect.event.EventLog;
+import nl.tudelft.pixelperfect.event.Events;
 
 /**
  * The GameActivity page is a page where game starts. It is the main menu of the Android app.
@@ -42,9 +43,8 @@ public class GameActivity extends AppCompatActivity {
      * @param view , the view of the page.
      */
     public void completeAsteroidFieldEvent(View view){
-        if(eventLog.contains(0)){
-            System.out.println("Been here!");
-            game.sendMessage(new EventCompletedMessage("Asteroid Field Event", eventLog.pop(0).getId()));
+        if(eventLog.contains(Events.ASTEROID)){
+            game.sendMessage(new EventCompletedMessage("Asteroid Field Event", eventLog.pop(Events.ASTEROID).getId()));
         } else {
             game.sendMessage(new EventCompletedMessage("WRONG ANSWER", -1));
         }
@@ -56,8 +56,8 @@ public class GameActivity extends AppCompatActivity {
      * @param view , the view of the page.
      */
     public void completeFireEvent(View view){
-        if(eventLog.contains(1)){
-            game.sendMessage(new EventCompletedMessage("Fire Event", eventLog.pop(1).getId()));
+        if(eventLog.contains(Events.FIRE)){
+            game.sendMessage(new EventCompletedMessage("Fire Event", eventLog.pop(Events.FIRE).getId()));
         } else {
             game.sendMessage(new EventCompletedMessage("WRONG ANSWER", -1));
         }
@@ -69,8 +69,8 @@ public class GameActivity extends AppCompatActivity {
      * @param view , the view of the page.
      */
     public void completeHostileShipEvent(View view){
-        if(eventLog.contains(2)){
-            game.sendMessage(new EventCompletedMessage("Hostile Ship Event", eventLog.pop(2).getId()));
+        if(eventLog.contains(Events.HOSTILE)){
+            game.sendMessage(new EventCompletedMessage("Hostile Ship Event", eventLog.pop(Events.HOSTILE).getId()));
         } else {
             game.sendMessage(new EventCompletedMessage("WRONG ANSWER", -1));
         }
@@ -82,8 +82,8 @@ public class GameActivity extends AppCompatActivity {
      * @param view , the view of the page.
      */
     public void completePlasmaLeakEvent(View view){
-        if(eventLog.contains(3)){
-            game.sendMessage(new EventCompletedMessage("Plasma Leak Event", eventLog.pop(3).getId()));
+        if(eventLog.contains(Events.PLASMA)){
+            game.sendMessage(new EventCompletedMessage("Plasma Leak Event", eventLog.pop(Events.PLASMA).getId()));
         } else {
             game.sendMessage(new EventCompletedMessage("WRONG ANSWER", -1));
         }
