@@ -3,7 +3,7 @@ package nl.tudelft.pixelperfect.event;
 import java.util.ArrayList;
 
 /**
- * Created by woute on 5/19/2016.
+ * Enums to pass type of events.
  */
 public enum Events {
     FIRE {
@@ -52,7 +52,7 @@ public enum Events {
             return null;
         }
     },
-    ASTROID {
+    ASTEROID {
         @Override
         public boolean contains(ArrayList<Event> log) {
             for (Event event : log) {

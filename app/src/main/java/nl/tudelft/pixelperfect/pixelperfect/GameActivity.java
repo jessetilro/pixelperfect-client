@@ -43,8 +43,8 @@ public class GameActivity extends AppCompatActivity {
      * @param view , the view of the page.
      */
     public void completeAsteroidFieldEvent(View view){
-        if(eventLog.contains(Events.ASTROID)){
-            game.sendMessage(new EventCompletedMessage("Asteroid Field Event", eventLog.pop(Events.ASTROID).getId()));
+        if(eventLog.contains(Events.ASTEROID)){
+            game.sendMessage(new EventCompletedMessage("Asteroid Field Event", eventLog.pop(Events.ASTEROID).getId()));
         } else {
             game.sendMessage(new EventCompletedMessage("WRONG ANSWER", -1));
         }
