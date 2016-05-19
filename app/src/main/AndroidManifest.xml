@@ -19,8 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="nl.tudelft.pixelperfect.pixelperfect.GameActivity"
-            android:parentActivityName="nl.tudelft.pixelperfect.pixelperfect.MainActivity">
+        <activity
+            android:name="nl.tudelft.pixelperfect.pixelperfect.GameActivity"
+            android:parentActivityName="nl.tudelft.pixelperfect.pixelperfect.MainActivity"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboardHidden|orientation">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="nl.tudelft.pixelperfect.pixelperfect.MainActivity" />

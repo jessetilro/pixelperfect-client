@@ -25,7 +25,7 @@ public class EventCompletedMessage extends AbstractMessage {
      *
      * @param completed , a completed Event.
      */
-    public EventCompletedMessage(String labe, @SuppressWarnings("SameParameterValue") int completed) {
+    public EventCompletedMessage(String label, @SuppressWarnings("SameParameterValue") int completed) {
         this.label = label;
         this.completed = completed;
     }
