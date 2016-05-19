@@ -8,6 +8,7 @@ import com.jme3.scene.Geometry;
  * @author Wouter Zirkzee
  * @author Floris Doolaard
  */
+@SuppressWarnings({"SameParameterValue", "unused"})
 public class AsteroidFieldEvent extends Event {
 
     /**

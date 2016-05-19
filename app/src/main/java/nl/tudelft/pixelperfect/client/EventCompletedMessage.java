@@ -8,6 +8,7 @@ import com.jme3.network.serializing.Serializable;
  *
  * @author Floris Doolaard
  */
+@SuppressWarnings("unused")
 @Serializable
 public class EventCompletedMessage extends AbstractMessage {
     private int completed;

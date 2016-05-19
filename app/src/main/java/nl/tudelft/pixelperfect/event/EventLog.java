@@ -8,10 +8,11 @@ import java.util.ArrayList;
  * @author Floris Doolaard
  */
 public class EventLog {
+    @SuppressWarnings("CanBeFinal")
     private ArrayList<Event> events;
 
     public EventLog(){
-        events = new ArrayList<Event>();
+        events = new ArrayList<>();
     }
 
     /**

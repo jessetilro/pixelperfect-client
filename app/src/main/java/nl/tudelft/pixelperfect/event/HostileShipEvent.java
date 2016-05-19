@@ -11,6 +11,7 @@ import com.jme3.scene.Geometry;
  *
  */
 
+@SuppressWarnings({"SameParameterValue", "unused"})
 public class HostileShipEvent extends Event {
 
     /**

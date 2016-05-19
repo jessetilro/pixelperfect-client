@@ -19,6 +19,7 @@ import nl.tudelft.pixelperfect.client.GameClient;
  *
  * @author Floris Doolaard
  */
+@SuppressWarnings({"UnusedParameters", "unused"})
 public class MainActivity extends AppCompatActivity implements ConnectResponse {
 
     private GameClient game;
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements ConnectResponse {
             return;
         }
         EditText text = (EditText) findViewById(R.id.ip_address);
-        String ip = text.getText().toString();
+        @SuppressWarnings("ConstantConditions") String ip = text.getText().toString();
         if (ip.equals("")) {
             showMessage("Please enter an IP-Address");
             return;

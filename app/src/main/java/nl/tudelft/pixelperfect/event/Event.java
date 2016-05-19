@@ -8,7 +8,7 @@ import com.jme3.scene.Geometry;
  * @author David Alderliesten
  *
  */
-@SuppressWarnings({"CanBeFinal", "EmptyMethod"})
+@SuppressWarnings({"CanBeFinal", "EmptyMethod", "WeakerAccess", "UnusedParameters", "unused"})
 public abstract class Event {
     private String summary;
     private String description;

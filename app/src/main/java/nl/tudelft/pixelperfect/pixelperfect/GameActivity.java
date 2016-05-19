@@ -6,13 +6,13 @@ import android.view.View;
 
 import nl.tudelft.pixelperfect.client.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
-import nl.tudelft.pixelperfect.event.AsteroidFieldEvent;
 import nl.tudelft.pixelperfect.event.Event;
 import nl.tudelft.pixelperfect.event.EventLog;
 
 /**
  * The GameActivity page is a page where game starts. It is the main menu of the Android app.
  */
+@SuppressWarnings({"UnusedParameters", "unused"})
 public class GameActivity extends AppCompatActivity {
     private GameClient game;
     private static EventLog eventLog;
@@ -70,7 +70,7 @@ public class GameActivity extends AppCompatActivity {
      */
     public void completeHostileShipEvent(View view){
         if(eventLog.contains(2)){
-            game.sendMessage(new EventCompletedMessage("Hostile Shipe Event", eventLog.pop(2).getId()));
+            game.sendMessage(new EventCompletedMessage("Hostile Ship Event", eventLog.pop(2).getId()));
         } else {
             game.sendMessage(new EventCompletedMessage("WRONG ANSWER", -1));
         }

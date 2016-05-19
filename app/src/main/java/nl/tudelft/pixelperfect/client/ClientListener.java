@@ -18,6 +18,7 @@ import nl.tudelft.pixelperfect.pixelperfect.GameActivity;
  * @author Floris Doolaard
  * @author Dmitry Malarev
  */
+@SuppressWarnings("unused")
 class ClientListener implements MessageListener<Client> {
     public void messageReceived(Client source, Message message) {
         if (message instanceof EventsMessage) {
@@ -42,7 +43,6 @@ class ClientListener implements MessageListener<Client> {
                     GameActivity.updateEventLog(mission);
                     break;
                 default:
-                    mission = null;
                     break;
             }
         }
