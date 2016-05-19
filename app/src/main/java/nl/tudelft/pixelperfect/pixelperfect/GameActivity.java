@@ -48,30 +48,36 @@ public class GameActivity extends AppCompatActivity {
     }
 
     /**
-     * Whenever the button to complete the Asteroid Field Event is pressed this will happen.
+     * Whenever the button to complete the Fire Event is pressed this will happen.
      *
      * @param view , the view of the page.
      */
     public void completeFireEvent(View view){
-
+        if(eventLog.contains(1)){
+            game.sendMessage(new EventCompletedMessage(eventLog.pop(0).getId()));
+        }
     }
 
     /**
-     * Whenever the button to complete the Asteroid Field Event is pressed this will happen.
+     * Whenever the button to complete the Hostile Ship Event is pressed this will happen.
      *
      * @param view , the view of the page.
      */
     public void completeHostileShipEvent(View view){
-
+        if(eventLog.contains(2)){
+            game.sendMessage(new EventCompletedMessage(eventLog.pop(0).getId()));
+        }
     }
 
     /**
-     * Whenever the button to complete the Asteroid Field Event is pressed this will happen.
+     * Whenever the button to complete the Plasma Leak Event is pressed this will happen.
      *
      * @param view , the view of the page.
      */
     public void completePlasmaLeakEvent(View view){
-
+        if(eventLog.contains(3)){
+            game.sendMessage(new EventCompletedMessage(eventLog.pop(0).getId()));
+        }
     }
 
 }
