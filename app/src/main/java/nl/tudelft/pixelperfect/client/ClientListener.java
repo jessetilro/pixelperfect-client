@@ -11,11 +11,7 @@ import nl.tudelft.pixelperfect.event.HostileShipEvent;
 import nl.tudelft.pixelperfect.event.PlasmaLeakEvent;
 
 /**
-<<<<<<< HEAD
  * The ClientListeners waits for incoming messages from the server and interpret them.
-=======
- * The ClientListener waits for incoming messages from the server and interps them.
->>>>>>> release
  *
  * @author Jesse Tilro
  * @author Floris Doolaard
