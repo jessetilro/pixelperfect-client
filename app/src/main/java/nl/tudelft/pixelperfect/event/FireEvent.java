@@ -9,6 +9,7 @@ import com.jme3.scene.Geometry;
  * @author Wouter Zirkzee
  *
  */
+@SuppressWarnings({"SameParameterValue", "unused"})
 public class FireEvent extends Event {
 
     /**

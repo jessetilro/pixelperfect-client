@@ -8,9 +8,11 @@ import com.jme3.network.serializing.Serializable;
  *
  * @author Floris Doolaard
  */
+@SuppressWarnings("unused")
 @Serializable
 public class EventCompletedMessage extends AbstractMessage {
-    private String completed;
+    private int completed;
+    private String label;
 
     /**
      * The EventCompletedMessage constructor.
@@ -23,8 +25,10 @@ public class EventCompletedMessage extends AbstractMessage {
      * The constructor with a specific Event completed.
      *
      * @param completed , a completed Event.
+     * @param label , a name as a String.
      */
-    public EventCompletedMessage(@SuppressWarnings("SameParameterValue") String completed) {
+    public EventCompletedMessage(String label, @SuppressWarnings("SameParameterValue") int completed) {
+        this.label = label;
         this.completed = completed;
     }
 
@@ -33,7 +37,16 @@ public class EventCompletedMessage extends AbstractMessage {
      *
      * @return a completed Event.
      */
-    public String getCompletedEvent() {
+    public int getCompletedEvent() {
         return completed;
+    }
+
+    /**
+     * Retrieves the label of the completed event.
+     *
+     * @return , a String.
+     */
+    public String getLabel() {
+        return label;
     }
 }

@@ -9,6 +9,7 @@ import com.jme3.network.Message;
  * @author Jesse Tilro
  * @author Floris Doolaard
  */
+@SuppressWarnings("unused")
 public class GameClient {
 
     private Client client;

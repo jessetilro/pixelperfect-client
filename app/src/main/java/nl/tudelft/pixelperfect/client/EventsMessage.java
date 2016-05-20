@@ -10,13 +10,14 @@ import com.jme3.network.serializing.Serializable;
  * @author Dmitry Malarev
  *
  */
+@SuppressWarnings({"WeakerAccess", "unused"})
 @Serializable
 public class EventsMessage extends AbstractMessage {
 
-    public int id;
-    public String type;
-    public Long timestamp;
-    public Long duration;
+    private int id;
+    private String type;
+    private Long timestamp;
+    private Long duration;
 
     /**
      * Constructs a new EventsMessage instance.
