@@ -3,4 +3,8 @@
     <string name="main_description">Welcome! Enter the IPv4-Address of the Game Server you would like to connect to below. By connecting you join the spaceship as a crew member!</string>
     <string name="ip_address_hint">IP-Address</string>
     <string name="button_connect">Connect</string>
+    <string name="button_complete_asteroid_field_event">Asteroid Field</string>
+    <string name="button_complete_fire_event">Fire</string>
+    <string name="button_complete_hostile_ship_event">Hostile Ship</string>
+    <string name="button_complete_plasma_leak_event">Plasma Leak</string>
 </resources>

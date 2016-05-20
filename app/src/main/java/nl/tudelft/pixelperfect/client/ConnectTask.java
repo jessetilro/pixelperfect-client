@@ -9,9 +9,13 @@ import com.jme3.network.serializing.Serializer;
 import java.io.IOException;
 
 /**
- * Created by jesse on 10-5-2016.
+ * This class will initialize the Network.
+ *
+ * @author Jesse Tilro
+ * @author Floris Doolaard
  */
-public class ConnectTask extends AsyncTask<String, Void, Client> {
+@SuppressWarnings("unused")
+class ConnectTask extends AsyncTask<String, Void, Client> {
 
     private Exception exception;
     public ConnectResponse delegate;
@@ -20,9 +24,11 @@ public class ConnectTask extends AsyncTask<String, Void, Client> {
         Client client;
         try {
             client = Network.connectToServer(ip[0], 6143);
-            Serializer.registerClass(HelloMessage.class);
+            Serializer.registerClass(EventCompletedMessage.class);
+            Serializer.registerClass(EventsMessage.class);
             client.start();
-            client.addMessageListener(new ClientListener(), HelloMessage.class);
+            client.addMessageListener(new ClientListener(), EventCompletedMessage.class);
+            client.addMessageListener(new ClientListener(), EventsMessage.class);
         } catch (IOException e) {
             client = null;
         }
