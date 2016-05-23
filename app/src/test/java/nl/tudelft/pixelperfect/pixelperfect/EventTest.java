@@ -9,6 +9,8 @@ import org.junit.Test;
 import nl.tudelft.pixelperfect.event.Event;
 
 /**
+ * The test case for the abstract class Event.
+ *
  * Created by Dmitry on 23/05/2016.
  */
 public abstract class EventTest {
