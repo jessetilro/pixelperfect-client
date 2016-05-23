@@ -1,4 +1,4 @@
-package nl.tudelft.pixelperfect.pixelperfect;
+package nl.tudelft.pixelperfect.pixelperfect.eventtest;
 
 import android.transition.Scene;
 
