@@ -43,7 +43,7 @@ public enum Events {
         @Override
         public Event pop(ArrayList<Event> log) {
             for (Event event : log) {
-                if (event instanceof FireEvent) {
+                if (event instanceof PlasmaLeakEvent) {
                     Event ret = event;
                     log.remove(event);
                     return ret;
@@ -66,7 +66,7 @@ public enum Events {
         @Override
         public Event pop(ArrayList<Event> log) {
             for (Event event : log) {
-                if (event instanceof FireEvent) {
+                if (event instanceof AsteroidFieldEvent) {
                     Event ret = event;
                     log.remove(event);
                     return ret;
@@ -89,7 +89,7 @@ public enum Events {
         @Override
         public Event pop(ArrayList<Event> log) {
             for (Event event : log) {
-                if (event instanceof FireEvent) {
+                if (event instanceof HostileShipEvent) {
                     Event ret = event;
                     log.remove(event);
                     return ret;
