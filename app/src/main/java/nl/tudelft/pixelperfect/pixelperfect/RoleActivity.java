@@ -14,6 +14,9 @@ import android.view.View;
  * @author Floris Doolaard
  */
 public class RoleActivity extends AppCompatActivity {
+    private static View gunnerView;
+    private static View engineerView;
+    private static View scientistView;
 
     /**
      * This method shows what happens when this Activity is created.
@@ -24,6 +27,10 @@ public class RoleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_role);
+
+        gunnerView = findViewById(R.id.button_role_gunner);
+        engineerView = findViewById(R.id.button_role_engineer);
+        scientistView = findViewById(R.id.button_role_scientist);
     }
 
     /**
@@ -32,6 +39,28 @@ public class RoleActivity extends AppCompatActivity {
     private void startGame() {
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
+    }
+
+    public static void updateButtons(int role) {
+        switch (role) {
+            case 0:
+                gunnerView.setAlpha(0.5f);
+                gunnerView.setEnabled(false);
+                break;
+            case 1:
+                engineerView.setAlpha(0.5f);
+                engineerView.setEnabled(false);
+                break;
+            case 2:
+                scientistView.setAlpha(0.5f);
+                scientistView.setEnabled(false);
+                break;
+        }
+
+    }
+
+    public void updateRolesChosen() {
+
     }
 
     public void gunnerChosen(View view) {

@@ -10,6 +10,7 @@ import nl.tudelft.pixelperfect.event.FireEvent;
 import nl.tudelft.pixelperfect.event.HostileShipEvent;
 import nl.tudelft.pixelperfect.event.PlasmaLeakEvent;
 import nl.tudelft.pixelperfect.pixelperfect.GameActivity;
+import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
 
 /**
  * The ClientListeners waits for incoming messages from the server and interpret them.
@@ -41,6 +42,21 @@ class ClientListener implements MessageListener<Client> {
                 case "PlasmaLeakEvent":
                     mission = new PlasmaLeakEvent(eve.getID(), "", "", eve.getTime(), eve.getDuration(), 0);
                     GameActivity.updateEventLog(mission);
+                    break;
+                default:
+                    break;
+            }
+        } else if (message instanceof RoleChosenMessage) {
+            RoleChosenMessage roleMessage = (RoleChosenMessage) message;
+            switch(roleMessage.getRole()) {
+                case 0:
+                    RoleActivity.updateButtons(0);
+                    break;
+                case 1:
+                    RoleActivity.updateButtons(1);
+                    break;
+                case 2:
+                    RoleActivity.updateButtons(2);
                     break;
                 default:
                     break;

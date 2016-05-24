@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 
 import com.jme3.network.Client;
 import com.jme3.network.Network;
+import com.jme3.network.serializing.Serializable;
 import com.jme3.network.serializing.Serializer;
 
 import java.io.IOException;
@@ -26,9 +27,11 @@ class ConnectTask extends AsyncTask<String, Void, Client> {
             client = Network.connectToServer(ip[0], 6143);
             Serializer.registerClass(EventCompletedMessage.class);
             Serializer.registerClass(EventsMessage.class);
+            Serializer.registerClass(RoleChosenMessage.class);
             client.start();
             client.addMessageListener(new ClientListener(), EventCompletedMessage.class);
             client.addMessageListener(new ClientListener(), EventsMessage.class);
+            client.addMessageListener(new ClientListener(), RoleChosenMessage.class);
         } catch (IOException e) {
             client = null;
         }
