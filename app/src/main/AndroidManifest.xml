@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,13 +23,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="nl.tudelft.pixelperfect.pixelperfect.GameActivity"
+            android:name=".GameActivity"
             android:screenOrientation="landscape"
             android:configChanges="keyboardHidden|orientation">
-            android:parentActivityName="nl.tudelft.pixelperfect.pixelperfect.MainActivity"
+            android:parentActivityName="nl.tudelft.pixelperfect.pixelperfect.RoleActivity"
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="nl.tudelft.pixelperfect.pixelperfect.MainActivity" />
+                android:value="nl.tudelft.pixelperfect.pixelperfect.RoleActivity" />
+        </activity>
+        <activity
+            android:name=".RoleActivity">
+            android:parentActivityName="nl.tudelft.pixelperfect.pixelperfect.RoleActivity"
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="nl.tudelft.pixelperfect.pixelperfect.RoleActivity" />
         </activity>
     </application>
 
