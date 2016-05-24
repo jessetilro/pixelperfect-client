@@ -1,6 +1,7 @@
 package nl.tudelft.pixelperfect.pixelperfect;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -34,6 +35,17 @@ public class RoleActivity extends AppCompatActivity {
     }
 
     public void gunnerChosen(View view) {
+        view.setAlpha(0.5f);
+        startGame();
+    }
+
+    public void engineerChosen(View view) {
+        view.setAlpha(0.5f);
+        startGame();
+    }
+
+    public void scientistChosen(View view) {
+        view.setAlpha(0.5f);
         startGame();
     }
 }

@@ -10,7 +10,7 @@
         android:id="@+id/button_role_gunner"
         android:layout_above="@+id/button_role_engineer"
         android:layout_centerHorizontal="true"
-        android:state_enabled="false" />
+        android:onClick="gunnerChosen"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -18,7 +18,8 @@
         android:text="@string/button_role_engineer"
         android:id="@+id/button_role_engineer"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="engineerChosen"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -26,7 +27,8 @@
         android:text="@string/button_role_scientist"
         android:id="@+id/button_role_scientist"
         android:layout_below="@+id/button_role_engineer"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="scientistChosen"/>
 
     <TextView
         android:layout_width="wrap_content"
