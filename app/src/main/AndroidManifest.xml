@@ -23,17 +23,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".GameActivity"
-            android:screenOrientation="landscape"
-            android:configChanges="keyboardHidden|orientation">
-            android:parentActivityName="nl.tudelft.pixelperfect.pixelperfect.RoleActivity"
+            android:name=".RoleActivity"
+            android:parentActivityName="nl.tudelft.pixelperfect.pixelperfect.RoleActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="nl.tudelft.pixelperfect.pixelperfect.RoleActivity" />
         </activity>
         <activity
-            android:name=".RoleActivity">
-            android:parentActivityName="nl.tudelft.pixelperfect.pixelperfect.RoleActivity"
+            android:name=".GameActivity"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboardHidden|orientation"
+            android:parentActivityName="nl.tudelft.pixelperfect.pixelperfect.RoleActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="nl.tudelft.pixelperfect.pixelperfect.RoleActivity" />
