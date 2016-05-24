@@ -9,7 +9,8 @@
         android:text="@string/button_role_gunner"
         android:id="@+id/button_role_gunner"
         android:layout_above="@+id/button_role_engineer"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:state_enabled="false" />
 
     <Button
         android:layout_width="wrap_content"
