@@ -33,14 +33,6 @@ public class RoleActivity extends AppCompatActivity {
         scientistView = findViewById(R.id.button_role_scientist);
     }
 
-    /**
-     * Starts the GameActivity.
-     */
-    private void startGame() {
-        Intent intent = new Intent(this, GameActivity.class);
-        startActivity(intent);
-    }
-
     public static void updateButtons(int role) {
         switch (role) {
             case 0:
@@ -59,22 +51,24 @@ public class RoleActivity extends AppCompatActivity {
 
     }
 
-    public void updateRolesChosen() {
-
-    }
-
     public void gunnerChosen(View view) {
         view.setAlpha(0.5f);
-        startGame();
+
+        Intent intent = new Intent(this, LocationArmoryActivity.class);
+        startActivity(intent);
     }
 
     public void engineerChosen(View view) {
         view.setAlpha(0.5f);
-        startGame();
+
+        Intent intent = new Intent(this, LocationEngineroomActivity.class);
+        startActivity(intent);
     }
 
     public void scientistChosen(View view) {
         view.setAlpha(0.5f);
-        startGame();
+
+        Intent intent = new Intent(this, LocationLabActivity.class);
+        startActivity(intent);
     }
 }
