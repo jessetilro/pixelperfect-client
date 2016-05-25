@@ -9,7 +9,9 @@ import nl.tudelft.pixelperfect.event.Event;
 import nl.tudelft.pixelperfect.event.FireEvent;
 import nl.tudelft.pixelperfect.event.HostileShipEvent;
 import nl.tudelft.pixelperfect.event.PlasmaLeakEvent;
-import nl.tudelft.pixelperfect.pixelperfect.GameActivity;
+import nl.tudelft.pixelperfect.pixelperfect.LocationArmoryActivity;
+import nl.tudelft.pixelperfect.pixelperfect.LocationEngineroomActivity;
+import nl.tudelft.pixelperfect.pixelperfect.LocationLabActivity;
 import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
 
 /**
@@ -29,19 +31,19 @@ class ClientListener implements MessageListener<Client> {
             switch (eve.getType()) {
                 case "FireEvent":
                     mission = new FireEvent(eve.getID(), "", "", eve.getTime(), eve.getDuration(), 0);
-                    GameActivity.updateEventLog(mission);
+                    LocationArmoryActivity.updateEventLog(mission);
                     break;
                 case "AsteroidFieldEvent":
                     mission = new AsteroidFieldEvent(eve.getID(), "", "", eve.getTime(), eve.getDuration(), 0);
-                    GameActivity.updateEventLog(mission);
+                    LocationLabActivity.updateEventLog(mission);
                     break;
                 case "HostileShipEvent":
                     mission = new HostileShipEvent(eve.getID(), "", "", eve.getTime(), eve.getDuration(), 0);
-                    GameActivity.updateEventLog(mission);
+                    LocationArmoryActivity.updateEventLog(mission);
                     break;
                 case "PlasmaLeakEvent":
                     mission = new PlasmaLeakEvent(eve.getID(), "", "", eve.getTime(), eve.getDuration(), 0);
-                    GameActivity.updateEventLog(mission);
+                    LocationEngineroomActivity.updateEventLog(mission);
                     break;
                 default:
                     break;

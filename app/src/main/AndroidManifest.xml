@@ -29,14 +29,6 @@
                 android:value="nl.tudelft.pixelperfect.pixelperfect.MainActivity" />
         </activity>
         <activity
-            android:name=".GameActivity"
-            android:screenOrientation="landscape"
-            android:configChanges="keyboardHidden|orientation">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="nl.tudelft.pixelperfect.pixelperfect.RoleActivity" />
-        </activity>
-        <activity
             android:name=".LocationArmoryActivity"
             android:screenOrientation="landscape"
             android:configChanges="keyboardHidden|orientation">
