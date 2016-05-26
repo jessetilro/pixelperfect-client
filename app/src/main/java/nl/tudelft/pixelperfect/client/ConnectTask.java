@@ -15,7 +15,7 @@ import java.io.IOException;
  * @author Floris Doolaard
  */
 @SuppressWarnings("unused")
-class ConnectTask extends AsyncTask<String, Void, Client> {
+public class ConnectTask extends AsyncTask<String, Void, Client> {
 
     private Exception exception;
     public ConnectResponse delegate;

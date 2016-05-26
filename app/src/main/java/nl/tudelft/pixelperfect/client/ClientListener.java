@@ -22,7 +22,7 @@ import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
  * @author Dmitry Malarev
  */
 @SuppressWarnings("unused")
-class ClientListener implements MessageListener<Client> {
+public class ClientListener implements MessageListener<Client> {
     public void messageReceived(Client source, Message message) {
         if (message instanceof EventsMessage) {
             Event mission;
