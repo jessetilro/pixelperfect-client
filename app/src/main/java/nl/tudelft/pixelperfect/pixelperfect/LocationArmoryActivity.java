@@ -16,8 +16,8 @@ import nl.tudelft.pixelperfect.event.Events;
  * @author Floris Doolaard
  */
 public class LocationArmoryActivity extends AppCompatActivity {
-    private GameClient game;
-    private static Spaceship ship;
+    private GameClient game = GameClient.getInstance();
+    private static Spaceship ship = Spaceship.getInstance();
 
     /**
      * This method shows what happens when this Activity is created.
@@ -28,9 +28,6 @@ public class LocationArmoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_armory);
-
-        game = GameClient.getInstance();
-        ship = Spaceship.getInstance();
     }
 
     /**
