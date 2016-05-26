@@ -37,17 +37,17 @@ public class RoleActivity extends AppCompatActivity {
      *
      * @param role the buttonRole to adjust.
      */
-    public static void updateButtons(int role) {
+    public static void updateButtons(Roles role) {
         switch (role) {
-            case 0:
+            case GUNNER:
                 gunnerView.setAlpha(0.5f);
                 gunnerView.setEnabled(false);
                 break;
-            case 1:
+            case ENGINEER:
                 engineerView.setAlpha(0.5f);
                 engineerView.setEnabled(false);
                 break;
-            case 2:
+            case SCIENTIST:
                 scientistView.setAlpha(0.5f);
                 scientistView.setEnabled(false);
                 break;

@@ -13,6 +13,7 @@ import nl.tudelft.pixelperfect.pixelperfect.LocationArmoryActivity;
 import nl.tudelft.pixelperfect.pixelperfect.LocationEngineroomActivity;
 import nl.tudelft.pixelperfect.pixelperfect.LocationLabActivity;
 import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
+import nl.tudelft.pixelperfect.pixelperfect.Roles;
 
 /**
  * The ClientListeners waits for incoming messages from the server and interpret them.
@@ -51,13 +52,13 @@ public class ClientListener implements MessageListener<Client> {
         } else if (message instanceof RoleChosenMessage) {
             RoleChosenMessage roleMessage = (RoleChosenMessage) message;
             switch(roleMessage.getRole()) {
-                case 0:
+                case GUNNER :
                     RoleActivity.updateButtons(0);
                     break;
-                case 1:
+                case ENGINEER:
                     RoleActivity.updateButtons(1);
                     break;
-                case 2:
+                case SCIENTIST:
                     RoleActivity.updateButtons(2);
                     break;
                 default:

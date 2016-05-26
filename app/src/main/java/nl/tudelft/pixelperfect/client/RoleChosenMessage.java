@@ -3,6 +3,8 @@ package nl.tudelft.pixelperfect.client;
 import com.jme3.network.AbstractMessage;
 import com.jme3.network.serializing.Serializable;
 
+import nl.tudelft.pixelperfect.pixelperfect.Roles;
+
 /**
  * Whenever a role is chosen, the other crew players cannot choose the role. Therefor this message
  * is needed to broadcast to everyone.
@@ -11,7 +13,7 @@ import com.jme3.network.serializing.Serializable;
  */
 @Serializable
 public class RoleChosenMessage extends AbstractMessage {
-    private int role;
+    private Roles role;
     private String label;
 
     /**
@@ -25,9 +27,9 @@ public class RoleChosenMessage extends AbstractMessage {
      * The constructor for creating RoleChosen messages.
      *
      * @param label , the label of the chosen role as a String.
-     * @param role , the role in terms of an integer.
+     * @param role , the role in terms of an Enum.
      */
-    public RoleChosenMessage(String label, int role) {
+    public RoleChosenMessage(String label, Roles role) {
         this.role = role;
         this.label = label;
     }
@@ -46,7 +48,7 @@ public class RoleChosenMessage extends AbstractMessage {
      *
      * @return role as an Integer.
      */
-    public int getRole() {
+    public Roles getRole() {
         return role;
     }
 

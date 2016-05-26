@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 /**
  * Enums to pass type of events.
+ *
+ * @author Wouter Zirkzee
  */
 public enum Events {
     FIRE {
