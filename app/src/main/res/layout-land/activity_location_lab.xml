@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#d6f9cf">
+    android:background="#d6f9cf"
+    tools:ignore="Overdraw">
 
     <Button
         android:layout_width="wrap_content"
@@ -26,6 +28,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="107dp"
-        android:layout_marginEnd="107dp" />
+        android:layout_marginEnd="107dp"
+        tools:ignore="RelativeOverlap" />
 
 </RelativeLayout>

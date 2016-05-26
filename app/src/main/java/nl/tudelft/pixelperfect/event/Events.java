@@ -21,9 +21,8 @@ public enum Events {
         public Event pop(ArrayList<Event> log) {
             for (Event event : log) {
                 if (event instanceof FireEvent) {
-                    Event ret = event;
                     log.remove(event);
-                    return ret;
+                    return event;
                 }
             }
             return null;
@@ -44,9 +43,8 @@ public enum Events {
         public Event pop(ArrayList<Event> log) {
             for (Event event : log) {
                 if (event instanceof PlasmaLeakEvent) {
-                    Event ret = event;
                     log.remove(event);
-                    return ret;
+                    return event;
                 }
             }
             return null;
@@ -67,9 +65,8 @@ public enum Events {
         public Event pop(ArrayList<Event> log) {
             for (Event event : log) {
                 if (event instanceof AsteroidFieldEvent) {
-                    Event ret = event;
                     log.remove(event);
-                    return ret;
+                    return event;
                 }
             }
             return null;
@@ -91,9 +88,8 @@ public enum Events {
         public Event pop(ArrayList<Event> log) {
             for (Event event : log) {
                 if (event instanceof HostileShipEvent) {
-                    Event ret = event;
                     log.remove(event);
-                    return ret;
+                    return event;
                 }
             }
             return null;
@@ -101,7 +97,7 @@ public enum Events {
     };
 
     /**
-     * Checks whether the eventlog contains an Event.
+     * Checks whether the event log contains an Event.
      *
      * @param log the log to do the check in.
      * @return a boolean.

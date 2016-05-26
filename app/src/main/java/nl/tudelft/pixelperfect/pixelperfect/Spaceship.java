@@ -12,7 +12,8 @@ import nl.tudelft.pixelperfect.event.EventLog;
  */
 public class Spaceship {
     private static volatile Spaceship instance;
-    private static EventLog eventLog;
+    @SuppressWarnings("CanBeFinal")
+    private EventLog eventLog;
 
     private Spaceship() {
         eventLog = new EventLog();
@@ -37,9 +38,9 @@ public class Spaceship {
     /**
      * Updates the EventLog of the Spaceship.
      *
-     * @param event
+     * @param event the Event to be added.
      */
-    public static void updateEventLog(Event event){
+    public void updateEventLog(Event event){
         eventLog.add(event);
     }
 

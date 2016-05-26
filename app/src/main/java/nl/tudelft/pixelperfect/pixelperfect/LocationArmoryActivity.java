@@ -7,7 +7,6 @@ import android.view.View;
 import nl.tudelft.pixelperfect.client.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.Event;
-import nl.tudelft.pixelperfect.event.EventLog;
 import nl.tudelft.pixelperfect.event.Events;
 
 

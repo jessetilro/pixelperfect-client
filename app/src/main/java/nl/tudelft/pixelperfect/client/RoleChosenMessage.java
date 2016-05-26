@@ -10,7 +10,7 @@ import com.jme3.network.serializing.Serializable;
  * @author Floris Doolaard
  */
 @Serializable
-public class RoleChosenMessage extends AbstractMessage {
+class RoleChosenMessage extends AbstractMessage {
     private int role;
     private String label;
 

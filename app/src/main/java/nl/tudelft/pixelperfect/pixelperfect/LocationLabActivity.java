@@ -1,7 +1,6 @@
 package nl.tudelft.pixelperfect.pixelperfect;
 
 import android.os.Bundle;
-import android.support.v4.widget.Space;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 

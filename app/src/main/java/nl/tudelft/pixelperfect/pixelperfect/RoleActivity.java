@@ -1,7 +1,6 @@
 package nl.tudelft.pixelperfect.pixelperfect;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -34,7 +33,7 @@ public class RoleActivity extends AppCompatActivity {
     }
 
     /**
-     * Will update the buttons' alpha (opacity) and will set the button be unenabled.
+     * Will update the buttons' alpha (opacity) and will set the button be un-enabled.
      *
      * @param role the buttonRole to adjust.
      */

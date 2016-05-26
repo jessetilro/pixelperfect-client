@@ -4,7 +4,6 @@ import android.os.AsyncTask;
 
 import com.jme3.network.Client;
 import com.jme3.network.Network;
-import com.jme3.network.serializing.Serializable;
 import com.jme3.network.serializing.Serializer;
 
 import java.io.IOException;
