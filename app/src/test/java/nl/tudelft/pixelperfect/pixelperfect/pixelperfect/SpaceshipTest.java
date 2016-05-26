@@ -4,12 +4,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import nl.tudelft.pixelperfect.event.Event;
-import nl.tudelft.pixelperfect.event.EventLog;
 import nl.tudelft.pixelperfect.event.Events;
 import nl.tudelft.pixelperfect.event.FireEvent;
 import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
 
-import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 
@@ -23,12 +21,12 @@ public class SpaceshipTest {
     private Event event;
 
     /**
-     * Intitializes objects.
+     * Initializes objects.
      */
     @Before
     public void before() {
         spaceship = Spaceship.getInstance();
-        event = new FireEvent(0, "summary", "descpription", 0, 0, 0);
+        event = new FireEvent(0, "summary", "description", 0, 0, 0);
     }
 
     /**
