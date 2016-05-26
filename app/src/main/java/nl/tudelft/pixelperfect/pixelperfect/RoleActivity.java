@@ -62,6 +62,8 @@ public class RoleActivity extends AppCompatActivity {
      */
     public void gunnerChosen(View view) {
         view.setAlpha(0.5f);
+        engineerView.setEnabled(false);
+        scientistView.setEnabled(false);
 
         Intent intent = new Intent(this, LocationArmoryActivity.class);
         startActivity(intent);
@@ -74,6 +76,9 @@ public class RoleActivity extends AppCompatActivity {
      */
     public void engineerChosen(View view) {
         view.setAlpha(0.5f);
+        gunnerView.setEnabled(false);
+        scientistView.setEnabled(false);
+
 
         Intent intent = new Intent(this, LocationEngineroomActivity.class);
         startActivity(intent);
@@ -86,6 +91,9 @@ public class RoleActivity extends AppCompatActivity {
      */
     public void scientistChosen(View view) {
         view.setAlpha(0.5f);
+        gunnerView.setEnabled(false);
+        engineerView.setEnabled(false);
+
 
         Intent intent = new Intent(this, LocationLabActivity.class);
         startActivity(intent);
