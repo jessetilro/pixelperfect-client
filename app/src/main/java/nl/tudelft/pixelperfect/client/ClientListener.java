@@ -53,13 +53,13 @@ public class ClientListener implements MessageListener<Client> {
             RoleChosenMessage roleMessage = (RoleChosenMessage) message;
             switch(roleMessage.getRole()) {
                 case GUNNER :
-                    RoleActivity.updateButtons(0);
+                    RoleActivity.updateButtons(Roles.GUNNER);
                     break;
                 case ENGINEER:
-                    RoleActivity.updateButtons(1);
+                    RoleActivity.updateButtons(Roles.ENGINEER);
                     break;
                 case SCIENTIST:
-                    RoleActivity.updateButtons(2);
+                    RoleActivity.updateButtons(Roles.SCIENTIST);
                     break;
                 default:
                     break;
