@@ -1,7 +1,5 @@
 package nl.tudelft.pixelperfect.pixelperfect.eventtest;
 
-import android.transition.Scene;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,6 +11,7 @@ import nl.tudelft.pixelperfect.event.Event;
  *
  * Created by Dmitry on 23/05/2016.
  */
+@SuppressWarnings("unused")
 public abstract class EventTest {
 
     private Event toTest;

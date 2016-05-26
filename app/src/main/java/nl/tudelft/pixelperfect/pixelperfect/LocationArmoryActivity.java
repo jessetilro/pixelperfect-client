@@ -15,6 +15,7 @@ import nl.tudelft.pixelperfect.event.Events;
  *
  * @author Floris Doolaard
  */
+@SuppressWarnings({"CanBeFinal", "unused", "UnusedParameters"})
 public class LocationArmoryActivity extends AppCompatActivity {
     private GameClient game = GameClient.getInstance();
     private static Spaceship ship = Spaceship.getInstance();

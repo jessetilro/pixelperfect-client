@@ -11,6 +11,7 @@ import nl.tudelft.pixelperfect.pixelperfect.Roles;
  *
  * @author Floris Doolaard
  */
+@SuppressWarnings("unused")
 @Serializable
 public class RoleChosenMessage extends AbstractMessage {
     private Roles role;

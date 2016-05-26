@@ -12,6 +12,7 @@ import android.view.View;
  *
  * @author Floris Doolaard
  */
+@SuppressWarnings("unused")
 public class RoleActivity extends AppCompatActivity {
     private static View gunnerView;
     private static View engineerView;

@@ -15,6 +15,7 @@ import nl.tudelft.pixelperfect.event.PlasmaLeakEvent;
  *
  * Created by Dmitry on 23/05/2016.
  */
+@SuppressWarnings({"FieldCanBeLocal", "unused"})
 public class EventLogTest {
 
     private EventLog log;

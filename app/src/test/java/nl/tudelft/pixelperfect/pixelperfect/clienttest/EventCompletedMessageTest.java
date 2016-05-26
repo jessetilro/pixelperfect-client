@@ -11,6 +11,7 @@ import nl.tudelft.pixelperfect.client.EventCompletedMessage;
  *
  * Created by Dmitry on 23/05/2016.
  */
+@SuppressWarnings("unused")
 public class EventCompletedMessageTest {
 
     private EventCompletedMessage event;
