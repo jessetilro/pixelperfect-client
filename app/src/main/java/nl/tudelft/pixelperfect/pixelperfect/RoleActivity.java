@@ -33,6 +33,11 @@ public class RoleActivity extends AppCompatActivity {
         scientistView = findViewById(R.id.button_role_scientist);
     }
 
+    /**
+     * Will update the buttons' alpha (opacity) and will set the button be unenabled.
+     *
+     * @param role the buttonRole to adjust.
+     */
     public static void updateButtons(int role) {
         switch (role) {
             case 0:
@@ -51,6 +56,11 @@ public class RoleActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * The method for clicking the Gunner button. The player will be transitioned to the Armory.
+     *
+     * @param view the view of the Button.
+     */
     public void gunnerChosen(View view) {
         view.setAlpha(0.5f);
 
@@ -58,6 +68,11 @@ public class RoleActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * The method for clicking the Engineer button. The player will be transitioned to the Engine room.
+     *
+     * @param view the view of the Button.
+     */
     public void engineerChosen(View view) {
         view.setAlpha(0.5f);
 
@@ -65,6 +80,11 @@ public class RoleActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * The method for clicking the Scientist button. The player will be transitioned to the Lab.
+     *
+     * @param view the view of the Button.
+     */
     public void scientistChosen(View view) {
         view.setAlpha(0.5f);
 

@@ -76,6 +76,7 @@ public enum Events {
         }
     },
     HOSTILE {
+
         @Override
         public boolean contains(ArrayList<Event> log) {
             for (Event event : log) {
@@ -99,7 +100,19 @@ public enum Events {
         }
     };
 
+    /**
+     * Checks whether the eventlog contains an Event.
+     *
+     * @param log the log to do the check in.
+     * @return a boolean.
+     */
     public abstract boolean contains(ArrayList<Event> log);
 
+    /**
+     * Pops the event of the EventLog.
+     *
+     * @param log the log to pop.
+     * @return the log that was popped.
+     */
     public abstract Event pop(ArrayList<Event> log);
 }

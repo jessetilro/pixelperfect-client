@@ -21,6 +21,12 @@ class ConnectTask extends AsyncTask<String, Void, Client> {
     private Exception exception;
     public ConnectResponse delegate;
 
+    /**
+     * Registering the messages that can be sent and starts the client.
+     *
+     * @param ip the IP of the Server
+     * @return a Client.
+     */
     protected Client doInBackground(String... ip) {
         Client client;
         try {
