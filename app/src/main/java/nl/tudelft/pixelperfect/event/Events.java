@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 /**
  * Enums to pass type of events.
+ *
+ * @author Wouter Zirkzee
  */
 public enum Events {
     FIRE {
@@ -21,9 +23,8 @@ public enum Events {
         public Event pop(ArrayList<Event> log) {
             for (Event event : log) {
                 if (event instanceof FireEvent) {
-                    Event ret = event;
                     log.remove(event);
-                    return ret;
+                    return event;
                 }
             }
             return null;
@@ -44,9 +45,8 @@ public enum Events {
         public Event pop(ArrayList<Event> log) {
             for (Event event : log) {
                 if (event instanceof PlasmaLeakEvent) {
-                    Event ret = event;
                     log.remove(event);
-                    return ret;
+                    return event;
                 }
             }
             return null;
@@ -67,15 +67,15 @@ public enum Events {
         public Event pop(ArrayList<Event> log) {
             for (Event event : log) {
                 if (event instanceof AsteroidFieldEvent) {
-                    Event ret = event;
                     log.remove(event);
-                    return ret;
+                    return event;
                 }
             }
             return null;
         }
     },
     HOSTILE {
+
         @Override
         public boolean contains(ArrayList<Event> log) {
             for (Event event : log) {
@@ -90,16 +90,27 @@ public enum Events {
         public Event pop(ArrayList<Event> log) {
             for (Event event : log) {
                 if (event instanceof HostileShipEvent) {
-                    Event ret = event;
                     log.remove(event);
-                    return ret;
+                    return event;
                 }
             }
             return null;
         }
     };
 
+    /**
+     * Checks whether the event log contains an Event.
+     *
+     * @param log the log to do the check in.
+     * @return a boolean.
+     */
     public abstract boolean contains(ArrayList<Event> log);
 
+    /**
+     * Pops the event of the EventLog.
+     *
+     * @param log the log to pop.
+     * @return the log that was popped.
+     */
     public abstract Event pop(ArrayList<Event> log);
 }
