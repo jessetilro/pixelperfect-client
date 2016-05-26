@@ -12,8 +12,6 @@ import nl.tudelft.pixelperfect.event.PlasmaLeakEvent;
 import nl.tudelft.pixelperfect.pixelperfect.LocationArmoryActivity;
 import nl.tudelft.pixelperfect.pixelperfect.LocationEngineroomActivity;
 import nl.tudelft.pixelperfect.pixelperfect.LocationLabActivity;
-import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
-import nl.tudelft.pixelperfect.pixelperfect.Roles;
 
 /**
  * The ClientListeners waits for incoming messages from the server and interpret them.
@@ -51,19 +49,7 @@ public class ClientListener implements MessageListener<Client> {
             }
         } else if (message instanceof RoleChosenMessage) {
             RoleChosenMessage roleMessage = (RoleChosenMessage) message;
-            switch(roleMessage.getRole()) {
-                case GUNNER :
-                    RoleActivity.updateButtons(Roles.GUNNER);
-                    break;
-                case ENGINEER:
-                    RoleActivity.updateButtons(Roles.ENGINEER);
-                    break;
-                case SCIENTIST:
-                    RoleActivity.updateButtons(Roles.SCIENTIST);
-                    break;
-                default:
-                    break;
-            }
+            roleMessage.getRole().updateButtons();
         }
     }
 }

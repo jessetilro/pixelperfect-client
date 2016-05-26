@@ -34,26 +34,30 @@ public class RoleActivity extends AppCompatActivity {
     }
 
     /**
-     * Will update the buttons' alpha (opacity) and will set the button be un-enabled.
+     * Gets the View of the Gunner button.
      *
-     * @param role the buttonRole to adjust.
+     * @return a View of the button.
      */
-    public static void updateButtons(Roles role) {
-        switch (role) {
-            case GUNNER:
-                gunnerView.setAlpha(0.5f);
-                gunnerView.setEnabled(false);
-                break;
-            case ENGINEER:
-                engineerView.setAlpha(0.5f);
-                engineerView.setEnabled(false);
-                break;
-            case SCIENTIST:
-                scientistView.setAlpha(0.5f);
-                scientistView.setEnabled(false);
-                break;
-        }
+    public static View getGunnerView() {
+        return gunnerView;
+    }
 
+    /**
+     * Gets the View of the Engineer button.
+     *
+     * @return a View of the button.
+     */
+    public static View getEngineerView() {
+        return engineerView;
+    }
+
+    /**
+     * Gets the View of the Gunner button.
+     *
+     * @return a View of the button.
+     */
+    public static View getScientistView() {
+        return scientistView;
     }
 
     /**
