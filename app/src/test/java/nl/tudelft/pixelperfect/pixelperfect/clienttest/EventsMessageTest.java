@@ -9,7 +9,7 @@ import nl.tudelft.pixelperfect.client.EventsMessage;
 /**
  * Test case for the event message class.
  *
- * Created by Dmitry on 23/05/2016.
+ * @author Dmitry Malarev
  */
 @SuppressWarnings("unused")
 public class EventsMessageTest {

@@ -6,7 +6,7 @@ import nl.tudelft.pixelperfect.event.AsteroidFieldEvent;
 /**
  * Test case for the Event subclass AsteroidFieldEvent.
  *
- * Created by Dmitry on 23/05/2016.
+ * @author Dmitry Malarev
  */
 public class AsteroidFieldEventTest extends EventTest{
 

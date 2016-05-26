@@ -5,7 +5,7 @@ import nl.tudelft.pixelperfect.event.HostileShipEvent;
 /**
  * Test case for the Event subclass HostileShipEvent.
  *
- * Created by Dmitry on 23/05/2016.
+ * @author Dmitry Malarev
  */
 public class HostileShipEventTest extends EventTest{
 

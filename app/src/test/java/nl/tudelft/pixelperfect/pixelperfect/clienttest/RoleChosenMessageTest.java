@@ -5,16 +5,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 import nl.tudelft.pixelperfect.client.EventCompletedMessage;
+import nl.tudelft.pixelperfect.client.RoleChosenMessage;
+import nl.tudelft.pixelperfect.pixelperfect.Roles;
 
 /**
- * Tests the EventCompleted message.
+ * Tests the RoleChosen message.
  *
+ * @author Floris Doolaard
  * @author Dmitry Malarev
  */
 @SuppressWarnings("unused")
-public class EventCompletedMessageTest {
+public class RoleChosenMessageTest {
 
-    private EventCompletedMessage event;
+    private RoleChosenMessage message;
 
     /**
      * Set everything up.
@@ -22,7 +25,7 @@ public class EventCompletedMessageTest {
      */
     @Before
     public void initialise() {
-        event = new EventCompletedMessage("Lorem", 3);
+        message = new RoleChosenMessage("Gunner", Roles.GUNNER);
     }
 
     /**
@@ -31,7 +34,7 @@ public class EventCompletedMessageTest {
      */
     @Test
     public void testEmptyConstructor() {
-        EventCompletedMessage message = new EventCompletedMessage();
+        RoleChosenMessage message = new RoleChosenMessage();
         Assert.assertEquals(null, message.getLabel());
     }
 
@@ -41,15 +44,15 @@ public class EventCompletedMessageTest {
      */
     @Test
     public void testGetLabel() {
-        Assert.assertEquals("Lorem", event.getLabel());
+        Assert.assertEquals("Gunner", message.getLabel());
     }
 
     /**
-     * Tests the getCompletedEvent function.
+     * Tests the getRole function.
      *
      */
     @Test
-    public void testGetCompleted() {
-        Assert.assertEquals(3, event.getCompletedEvent());
+    public void testGetRole() {
+        Assert.assertEquals(Roles.GUNNER, message.getRole());
     }
 }

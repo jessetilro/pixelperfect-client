@@ -9,7 +9,7 @@ import nl.tudelft.pixelperfect.event.Event;
 /**
  * The test case for the abstract class Event.
  *
- * Created by Dmitry on 23/05/2016.
+ * @author Dmitry Malarev
  */
 @SuppressWarnings("unused")
 public abstract class EventTest {

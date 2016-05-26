@@ -5,7 +5,7 @@ import nl.tudelft.pixelperfect.event.PlasmaLeakEvent;
 /**
  * Test case for the Event subclass PlasmaLeakEvent.
  *
- * Created by Dmitry on 23/05/2016.
+ * @author Dmitry Malarev
  */
 public class PlasmaLeakEventTest extends EventTest{
 
