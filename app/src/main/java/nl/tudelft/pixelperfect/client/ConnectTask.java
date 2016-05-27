@@ -15,20 +15,28 @@ import java.io.IOException;
  * @author Floris Doolaard
  */
 @SuppressWarnings("unused")
-class ConnectTask extends AsyncTask<String, Void, Client> {
+public class ConnectTask extends AsyncTask<String, Void, Client> {
 
     private Exception exception;
     public ConnectResponse delegate;
 
+    /**
+     * Registering the messages that can be sent and starts the client.
+     *
+     * @param ip the IP of the Server
+     * @return a Client.
+     */
     protected Client doInBackground(String... ip) {
         Client client;
         try {
             client = Network.connectToServer(ip[0], 6143);
             Serializer.registerClass(EventCompletedMessage.class);
             Serializer.registerClass(EventsMessage.class);
+            Serializer.registerClass(RoleChosenMessage.class);
             client.start();
             client.addMessageListener(new ClientListener(), EventCompletedMessage.class);
             client.addMessageListener(new ClientListener(), EventsMessage.class);
+            client.addMessageListener(new ClientListener(), RoleChosenMessage.class);
         } catch (IOException e) {
             client = null;
         }
