@@ -21,7 +21,7 @@ public class RoleActivity extends AppCompatActivity {
     private static View engineerView;
     private static View scientistView;
     private static View janitorView;
-    private GameClient game = GameClient.getInstance();
+    private GameClient game;
 
     /**
      * This method shows what happens when this Activity is created.
@@ -37,6 +37,8 @@ public class RoleActivity extends AppCompatActivity {
         engineerView = findViewById(R.id.button_role_engineer);
         scientistView = findViewById(R.id.button_role_scientist);
         janitorView = findViewById(R.id.button_role_janitor);
+
+        game = GameClient.getInstance();
     }
 
     /**
