@@ -136,7 +136,9 @@ public class RoleActivity extends AppCompatActivity {
         gunnerView.setEnabled(false);
         engineerView.setEnabled(false);
         scientistView.setEnabled(false);
-        
+
+        RoleChosenMessage role = new RoleChosenMessage("janitor", Roles.JANITOR);
+        game.sendMessage(role);
         Intent intent = new Intent(this, LocationDeckActivity.class);
         startActivity(intent);
     }
