@@ -27,6 +27,13 @@ public enum Roles {
             RoleActivity.getScientistView().setAlpha(0.5f);
             RoleActivity.getScientistView().setEnabled(false);
         }
+    },
+    JANITOR {
+        @Override
+        public void updateButtons() {
+            RoleActivity.getScientistView().setAlpha(0.5f);
+            RoleActivity.getScientistView().setEnabled(false);
+        }
     };
 
     /**

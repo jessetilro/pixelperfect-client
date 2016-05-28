@@ -52,6 +52,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="nl.tudelft.pixelperfect.pixelperfect.RoleActivity" />
         </activity>
+        <activity
+            android:name=".LocationDeckActivity"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboardHidden|orientation">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="nl.tudelft.pixelperfect.pixelperfect.RoleActivity" />
+        </activity>
     </application>
 
 </manifest>
