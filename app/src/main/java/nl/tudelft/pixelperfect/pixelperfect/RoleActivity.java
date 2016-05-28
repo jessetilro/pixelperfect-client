@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import nl.tudelft.pixelperfect.client.GameClient;
+import nl.tudelft.pixelperfect.client.RoleChosenMessage;
+
 
 /**
  * This Activity involves the allocation of roles. Each player is able to choose a unique
@@ -18,6 +21,7 @@ public class RoleActivity extends AppCompatActivity {
     private static View engineerView;
     private static View scientistView;
     private static View janitorView;
+    private GameClient game = GameClient.getInstance();
 
     /**
      * This method shows what happens when this Activity is created.
@@ -82,6 +86,8 @@ public class RoleActivity extends AppCompatActivity {
         scientistView.setEnabled(false);
         janitorView.setEnabled(false);
 
+        RoleChosenMessage role = new RoleChosenMessage("gunner", Roles.GUNNER);
+        game.sendMessage(role);
         Intent intent = new Intent(this, LocationArmoryActivity.class);
         startActivity(intent);
     }
@@ -97,7 +103,8 @@ public class RoleActivity extends AppCompatActivity {
         scientistView.setEnabled(false);
         janitorView.setEnabled(false);
 
-
+        RoleChosenMessage role = new RoleChosenMessage("engineer", Roles.ENGINEER);
+        game.sendMessage(role);
         Intent intent = new Intent(this, LocationEngineroomActivity.class);
         startActivity(intent);
     }
@@ -113,7 +120,8 @@ public class RoleActivity extends AppCompatActivity {
         engineerView.setEnabled(false);
         janitorView.setEnabled(false);
 
-
+        RoleChosenMessage role = new RoleChosenMessage("scientist", Roles.SCIENTIST);
+        game.sendMessage(role);
         Intent intent = new Intent(this, LocationLabActivity.class);
         startActivity(intent);
     }
@@ -128,7 +136,7 @@ public class RoleActivity extends AppCompatActivity {
         gunnerView.setEnabled(false);
         engineerView.setEnabled(false);
         scientistView.setEnabled(false);
-
+        
         Intent intent = new Intent(this, LocationDeckActivity.class);
         startActivity(intent);
     }
