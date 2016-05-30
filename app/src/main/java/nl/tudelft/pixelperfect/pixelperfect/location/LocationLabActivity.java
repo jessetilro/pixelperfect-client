@@ -1,10 +1,10 @@
-package nl.tudelft.pixelperfect.location;
+package nl.tudelft.pixelperfect.pixelperfect.location;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import nl.tudelft.pixelperfect.client.EventCompletedMessage;
+import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.Event;
 import nl.tudelft.pixelperfect.event.Events;

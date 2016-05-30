@@ -1,4 +1,4 @@
-package nl.tudelft.pixelperfect.mini_game;
+package nl.tudelft.pixelperfect.pixelperfect.mini_game;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
