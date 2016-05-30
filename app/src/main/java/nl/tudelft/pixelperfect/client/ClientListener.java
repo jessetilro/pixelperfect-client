@@ -10,6 +10,7 @@ import nl.tudelft.pixelperfect.event.FireEvent;
 import nl.tudelft.pixelperfect.event.HostileShipEvent;
 import nl.tudelft.pixelperfect.event.PlasmaLeakEvent;
 import nl.tudelft.pixelperfect.pixelperfect.LocationArmoryActivity;
+import nl.tudelft.pixelperfect.pixelperfect.LocationDeckActivity;
 import nl.tudelft.pixelperfect.pixelperfect.LocationEngineroomActivity;
 import nl.tudelft.pixelperfect.pixelperfect.LocationLabActivity;
 import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
@@ -28,7 +29,7 @@ public class ClientListener implements MessageListener<Client> {
      * Whenever the clientlistener receives a message from the Server it will determine what
      * to do with it per message.
      *
-     * @param source the source of the sender.
+     * @param source the source of the message.
      * @param message the message received.
      */
     public void messageReceived(Client source, Message message) {
@@ -53,6 +54,9 @@ public class ClientListener implements MessageListener<Client> {
             case "FireEvent":
                 mission = new FireEvent(eve.getID(), "", "", eve.getTime(), eve.getDuration(), 0);
                 LocationArmoryActivity.updateEventLog(mission);
+                LocationEngineroomActivity.updateEventLog(mission);
+                LocationLabActivity.updateEventLog(mission);
+                LocationDeckActivity.updateEventLog(mission);
                 break;
             case "AsteroidFieldEvent":
                 mission = new AsteroidFieldEvent(eve.getID(), "", "", eve.getTime(), eve.getDuration(), 0);
