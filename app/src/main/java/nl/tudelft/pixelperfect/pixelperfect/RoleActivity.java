@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import nl.tudelft.pixelperfect.client.GameClient;
+import nl.tudelft.pixelperfect.client.RoleChosenMessage;
+
 
 /**
  * This Activity involves the allocation of roles. Each player is able to choose a unique
@@ -17,6 +20,8 @@ public class RoleActivity extends AppCompatActivity {
     private static View gunnerView;
     private static View engineerView;
     private static View scientistView;
+    private static View janitorView;
+    private GameClient game;
 
     /**
      * This method shows what happens when this Activity is created.
@@ -31,6 +36,9 @@ public class RoleActivity extends AppCompatActivity {
         gunnerView = findViewById(R.id.button_role_gunner);
         engineerView = findViewById(R.id.button_role_engineer);
         scientistView = findViewById(R.id.button_role_scientist);
+        janitorView = findViewById(R.id.button_role_janitor);
+
+        game = GameClient.getInstance();
     }
 
     /**
@@ -52,12 +60,21 @@ public class RoleActivity extends AppCompatActivity {
     }
 
     /**
-     * Gets the View of the Gunner button.
+     * Gets the View of the Scientist button.
      *
      * @return a View of the button.
      */
     public static View getScientistView() {
         return scientistView;
+    }
+
+    /**
+     * Gets the View of the Janitor button.
+     *
+     * @return a View of the button.
+     */
+    public static View getJanitorView() {
+        return janitorView;
     }
 
     /**
@@ -69,7 +86,10 @@ public class RoleActivity extends AppCompatActivity {
         view.setAlpha(0.5f);
         engineerView.setEnabled(false);
         scientistView.setEnabled(false);
+        janitorView.setEnabled(false);
 
+        RoleChosenMessage role = new RoleChosenMessage("gunner", Roles.GUNNER);
+        game.sendMessage(role);
         Intent intent = new Intent(this, LocationArmoryActivity.class);
         startActivity(intent);
     }
@@ -83,8 +103,10 @@ public class RoleActivity extends AppCompatActivity {
         view.setAlpha(0.5f);
         gunnerView.setEnabled(false);
         scientistView.setEnabled(false);
+        janitorView.setEnabled(false);
 
-
+        RoleChosenMessage role = new RoleChosenMessage("engineer", Roles.ENGINEER);
+        game.sendMessage(role);
         Intent intent = new Intent(this, LocationEngineroomActivity.class);
         startActivity(intent);
     }
@@ -98,9 +120,28 @@ public class RoleActivity extends AppCompatActivity {
         view.setAlpha(0.5f);
         gunnerView.setEnabled(false);
         engineerView.setEnabled(false);
+        janitorView.setEnabled(false);
 
-
+        RoleChosenMessage role = new RoleChosenMessage("scientist", Roles.SCIENTIST);
+        game.sendMessage(role);
         Intent intent = new Intent(this, LocationLabActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * The method for clicking the Janitor button. The player will be transitioned to the Lab.
+     *
+     * @param view the view of the Button.
+     */
+    public void janitorChosen(View view) {
+        view.setAlpha(0.5f);
+        gunnerView.setEnabled(false);
+        engineerView.setEnabled(false);
+        scientistView.setEnabled(false);
+
+        RoleChosenMessage role = new RoleChosenMessage("janitor", Roles.JANITOR);
+        game.sendMessage(role);
+        Intent intent = new Intent(this, LocationDeckActivity.class);
         startActivity(intent);
     }
 }
