@@ -3,6 +3,7 @@ package nl.tudelft.pixelperfect.pixelperfect;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 
 import nl.tudelft.pixelperfect.client.GameClient;
@@ -22,6 +23,7 @@ public class RoleActivity extends AppCompatActivity {
     private static View scientistView;
     private static View janitorView;
     private GameClient game;
+    private Roles chosenRole;
 
     /**
      * This method shows what happens when this Activity is created.
@@ -31,14 +33,57 @@ public class RoleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_role);
 
-        gunnerView = findViewById(R.id.button_role_gunner);
-        engineerView = findViewById(R.id.button_role_engineer);
-        scientistView = findViewById(R.id.button_role_scientist);
-        janitorView = findViewById(R.id.button_role_janitor);
+        if(savedInstanceState == null) {
+            setContentView(R.layout.activity_role);
 
-        game = GameClient.getInstance();
+            gunnerView = findViewById(R.id.button_role_gunner);
+            engineerView = findViewById(R.id.button_role_engineer);
+            scientistView = findViewById(R.id.button_role_scientist);
+            janitorView = findViewById(R.id.button_role_janitor);
+
+            game = GameClient.getInstance();
+        }
+    }
+
+    /**
+     * When the home button is pressed in the actionbar, a new connection should be made to ensure
+     * no second role can be chosen.
+     *
+     * @param item the item in the action bar.
+     * @return states whether a function was executed.
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                game.disconnect();
+                Intent intent = new Intent(RoleActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                return true;
+        }
+        return false;
+    }
+
+    /**
+     * Whenever this Activity is restored this method will decide how to restore it.
+     *
+     * @param savedInstanceState the instance to restore.
+     */
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    /**
+     * Whenever the Activity gets destroyed, this method will be called and the activity will be
+     * saved.
+     * @param savedInstanceState the state that will be saved.
+     */
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     /**
@@ -83,13 +128,16 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void gunnerChosen(View view) {
-        view.setAlpha(0.5f);
         engineerView.setEnabled(false);
         scientistView.setEnabled(false);
         janitorView.setEnabled(false);
 
-        RoleChosenMessage role = new RoleChosenMessage("gunner", Roles.GUNNER);
-        game.sendMessage(role);
+        if(chosenRole == null) {
+            RoleChosenMessage role = new RoleChosenMessage("gunner", Roles.GUNNER);
+            game.sendMessage(role);
+        }
+
+        chosenRole = Roles.GUNNER;
         Intent intent = new Intent(this, LocationArmoryActivity.class);
         startActivity(intent);
     }
@@ -100,13 +148,17 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void engineerChosen(View view) {
-        view.setAlpha(0.5f);
         gunnerView.setEnabled(false);
         scientistView.setEnabled(false);
         janitorView.setEnabled(false);
 
-        RoleChosenMessage role = new RoleChosenMessage("engineer", Roles.ENGINEER);
-        game.sendMessage(role);
+        if(chosenRole == null) {
+            RoleChosenMessage role = new RoleChosenMessage("engineer", Roles.ENGINEER);
+            game.sendMessage(role);
+        }
+
+        chosenRole = Roles.ENGINEER;
+
         Intent intent = new Intent(this, LocationEngineroomActivity.class);
         startActivity(intent);
     }
@@ -117,13 +169,17 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void scientistChosen(View view) {
-        view.setAlpha(0.5f);
         gunnerView.setEnabled(false);
         engineerView.setEnabled(false);
         janitorView.setEnabled(false);
 
-        RoleChosenMessage role = new RoleChosenMessage("scientist", Roles.SCIENTIST);
-        game.sendMessage(role);
+        if(chosenRole == null) {
+            RoleChosenMessage role = new RoleChosenMessage("scientist", Roles.SCIENTIST);
+            game.sendMessage(role);
+        }
+
+        chosenRole = Roles.SCIENTIST;
+
         Intent intent = new Intent(this, LocationLabActivity.class);
         startActivity(intent);
     }
@@ -134,13 +190,17 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void janitorChosen(View view) {
-        view.setAlpha(0.5f);
         gunnerView.setEnabled(false);
         engineerView.setEnabled(false);
         scientistView.setEnabled(false);
 
-        RoleChosenMessage role = new RoleChosenMessage("janitor", Roles.JANITOR);
-        game.sendMessage(role);
+        if(chosenRole == null) {
+            RoleChosenMessage role = new RoleChosenMessage("janitor", Roles.JANITOR);
+            game.sendMessage(role);
+        }
+
+        chosenRole = Roles.JANITOR;
+
         Intent intent = new Intent(this, LocationDeckActivity.class);
         startActivity(intent);
     }
