@@ -26,7 +26,7 @@ import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
 public class ClientListener implements MessageListener<Client> {
 
     /**
-     * Whenever the clientlistener receives a message from the Server it will determine what
+     * Whenever the client listener receives a message from the Server it will determine what
      * to do with it per message.
      *
      * @param source the source of the message.
@@ -36,12 +36,12 @@ public class ClientListener implements MessageListener<Client> {
         if (message instanceof EventsMessage) {
             updateEventLog(source, message);
         } else if (message instanceof RoleChosenMessage) {
-            updateRoleAvailabilty(message);
+            updateRoleAvailability(message);
         }
     }
 
     /**
-     * Updates the eventlog of the client.
+     * Updates the EventLog of the client.
      *
      * @param source the source of the message.
      * @param message the message received.
@@ -81,7 +81,7 @@ public class ClientListener implements MessageListener<Client> {
      *
      * @param message the message received.
      */
-    public void updateRoleAvailabilty(Message message) {
+    public void updateRoleAvailability(Message message) {
         RoleChosenMessage roleMessage = (RoleChosenMessage) message;
         switch (roleMessage.getRole()) {
             case GUNNER:

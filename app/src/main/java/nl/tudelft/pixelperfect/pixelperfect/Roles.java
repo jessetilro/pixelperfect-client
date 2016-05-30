@@ -6,5 +6,5 @@ package nl.tudelft.pixelperfect.pixelperfect;
  * @author Floris Doolaard
  */
 public enum Roles {
-    GUNNER, ENGINEER, SCIENTIST, JANITOR;
+    GUNNER, ENGINEER, SCIENTIST, JANITOR
 }

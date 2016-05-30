@@ -14,6 +14,7 @@ import nl.tudelft.pixelperfect.event.Events;
  *
  * @author Floris Doolaard
  */
+@SuppressWarnings("CanBeFinal")
 public class LocationDeckActivity extends AppCompatActivity {
     private GameClient game = GameClient.getInstance();
     private static Spaceship ship = Spaceship.getInstance();
