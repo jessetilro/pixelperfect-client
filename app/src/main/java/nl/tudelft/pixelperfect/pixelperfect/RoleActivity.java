@@ -31,14 +31,37 @@ public class RoleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_role);
 
-        gunnerView = findViewById(R.id.button_role_gunner);
-        engineerView = findViewById(R.id.button_role_engineer);
-        scientistView = findViewById(R.id.button_role_scientist);
-        janitorView = findViewById(R.id.button_role_janitor);
+        if(savedInstanceState == null) {
+            setContentView(R.layout.activity_role);
 
-        game = GameClient.getInstance();
+            gunnerView = findViewById(R.id.button_role_gunner);
+            engineerView = findViewById(R.id.button_role_engineer);
+            scientistView = findViewById(R.id.button_role_scientist);
+            janitorView = findViewById(R.id.button_role_janitor);
+
+            game = GameClient.getInstance();
+        }
+    }
+
+    /**
+     * Whenever this Activity is restored this method will decide how to restore it.
+     *
+     * @param savedInstanceState the instance to restore.
+     */
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    /**
+     * Whenever the Activity gets destroyed, this method will be called and the activity will be
+     * saved.
+     * @param savedInstanceState the state that will be saved.
+     */
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     /**
