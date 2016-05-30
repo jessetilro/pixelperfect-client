@@ -1,4 +1,4 @@
-package nl.tudelft.pixelperfect.pixelperfect;
+package nl.tudelft.pixelperfect.location;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,8 @@ import nl.tudelft.pixelperfect.client.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.Event;
 import nl.tudelft.pixelperfect.event.Events;
+import nl.tudelft.pixelperfect.pixelperfect.R;
+import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
 
 /**
  * This class represents the location of the Lab occupied by the Scientist.

@@ -9,10 +9,10 @@ import nl.tudelft.pixelperfect.event.Event;
 import nl.tudelft.pixelperfect.event.FireEvent;
 import nl.tudelft.pixelperfect.event.HostileShipEvent;
 import nl.tudelft.pixelperfect.event.PlasmaLeakEvent;
-import nl.tudelft.pixelperfect.pixelperfect.LocationArmoryActivity;
-import nl.tudelft.pixelperfect.pixelperfect.LocationDeckActivity;
-import nl.tudelft.pixelperfect.pixelperfect.LocationEngineroomActivity;
-import nl.tudelft.pixelperfect.pixelperfect.LocationLabActivity;
+import nl.tudelft.pixelperfect.location.LocationArmoryActivity;
+import nl.tudelft.pixelperfect.location.LocationDeckActivity;
+import nl.tudelft.pixelperfect.location.LocationEngineroomActivity;
+import nl.tudelft.pixelperfect.location.LocationLabActivity;
 import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
 
 /**

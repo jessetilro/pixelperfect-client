@@ -8,6 +8,10 @@ import android.view.View;
 
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.client.RoleChosenMessage;
+import nl.tudelft.pixelperfect.location.LocationArmoryActivity;
+import nl.tudelft.pixelperfect.location.LocationDeckActivity;
+import nl.tudelft.pixelperfect.location.LocationEngineroomActivity;
+import nl.tudelft.pixelperfect.location.LocationLabActivity;
 
 
 /**
