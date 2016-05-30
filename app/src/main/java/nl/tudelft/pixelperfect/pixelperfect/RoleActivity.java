@@ -106,7 +106,6 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void gunnerChosen(View view) {
-        view.setAlpha(0.5f);
         engineerView.setEnabled(false);
         scientistView.setEnabled(false);
         janitorView.setEnabled(false);
@@ -123,7 +122,6 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void engineerChosen(View view) {
-        view.setAlpha(0.5f);
         gunnerView.setEnabled(false);
         scientistView.setEnabled(false);
         janitorView.setEnabled(false);
@@ -140,7 +138,6 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void scientistChosen(View view) {
-        view.setAlpha(0.5f);
         gunnerView.setEnabled(false);
         engineerView.setEnabled(false);
         janitorView.setEnabled(false);
@@ -157,7 +154,6 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void janitorChosen(View view) {
-        view.setAlpha(0.5f);
         gunnerView.setEnabled(false);
         engineerView.setEnabled(false);
         scientistView.setEnabled(false);
