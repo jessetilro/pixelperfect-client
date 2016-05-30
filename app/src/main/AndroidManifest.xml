@@ -30,22 +30,22 @@
                 android:value="nl.tudelft.pixelperfect.pixelperfect.MainActivity" />
         </activity>
         <activity
-            android:name=".LocationArmoryActivity"
+            android:name=".location.LocationArmoryActivity"
             android:screenOrientation="landscape"
             android:configChanges="keyboardHidden|orientation">
         </activity>
         <activity
-            android:name=".LocationEngineroomActivity"
+            android:name=".location.LocationEngineroomActivity"
             android:screenOrientation="landscape"
             android:configChanges="keyboardHidden|orientation">
         </activity>
         <activity
-            android:name=".LocationLabActivity"
+            android:name=".location.LocationLabActivity"
             android:screenOrientation="landscape"
             android:configChanges="keyboardHidden|orientation">
         </activity>
         <activity
-            android:name=".LocationDeckActivity"
+            android:name=".location.LocationDeckActivity"
             android:screenOrientation="landscape"
             android:configChanges="keyboardHidden|orientation">
         </activity>
