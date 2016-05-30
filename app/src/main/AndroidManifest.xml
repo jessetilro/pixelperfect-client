@@ -23,7 +23,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RoleActivity">
+            android:name=".RoleActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="nl.tudelft.pixelperfect.pixelperfect.MainActivity" />
@@ -32,33 +33,21 @@
             android:name=".LocationArmoryActivity"
             android:screenOrientation="landscape"
             android:configChanges="keyboardHidden|orientation">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="nl.tudelft.pixelperfect.pixelperfect.RoleActivity" />
         </activity>
         <activity
             android:name=".LocationEngineroomActivity"
             android:screenOrientation="landscape"
             android:configChanges="keyboardHidden|orientation">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="nl.tudelft.pixelperfect.pixelperfect.RoleActivity" />
         </activity>
         <activity
             android:name=".LocationLabActivity"
             android:screenOrientation="landscape"
             android:configChanges="keyboardHidden|orientation">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="nl.tudelft.pixelperfect.pixelperfect.RoleActivity" />
         </activity>
         <activity
             android:name=".LocationDeckActivity"
             android:screenOrientation="landscape"
             android:configChanges="keyboardHidden|orientation">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="nl.tudelft.pixelperfect.pixelperfect.RoleActivity" />
         </activity>
     </application>
 
