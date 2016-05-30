@@ -3,6 +3,7 @@ package nl.tudelft.pixelperfect.pixelperfect;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 
 import nl.tudelft.pixelperfect.client.GameClient;
@@ -43,6 +44,26 @@ public class RoleActivity extends AppCompatActivity {
 
             game = GameClient.getInstance();
         }
+    }
+
+    /**
+     * When the home button is pressed in the actionbar, a new connection should be made to ensure
+     * no second role can be chosen.
+     *
+     * @param item the item in the action bar.
+     * @return states whether a function was executed.
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                game.disconnect();
+                Intent intent = new Intent(RoleActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                return true;
+        }
+        return false;
     }
 
     /**
