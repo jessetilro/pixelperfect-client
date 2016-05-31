@@ -4,8 +4,6 @@ import com.jme3.network.Client;
 import com.jme3.network.Message;
 import com.jme3.network.MessageListener;
 
-import nl.tudelft.pixelperfect.client.message.EventsMessage;
-import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
 import nl.tudelft.pixelperfect.event.AsteroidFieldEvent;
 import nl.tudelft.pixelperfect.event.Event;
 import nl.tudelft.pixelperfect.event.FireEvent;

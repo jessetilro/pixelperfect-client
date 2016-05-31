@@ -8,10 +8,6 @@ import com.jme3.network.serializing.Serializer;
 
 import java.io.IOException;
 
-import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
-import nl.tudelft.pixelperfect.client.message.EventsMessage;
-import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
-
 /**
  * This class will initialize the Network.
  *

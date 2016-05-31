@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import nl.tudelft.pixelperfect.client.GameClient;
-import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
+import nl.tudelft.pixelperfect.client.RoleChosenMessage;
 import nl.tudelft.pixelperfect.pixelperfect.location.LocationArmoryActivity;
 import nl.tudelft.pixelperfect.pixelperfect.location.LocationDeckActivity;
 import nl.tudelft.pixelperfect.pixelperfect.location.LocationEngineroomActivity;
@@ -45,9 +45,8 @@ public class RoleActivity extends AppCompatActivity {
             engineerView = findViewById(R.id.button_role_engineer);
             scientistView = findViewById(R.id.button_role_scientist);
             janitorView = findViewById(R.id.button_role_janitor);
-
-            game = GameClient.getInstance();
         }
+        game = GameClient.getInstance();
     }
 
     /**

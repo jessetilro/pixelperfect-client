@@ -1,4 +1,4 @@
-package nl.tudelft.pixelperfect.client.message;
+package nl.tudelft.pixelperfect.client;
 
 import com.jme3.network.AbstractMessage;
 import com.jme3.network.serializing.Serializable;
