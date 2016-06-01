@@ -13,5 +13,6 @@
     <string name="button_role_engineer">Engineer</string>
     <string name="button_role_scientist">Scientist</string>
     <string name="button_role_janitor">Janitor</string>
+    <string name="button_mini_game_press_wrench">Wrench It</string>
 
 </resources>

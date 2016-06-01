@@ -2,30 +2,30 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
-
-    <SeekBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/mini_game_asteroid_impact_seekBar"
-        android:layout_marginLeft="167dp"
-        android:layout_marginStart="167dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:indeterminate="false"
-        android:clickable="false" />
+    android:weightSum="1"
+    android:nestedScrollingEnabled="true"
+    android:longClickable="true">
 
     <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/mini_game_asteroid_impact_progressBar"
-        android:layout_marginLeft="137dp"
-        android:layout_marginStart="137dp"
+        android:minHeight="20dp"
+        android:minWidth="300dp"
         android:indeterminate="false"
-        android:layout_alignTop="@+id/mini_game_asteroid_impact_seekBar"
-        android:layout_toRightOf="@+id/mini_game_asteroid_impact_seekBar"
-        android:layout_toEndOf="@+id/mini_game_asteroid_impact_seekBar" />
+        android:layout_above="@+id/button_mini_game_press_wrench"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_mini_game_press_wrench"
+        android:id="@+id/button_mini_game_press_wrench"
+        android:onClick="createProgress"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="97dp" />
 
 </RelativeLayout>
