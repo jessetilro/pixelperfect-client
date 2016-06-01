@@ -54,15 +54,15 @@
         android:layout_alignParentStart="true"
         android:layout_marginLeft="52dp"
         android:layout_marginStart="52dp">
-        <RadioButton android:id="@+id/radio1_mini_game_asteroid_impact"
+        <RadioButton android:id="@+id/mini_game_asteroid_impact_radio1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/radio1_mini_game_asteroid_impact"
+            android:text="@string/mini_game_asteroid_impact_radio1"
             android:onClick="onRadioButtonClicked"/>
-        <RadioButton android:id="@+id/radio2_mini_game_asteroid_impact"
+        <RadioButton android:id="@+id/mini_game_asteroid_impact_radio2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/radio2_mini_game_asteroid_impact"
+            android:text="@string/mini_game_asteroid_impact_radio2"
             android:onClick="onRadioButtonClicked"/>
     </RadioGroup>
 

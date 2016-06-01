@@ -16,15 +16,25 @@ import nl.tudelft.pixelperfect.pixelperfect.R;
  * @author Floris Doolaard
  */
 public class AsteroidImpactActivity extends AppCompatActivity  {
-    private ProgressBar progressBar;
+    private ProgressBar progressBarEnergyShield;
+    private ProgressBar progressBarHyperdrive;
     private SeekBar seekBar;
+    private Boolean repairingEnergyShield;
 
+    /**
+     * On creation of the Activity the the content views will be initialized.
+     *
+     * @param savedInstanceState the instance to create.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mini_game_asteroid_impact);
 
-        progressBar = (ProgressBar) findViewById(R.id.mini_game_asteroid_impact_progressBar1);
+        progressBarEnergyShield = (ProgressBar) findViewById(R.id.mini_game_asteroid_impact_progressBar1);
+        progressBarHyperdrive = (ProgressBar) findViewById(R.id.mini_game_asteroid_impact_progressBar2);
+
+        repairingEnergyShield = true;
     }
 
     /**
@@ -33,12 +43,24 @@ public class AsteroidImpactActivity extends AppCompatActivity  {
      * @param view the View of the button.
      */
     public void createProgress(View view) {
+        if(repairingEnergyShield){
+            increaseProgress(progressBarEnergyShield);
+        } else {
+            increaseProgress(progressBarHyperdrive);
+        }
+    }
+
+    /**
+     * Increases progress of a progressBar and sends a message whenever it is done.
+     *
+     * @param progressBar the progressBar on which progress must increase.
+     */
+    public void increaseProgress(ProgressBar progressBar){
         if(progressBar.getProgress() != 100) {
             progressBar.incrementProgressBy(5);
         } else {
             //TO DO - Send message to Server.
         }
-
     }
 
     /**
@@ -51,11 +73,13 @@ public class AsteroidImpactActivity extends AppCompatActivity  {
         boolean checked = ((RadioButton) view).isChecked();
 
         switch(view.getId()) {
-            case R.id.radio1_mini_game_asteroid_impact:
+            case R.id.mini_game_asteroid_impact_radio1:
                 if (checked)
+                    repairingEnergyShield = true;
                     break;
-            case R.id.radio2_mini_game_asteroid_impact:
+            case R.id.mini_game_asteroid_impact_radio2:
                 if (checked)
+                    repairingEnergyShield = false;
                     break;
         }
     }

@@ -14,7 +14,7 @@
     <string name="button_role_scientist">Scientist</string>
     <string name="button_role_janitor">Janitor</string>
     <string name="button_mini_game_asteroid_impact">Wrench It</string>
-    <string name="radio1_mini_game_asteroid_impact">Energy Shield</string>
-    <string name="radio2_mini_game_asteroid_impact">Hyperdrive Generator</string>
+    <string name="mini_game_asteroid_impact_radio1">Energy Shield</string>
+    <string name="mini_game_asteroid_impact_radio2">Hyperdrive Generator</string>
 
 </resources>
