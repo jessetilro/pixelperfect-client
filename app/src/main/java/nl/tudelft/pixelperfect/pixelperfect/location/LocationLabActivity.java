@@ -62,11 +62,11 @@ public class LocationLabActivity extends AppCompatActivity {
      * @param view , the view of the page.
      */
     public void completeAsteroidFieldEvent(View view){
-        if(ship.getEventLog().contains(Events.ASTEROID)){
-            game.sendMessage(new EventCompletedMessage("Asteroid Field Event", ship.getEventLog().pop(Events.ASTEROID).getId()));
-        } else {
-            game.sendMessage(new EventCompletedMessage("WRONG ANSWER", -1));
-        }
+//        if(ship.getEventLog().contains(Events.ASTEROID)){
+//            game.sendMessage(new EventCompletedMessage("Asteroid Field Event", ship.getEventLog().pop(Events.ASTEROID).getId()));
+//        } else {
+//            game.sendMessage(new EventCompletedMessage("WRONG ANSWER", -1));
+//        }
         Intent intent = new Intent(this, AsteroidImpactActivity.class);
         startActivity(intent);
     }
