@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
+import android.widget.RadioButton;
 import android.widget.SeekBar;
 
 import nl.tudelft.pixelperfect.pixelperfect.R;
@@ -24,7 +24,7 @@ public class AsteroidImpactActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mini_game_asteroid_impact);
 
-        progressBar = (ProgressBar) findViewById(R.id.mini_game_asteroid_impact_progressBar);
+        progressBar = (ProgressBar) findViewById(R.id.mini_game_asteroid_impact_progressBar1);
     }
 
     /**
@@ -39,6 +39,25 @@ public class AsteroidImpactActivity extends AppCompatActivity  {
             //TO DO - Send message to Server.
         }
 
+    }
+
+    /**
+     * Whenever a radio button from the RadioGroup gets clicked it must select the accompanied
+     * progress bar.
+     *
+     * @param view the view of the RadioGroup.
+     */
+    public void onRadioButtonClicked(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+
+        switch(view.getId()) {
+            case R.id.radio1_mini_game_asteroid_impact:
+                if (checked)
+                    break;
+            case R.id.radio2_mini_game_asteroid_impact:
+                if (checked)
+                    break;
+        }
     }
 
 }
