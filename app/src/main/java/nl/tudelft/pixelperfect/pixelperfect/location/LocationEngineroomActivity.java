@@ -1,5 +1,6 @@
 package nl.tudelft.pixelperfect.pixelperfect.location;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -8,6 +9,7 @@ import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.Event;
 import nl.tudelft.pixelperfect.event.Events;
+import nl.tudelft.pixelperfect.pixelperfect.mini_game.PlasmaLeakActivity;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
 
@@ -47,11 +49,11 @@ public class LocationEngineroomActivity extends AppCompatActivity {
      * @param view , the view of the page.
      */
     public void completeFireEvent(View view){
-        if(ship.getEventLog().contains(Events.FIRE)){
-            game.sendMessage(new EventCompletedMessage("Fire Event", ship.getEventLog().pop(Events.FIRE).getId()));
+        if(ship.getEventLog().contains(Events.PLASMA)){
+            game.sendMessage(new EventCompletedMessage("Fire Outbreak Event", ship.getEventLog().pop(Events.FIRE).getId()));
         } else {
             game.sendMessage(new EventCompletedMessage("WRONG ANSWER", -1));
-        }
+        };
     }
 
     /**
@@ -60,10 +62,7 @@ public class LocationEngineroomActivity extends AppCompatActivity {
      * @param view , the view of the page.
      */
     public void completePlasmaLeakEvent(View view){
-        if(ship.getEventLog().contains(Events.PLASMA)){
-            game.sendMessage(new EventCompletedMessage("Plasma Leak Event", ship.getEventLog().pop(Events.PLASMA).getId()));
-        } else {
-            game.sendMessage(new EventCompletedMessage("WRONG ANSWER", -1));
-        }
+        Intent intent = new Intent(this, PlasmaLeakActivity.class);
+        startActivity(intent);
     }
 }

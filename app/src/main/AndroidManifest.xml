@@ -49,6 +49,11 @@
             android:screenOrientation="landscape"
             android:configChanges="keyboardHidden|orientation">
         </activity>
+        <activity
+            android:name=".mini_game.PlasmaLeakActivity"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboardHidden|orientation">
+        </activity>
     </application>
 
 </manifest>
