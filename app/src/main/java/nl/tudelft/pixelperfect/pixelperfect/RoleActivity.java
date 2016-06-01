@@ -51,7 +51,8 @@ public class RoleActivity extends AppCompatActivity {
 
     /**
      * When the home button is pressed in the actionbar, a new connection should be made to ensure
-     * no second role can be chosen.
+     * no second role can be chosen. This has the same function as the back button on the device
+     * itself.
      *
      * @param item the item in the action bar.
      * @return states whether a function was executed.
@@ -60,13 +61,22 @@ public class RoleActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                game.disconnect();
-                Intent intent = new Intent(RoleActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+                onBackPressed();
                 return true;
         }
         return false;
+    }
+
+    /**
+     * When you press the back button the mobile device, you will go to the mainActivity and will
+     * be disconnected so no cheating can take place and the Server will nicely end the connection.
+     */
+    @Override
+    public void onBackPressed() {
+        game.disconnect();
+        Intent intent = new Intent(RoleActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     /**
