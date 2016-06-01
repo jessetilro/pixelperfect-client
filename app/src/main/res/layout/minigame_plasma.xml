@@ -10,11 +10,8 @@
         android:layout_height="89dp"
         android:id="@+id/mini_game_progress_bar"
         android:indeterminate="false"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/button_complete_plasma"
-        android:layout_toEndOf="@+id/button_complete_plasma"
-        android:layout_marginLeft="33dp"
-        android:layout_marginStart="33dp" />
+        android:layout_above="@+id/button_complete_plasma"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -23,6 +20,57 @@
         android:onClick="complete"
         android:id="@+id/button_complete_plasma"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Engine"
+        android:onClick="switchEngine"
+        android:id="@+id/Pipe_Engine"
+        android:layout_marginTop="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/Lock_In"
+        android:layout_alignEnd="@+id/Lock_In" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lab"
+        android:onClick="switchLab"
+        android:id="@+id/Pipe_Lab"
+        android:layout_below="@+id/Pipe_Engine"
+        android:layout_alignRight="@+id/Pipe_Armory"
+        android:layout_alignEnd="@+id/Pipe_Armory" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Armory"
+        android:onClick="switchArmory"
+        android:id="@+id/Pipe_Armory"
+        android:layout_below="@+id/Pipe_Lab"
+        android:layout_alignLeft="@+id/Pipe_Engine"
+        android:layout_alignStart="@+id/Pipe_Engine" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Deck"
+        android:onClick="switchDeck"
+        android:id="@+id/Pipe_Deck"
+        android:layout_below="@+id/Pipe_Armory"
+        android:layout_alignRight="@+id/Pipe_Armory"
+        android:layout_alignEnd="@+id/Pipe_Armory" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lock In"
+        android:onClick="lockIn"
+        android:id="@+id/Lock_In"
+        android:layout_below="@+id/Pipe_Deck"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
 </RelativeLayout>
