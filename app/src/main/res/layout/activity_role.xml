@@ -8,18 +8,21 @@
         android:layout_height="wrap_content"
         android:text="@string/button_role_gunner"
         android:id="@+id/button_role_gunner"
-        android:layout_above="@+id/button_role_engineer"
-        android:layout_centerHorizontal="true"
-        android:onClick="gunnerChosen"/>
+        android:onClick="gunnerChosen"
+        android:layout_marginTop="107dp"
+        android:layout_below="@+id/role_description"
+        android:layout_alignRight="@+id/button_role_scientist"
+        android:layout_alignEnd="@+id/button_role_scientist" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_role_engineer"
         android:id="@+id/button_role_engineer"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="engineerChosen"/>
+        android:onClick="engineerChosen"
+        android:layout_below="@+id/button_role_gunner"
+        android:layout_alignRight="@+id/button_role_gunner"
+        android:layout_alignEnd="@+id/button_role_gunner" />
 
     <Button
         android:layout_width="wrap_content"
@@ -30,6 +33,15 @@
         android:layout_centerHorizontal="true"
         android:onClick="scientistChosen"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_role_janitor"
+        android:id="@+id/button_role_janitor"
+        android:layout_below="@+id/button_role_scientist"
+        android:layout_centerHorizontal="true"
+        android:onClick="janitorChosen"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,4 +51,6 @@
         android:layout_marginTop="24dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+
 </RelativeLayout>

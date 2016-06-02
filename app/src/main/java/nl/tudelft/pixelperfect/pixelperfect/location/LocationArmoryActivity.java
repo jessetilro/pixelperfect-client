@@ -1,13 +1,24 @@
-package nl.tudelft.pixelperfect.pixelperfect;
+package nl.tudelft.pixelperfect.pixelperfect.location;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import nl.tudelft.pixelperfect.client.EventCompletedMessage;
+import com.jme3.network.AbstractMessage;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
+import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.Event;
 import nl.tudelft.pixelperfect.event.Events;
+import nl.tudelft.pixelperfect.event.parameter.EventParameter;
+import nl.tudelft.pixelperfect.event.parameter.EventParameterValues;
+import nl.tudelft.pixelperfect.pixelperfect.R;
+import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
 
 
 /**
@@ -60,7 +71,11 @@ public class LocationArmoryActivity extends AppCompatActivity {
      */
     public void completeHostileShipEvent(View view){
         if(ship.getEventLog().contains(Events.HOSTILE)){
-            game.sendMessage(new EventCompletedMessage("Hostile Ship Event", ship.getEventLog().pop(Events.HOSTILE).getId()));
+            EventCompletedMessage message = new EventCompletedMessage("Hostile Ship Event", ship.getEventLog().pop(Events.HOSTILE).getId());
+            Map<String, Integer> parameters = new HashMap<String, Integer>();
+            parameters.put("testParam", 42);
+            message.setParameters(parameters);
+            game.sendMessage(message);
         } else {
             game.sendMessage(new EventCompletedMessage("WRONG ANSWER", -1));
         }

@@ -1,21 +1,23 @@
-package nl.tudelft.pixelperfect.pixelperfect;
+package nl.tudelft.pixelperfect.pixelperfect.location;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import nl.tudelft.pixelperfect.client.EventCompletedMessage;
+import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.Event;
 import nl.tudelft.pixelperfect.event.Events;
+import nl.tudelft.pixelperfect.pixelperfect.R;
+import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
 
 /**
- * This class represents the location of the Lab occupied by the Scientist.
+ * This class represents the location of the Engine Room occupied by the Engineer.
  *
  * @author Floris Doolaard
  */
 @SuppressWarnings({"CanBeFinal", "unused", "UnusedParameters"})
-public class LocationLabActivity extends AppCompatActivity {
+public class LocationEngineroomActivity extends AppCompatActivity {
     private GameClient game = GameClient.getInstance();
     private static Spaceship ship = Spaceship.getInstance();
 
@@ -27,7 +29,7 @@ public class LocationLabActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_location_lab);
+        setContentView(R.layout.activity_location_engineroom);
     }
 
     /**
@@ -53,13 +55,13 @@ public class LocationLabActivity extends AppCompatActivity {
     }
 
     /**
-     * Whenever the button to complete the Asteroid Field Event is pressed this will happen.
+     * Whenever the button to complete the Plasma Leak Event is pressed this will happen.
      *
      * @param view , the view of the page.
      */
-    public void completeAsteroidFieldEvent(View view){
-        if(ship.getEventLog().contains(Events.ASTEROID)){
-            game.sendMessage(new EventCompletedMessage("Asteroid Field Event", ship.getEventLog().pop(Events.ASTEROID).getId()));
+    public void completePlasmaLeakEvent(View view){
+        if(ship.getEventLog().contains(Events.PLASMA)){
+            game.sendMessage(new EventCompletedMessage("Plasma Leak Event", ship.getEventLog().pop(Events.PLASMA).getId()));
         } else {
             game.sendMessage(new EventCompletedMessage("WRONG ANSWER", -1));
         }

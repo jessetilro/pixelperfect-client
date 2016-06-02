@@ -8,7 +8,10 @@
     <string name="button_complete_fire_event">Fire</string>
     <string name="button_complete_hostile_ship_event">Hostile Ship</string>
     <string name="button_complete_plasma_leak_event">Plasma Leak</string>
+    <string name="button_complete_coffee_boost_event">Coffee Boost</string>
     <string name="button_role_gunner">Gunner</string>
     <string name="button_role_engineer">Engineer</string>
     <string name="button_role_scientist">Scientist</string>
+    <string name="button_role_janitor">Janitor</string>
+
 </resources>

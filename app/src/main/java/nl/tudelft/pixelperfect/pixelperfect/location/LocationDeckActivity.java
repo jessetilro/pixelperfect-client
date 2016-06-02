@@ -1,21 +1,25 @@
-package nl.tudelft.pixelperfect.pixelperfect;
+package nl.tudelft.pixelperfect.pixelperfect.location;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import nl.tudelft.pixelperfect.client.EventCompletedMessage;
+import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.Event;
 import nl.tudelft.pixelperfect.event.Events;
+import nl.tudelft.pixelperfect.pixelperfect.R;
+import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
+import nl.tudelft.pixelperfect.pixelperfect.mini_game.CoffeeBoostActivity;
 
 /**
- * This class represents the location of the Engine Room occupied by the Engineer.
+ * The location of the Janitor where he can make some coffee.
  *
  * @author Floris Doolaard
  */
-@SuppressWarnings({"CanBeFinal", "unused", "UnusedParameters"})
-public class LocationEngineroomActivity extends AppCompatActivity {
+@SuppressWarnings("CanBeFinal")
+public class LocationDeckActivity extends AppCompatActivity {
     private GameClient game = GameClient.getInstance();
     private static Spaceship ship = Spaceship.getInstance();
 
@@ -27,7 +31,7 @@ public class LocationEngineroomActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_location_engineroom);
+        setContentView(R.layout.activity_location_deck);
     }
 
     /**
@@ -57,11 +61,8 @@ public class LocationEngineroomActivity extends AppCompatActivity {
      *
      * @param view , the view of the page.
      */
-    public void completePlasmaLeakEvent(View view){
-        if(ship.getEventLog().contains(Events.PLASMA)){
-            game.sendMessage(new EventCompletedMessage("Plasma Leak Event", ship.getEventLog().pop(Events.PLASMA).getId()));
-        } else {
-            game.sendMessage(new EventCompletedMessage("WRONG ANSWER", -1));
-        }
+    public void completeCoffeeEvent(View view) {
+        Intent intent = new Intent(this, CoffeeBoostActivity.class);
+        startActivity(intent);
     }
 }
