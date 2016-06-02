@@ -45,9 +45,8 @@ public class RoleActivity extends AppCompatActivity {
             engineerView = findViewById(R.id.button_role_engineer);
             scientistView = findViewById(R.id.button_role_scientist);
             janitorView = findViewById(R.id.button_role_janitor);
-
-            game = GameClient.getInstance();
         }
+        game = GameClient.getInstance();
     }
 
     /**

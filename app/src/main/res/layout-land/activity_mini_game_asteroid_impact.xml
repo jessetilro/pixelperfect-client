@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:nestedScrollingEnabled="true"
+    android:longClickable="true">
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mini_game_asteroid_impact_progressBar1"
+        android:minHeight="20dp"
+        android:minWidth="300dp"
+        android:indeterminate="false"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/button_mini_game_press_wrench"
+        android:layout_alignStart="@+id/button_mini_game_press_wrench"
+        android:layout_marginTop="67dp" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="false"
+        android:minHeight="20dp"
+        android:minWidth="300dp"
+        android:id="@+id/mini_game_asteroid_impact_progressBar2"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignLeft="@+id/mini_game_asteroid_impact_progressBar1"
+        android:layout_below="@+id/mini_game_asteroid_impact_progressBar1"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_mini_game_asteroid_impact"
+        android:id="@+id/button_mini_game_press_wrench"
+        android:onClick="createProgress"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="45dp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:clickable="false"
+        android:id="@+id/radiogroup_mini_game_asteroid_impact"
+        android:layout_alignTop="@+id/mini_game_asteroid_impact_progressBar1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="52dp"
+        android:layout_marginStart="30dp">
+        <RadioButton android:id="@+id/mini_game_asteroid_impact_radio1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mini_game_asteroid_impact_radio1"
+            android:onClick="onRadioButtonClicked"/>
+        <RadioButton android:id="@+id/mini_game_asteroid_impact_radio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mini_game_asteroid_impact_radio2"
+            android:onClick="onRadioButtonClicked"/>
+    </RadioGroup>
+
+</RelativeLayout>

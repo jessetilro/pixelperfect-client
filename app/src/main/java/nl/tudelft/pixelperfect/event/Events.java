@@ -20,6 +20,16 @@ public enum Events {
         }
 
         @Override
+        public Event peek(ArrayList<Event> log) {
+            for (Event event : log) {
+                if (event instanceof FireEvent) {
+                    return event;
+                }
+            }
+            return null;
+        }
+
+        @Override
         public Event pop(ArrayList<Event> log) {
             for (Event event : log) {
                 if (event instanceof FireEvent) {
@@ -42,6 +52,16 @@ public enum Events {
         }
 
         @Override
+        public Event peek(ArrayList<Event> log) {
+            for (Event event : log) {
+                if (event instanceof PlasmaLeakEvent) {
+                    return event;
+                }
+            }
+            return null;
+        }
+
+        @Override
         public Event pop(ArrayList<Event> log) {
             for (Event event : log) {
                 if (event instanceof PlasmaLeakEvent) {
@@ -56,7 +76,7 @@ public enum Events {
         @Override
         public boolean contains(ArrayList<Event> log) {
             for (Event event : log) {
-                if (event instanceof AsteroidFieldEvent) {
+                if (event instanceof AsteroidImpactEvent) {
                     return true;
                 }
             }
@@ -64,9 +84,19 @@ public enum Events {
         }
 
         @Override
+        public Event peek(ArrayList<Event> log) {
+            for (Event event : log) {
+                if (event instanceof AsteroidImpactEvent) {
+                    return event;
+                }
+            }
+            return null;
+        }
+
+        @Override
         public Event pop(ArrayList<Event> log) {
             for (Event event : log) {
-                if (event instanceof AsteroidFieldEvent) {
+                if (event instanceof AsteroidImpactEvent) {
                     log.remove(event);
                     return event;
                 }
@@ -84,6 +114,16 @@ public enum Events {
                 }
             }
             return false;
+        }
+
+        @Override
+        public Event peek(ArrayList<Event> log) {
+            for (Event event : log) {
+                if (event instanceof HostileShipEvent) {
+                    return event;
+                }
+            }
+            return null;
         }
 
         @Override
@@ -113,4 +153,13 @@ public enum Events {
      * @return the log that was popped.
      */
     public abstract Event pop(ArrayList<Event> log);
+
+    /**
+     * Peeks the event with the right type of EventLog. Peeking only retrieves the event and does
+     * not remove it from the EventLog.
+     *
+     * @param log the log to peek from.
+     * @return and Event from the EventLog.
+     */
+    public abstract Event peek(ArrayList<Event> log);
 }

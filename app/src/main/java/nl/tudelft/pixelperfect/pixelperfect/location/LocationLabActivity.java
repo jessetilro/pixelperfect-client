@@ -1,5 +1,6 @@
 package nl.tudelft.pixelperfect.pixelperfect.location;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,6 +11,7 @@ import nl.tudelft.pixelperfect.event.Event;
 import nl.tudelft.pixelperfect.event.Events;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
+import nl.tudelft.pixelperfect.pixelperfect.mini_game.AsteroidImpactActivity;
 
 /**
  * This class represents the location of the Lab occupied by the Scientist.
@@ -60,10 +62,7 @@ public class LocationLabActivity extends AppCompatActivity {
      * @param view , the view of the page.
      */
     public void completeAsteroidFieldEvent(View view){
-        if(ship.getEventLog().contains(Events.ASTEROID)){
-            game.sendMessage(new EventCompletedMessage("Asteroid Field Event", ship.getEventLog().pop(Events.ASTEROID).getId()));
-        } else {
-            game.sendMessage(new EventCompletedMessage("WRONG ANSWER", -1));
-        }
+        Intent intent = new Intent(this, AsteroidImpactActivity.class);
+        startActivity(intent);
     }
 }
