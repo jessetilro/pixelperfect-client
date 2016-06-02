@@ -96,6 +96,29 @@ public enum Events {
             }
             return null;
         }
+    },
+    COFFEE {
+
+        @Override
+        public boolean contains(ArrayList<Event> log) {
+            for (Event event : log) {
+                if (event instanceof CoffeeBoostEvent) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        @Override
+        public Event pop(ArrayList<Event> log) {
+            for (Event event : log) {
+                if (event instanceof CoffeeBoostEvent) {
+                    log.remove(event);
+                    return event;
+                }
+            }
+            return null;
+        }
     };
 
     /**
