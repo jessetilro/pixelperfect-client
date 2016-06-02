@@ -9,7 +9,7 @@ import com.jme3.scene.Geometry;
  * @author Floris Doolaard
  */
 @SuppressWarnings({"SameParameterValue", "unused"})
-public class AsteroidFieldEvent extends Event {
+public class AsteroidImpactEvent extends Event {
 
     /**
      * Constructor for AsteroidField event.
@@ -27,8 +27,8 @@ public class AsteroidFieldEvent extends Event {
      * @param damage
      *          The damage done to the ship on even failure.
      */
-    public AsteroidFieldEvent(int id, String summary, String description, long timestamp,
-                              long duration, double damage) {
+    public AsteroidImpactEvent(int id, String summary, String description, long timestamp,
+                               long duration, double damage) {
         super(id, summary, description, timestamp, duration, damage);
     }
 

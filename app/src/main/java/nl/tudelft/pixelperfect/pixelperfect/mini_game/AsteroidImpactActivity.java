@@ -5,13 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
-import android.widget.SeekBar;
-import android.widget.Space;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
-import nl.tudelft.pixelperfect.event.AsteroidFieldEvent;
-import nl.tudelft.pixelperfect.event.Event;
 import nl.tudelft.pixelperfect.event.Events;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
@@ -23,8 +22,8 @@ import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
  * @author Floris Doolaard
  */
 public class AsteroidImpactActivity extends AppCompatActivity  {
-    private Spaceship ship;
-    private GameClient game;
+    private Spaceship ship = Spaceship.getInstance();
+    private GameClient game = GameClient.getInstance();
     private ProgressBar progressBarEnergyShield;
     private ProgressBar progressBarHyperdrive;
     private Boolean repairingEnergyShield;
@@ -42,8 +41,6 @@ public class AsteroidImpactActivity extends AppCompatActivity  {
         progressBarEnergyShield = (ProgressBar) findViewById(R.id.mini_game_asteroid_impact_progressBar1);
         progressBarHyperdrive = (ProgressBar) findViewById(R.id.mini_game_asteroid_impact_progressBar2);
 
-        game = GameClient.getInstance();
-        ship = Spaceship.getInstance();
         repairingEnergyShield = true;
     }
 
@@ -66,16 +63,24 @@ public class AsteroidImpactActivity extends AppCompatActivity  {
      * @param progressBar the progressBar on which progress must increase.
      */
     public void increaseProgress(ProgressBar progressBar){
-        if(progressBar.getProgress() != 100) {
-            progressBar.incrementProgressBy(5);
-        } else {
+        if(progressBar.getProgress() == 95) {
             if(ship.getEventLog().contains(Events.ASTEROID)){
-                Event event = ship.getEventLog().peek(Events.ASTEROID);
-
-                game.sendMessage(new EventCompletedMessage("Asteroid Field Event", ship.getEventLog().pop(Events.ASTEROID).getId()));
+                EventCompletedMessage message = new EventCompletedMessage("Asteroid Impact Event", ship.getEventLog().pop(Events.ASTEROID).getId());
+                Map<String, Integer> parameters = new HashMap<String, Integer>();
+                if(repairingEnergyShield){
+                    parameters.put("Asteroid Impact", 0);
+                } else {
+                    parameters.put("Asteroid Impact", 1);
+                }
+                message.setParameters(parameters);
+                game.sendMessage(message);
             } else {
                 game.sendMessage(new EventCompletedMessage("WRONG ANSWER", -1));
             }
+        }
+
+        if(progressBar.getProgress() != 100) {
+            progressBar.incrementProgressBy(5);
         }
     }
 
