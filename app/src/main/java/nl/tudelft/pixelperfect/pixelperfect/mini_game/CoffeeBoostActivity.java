@@ -3,6 +3,7 @@ package nl.tudelft.pixelperfect.pixelperfect.mini_game;
 
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -12,8 +13,6 @@ import android.widget.GridLayout;
 
 import nl.tudelft.pixelperfect.pixelperfect.R;
 
-
-@SuppressWarnings("deprecation")
 public class CoffeeBoostActivity extends Activity {
 
     private Button[] buttons = new Button[9];
@@ -24,7 +23,6 @@ public class CoffeeBoostActivity extends Activity {
 
     ArrayList<GridLayout.Spec> rows = new ArrayList<GridLayout.Spec>();
     ArrayList<GridLayout.Spec> columns = new ArrayList<GridLayout.Spec>();
-
 
 
     @Override
@@ -42,7 +40,15 @@ public class CoffeeBoostActivity extends Activity {
         GridLayout.Spec col3 = GridLayout.spec(2);
         rows.add(row1); rows.add(row2); rows.add(row3);
         columns.add(col1); columns.add(col2); columns.add(col3);
+    }
 
+    private void shuffle() {
+        Random random = new Random();
+        random.setSeed(System.currentTimeMillis());
+        int limit = random.nextInt(10);
+        for (int i = 0; i < limit; i++) {
+            makeMove(buttons[random.nextInt(2)+1]);
+        }
     }
 
     private void initialize() {
@@ -68,6 +74,8 @@ public class CoffeeBoostActivity extends Activity {
                                            }
             );
         }
+
+//        shuffle();
     }
 
     private void makeMove(final Button clicked) {
