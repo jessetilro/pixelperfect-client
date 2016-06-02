@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PixelPerfect.iml" filepath="$PROJECT_DIR$/PixelPerfect.iml" />
-      <module fileurl="file://$PROJECT_DIR$/PixelPerfect-client.iml" filepath="$PROJECT_DIR$/PixelPerfect-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
