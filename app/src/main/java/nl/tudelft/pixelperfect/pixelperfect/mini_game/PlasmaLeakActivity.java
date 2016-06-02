@@ -163,9 +163,9 @@ public class PlasmaLeakActivity extends AppCompatActivity{
                 parameters.put("sector", 0);
             } else if(armoryOn) {
                 parameters.put("sector", 1);
-            } else if(deckOn) {
-                parameters.put("sector", 2);
             } else if(engineOn) {
+                parameters.put("sector", 2);
+            } else if(deckOn) {
                 parameters.put("sector", 3);
             } else {
                 sendFailure();
