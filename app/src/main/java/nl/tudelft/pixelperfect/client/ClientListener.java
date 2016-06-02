@@ -6,7 +6,7 @@ import com.jme3.network.MessageListener;
 
 import nl.tudelft.pixelperfect.client.message.EventsMessage;
 import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
-import nl.tudelft.pixelperfect.event.AsteroidFieldEvent;
+import nl.tudelft.pixelperfect.event.AsteroidImpactEvent;
 import nl.tudelft.pixelperfect.event.Event;
 import nl.tudelft.pixelperfect.event.FireEvent;
 import nl.tudelft.pixelperfect.event.HostileShipEvent;
@@ -60,8 +60,8 @@ public class ClientListener implements MessageListener<Client> {
                 LocationLabActivity.updateEventLog(mission);
                 LocationDeckActivity.updateEventLog(mission);
                 break;
-            case "AsteroidFieldEvent":
-                mission = new AsteroidFieldEvent(eve.getID(), "", "", eve.getTime(), eve.getDuration(), 0);
+            case "AsteroidImpactEvent":
+                mission = new AsteroidImpactEvent(eve.getID(), "", "", eve.getTime(), eve.getDuration(), 0);
                 LocationLabActivity.updateEventLog(mission);
                 break;
             case "HostileShipEvent":

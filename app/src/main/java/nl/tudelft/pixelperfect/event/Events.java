@@ -1,7 +1,5 @@
 package nl.tudelft.pixelperfect.event;
 
-import android.hardware.ConsumerIrManager;
-
 import java.util.ArrayList;
 
 /**
@@ -78,7 +76,7 @@ public enum Events {
         @Override
         public boolean contains(ArrayList<Event> log) {
             for (Event event : log) {
-                if (event instanceof AsteroidFieldEvent) {
+                if (event instanceof AsteroidImpactEvent) {
                     return true;
                 }
             }
@@ -88,7 +86,7 @@ public enum Events {
         @Override
         public Event peek(ArrayList<Event> log) {
             for (Event event : log) {
-                if (event instanceof AsteroidFieldEvent) {
+                if (event instanceof AsteroidImpactEvent) {
                     return event;
                 }
             }
@@ -98,7 +96,7 @@ public enum Events {
         @Override
         public Event pop(ArrayList<Event> log) {
             for (Event event : log) {
-                if (event instanceof AsteroidFieldEvent) {
+                if (event instanceof AsteroidImpactEvent) {
                     log.remove(event);
                     return event;
                 }
