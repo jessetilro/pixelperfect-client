@@ -1,55 +1,60 @@
 package nl.tudelft.pixelperfect.pixelperfect.clienttest;
 
-import org.junit.Assert;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 
 /**
- * Tests the EventCompleted message.
+ * Test case for the EventCompletedMessage class.
  *
- * @author Dmitry Malarev
+ * @author Dmitry
+ *
  */
-@SuppressWarnings("unused")
 public class EventCompletedMessageTest {
 
-    private EventCompletedMessage event;
+    private EventCompletedMessage object;
+    private Map<String, Integer> map;
 
     /**
-     * Set everything up.
-     *
+     * Set up a test object.
      */
     @Before
-    public void initialise() {
-        event = new EventCompletedMessage("Lorem", 3);
+    public void init() {
+        object = new EventCompletedMessage(2);
+        map = new HashMap<String, Integer>();
+        map.put("test", 42);
+        object.setParameters(map);
     }
 
     /**
-     * Tests the empty constructor.
-     *
+     * We can also construct a EventCompletedMessage without any attributes.
      */
     @Test
     public void testEmptyConstructor() {
-        EventCompletedMessage message = new EventCompletedMessage();
-        Assert.assertEquals(null, message.getLabel());
+        EventCompletedMessage obj = new EventCompletedMessage();
+        assertThat(obj.getType(), is(0));
     }
 
     /**
-     * Tests the getLabel function.
-     *
+     * When calling the getType method we expect to retrieve the original type.
      */
     @Test
-    public void testGetLabel() {
-        Assert.assertEquals("Lorem", event.getLabel());
+    public void testGetType() {
+        assertThat(object.getType(), is(2));
     }
 
     /**
-     * Tests the getCompletedEvent function.
-     *
+     * When calling the getParameters method we expect to retrieve the original parameters.
      */
     @Test
-    public void testGetCompleted() {
-        Assert.assertEquals(3, event.getCompletedEvent());
+    public void testGetParameters() {
+        assertThat(object.getParameters().get("test"), is(42));
     }
 }

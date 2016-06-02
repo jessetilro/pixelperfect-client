@@ -11,7 +11,7 @@ import android.widget.GridLayout;
 
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
-import nl.tudelft.pixelperfect.event.Events;
+import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
 
@@ -120,9 +120,7 @@ public class CoffeeBoostActivity extends Activity {
             current_order.add(position, 0);
             current_order.remove(empty_space_position);
             current_order.add(empty_space_position, number);
-
         }
-
     }
 
     /**
@@ -171,7 +169,7 @@ public class CoffeeBoostActivity extends Activity {
      */
     public void confirmCoffeeEvent() {
         if (gameComplete()) {
-            game.sendMessage(new EventCompletedMessage("Coffee Event", ship.getEventLog().pop(Events.COFFEE).getId()));
+            game.sendMessage(new EventCompletedMessage(EventTypes.COFFEE_BOOST.ordinal()));
         }
     }
 }
