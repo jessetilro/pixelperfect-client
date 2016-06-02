@@ -4,8 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
+import android.widget.Switch;
 
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
@@ -23,11 +24,11 @@ public class PlasmaLeakActivity extends AppCompatActivity{
     private GameClient game = GameClient.getInstance();
     private static Spaceship ship = Spaceship.getInstance();
     private ProgressBar progress;
-    private boolean deckOff;
-    private boolean armoryOff;
-    private boolean engineOff;
-    private boolean labOff;
-    private boolean lockedIn;
+    private int removedbolts;
+    private boolean deckOn;
+    private boolean armoryOn;
+    private boolean engineOn;
+    private boolean labOn;
 
     /**
      * Initializing elements when the activity is created.
@@ -39,46 +40,69 @@ public class PlasmaLeakActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.minigame_plasma);
         progress = (ProgressBar) findViewById(R.id.mini_game_progress_bar);
-        deckOff = false;
-        armoryOff = false;
-        engineOff = false;
-        labOff = false;
-        lockedIn = false;
+        deckOn = false;
+        armoryOn = false;
+        engineOn = false;
+        labOn = false;
+        removedbolts = 0;
     }
 
     public void switchLab(View view) {
-        labOff = !labOff;
+            labOn = true;
+            deckOn = false;
+            armoryOn = false;
+            engineOn = false;
     }
 
     public void switchArmory(View view) {
-        armoryOff = !armoryOff;
+            labOn = false;
+            deckOn = false;
+            armoryOn = true;
+            engineOn = false;
     }
 
     public void switchDeck(View view) {
-        deckOff = !deckOff;
+            labOn = false;
+            deckOn = true;
+            armoryOn = false;
+            engineOn = false;
     }
 
     public void switchEngine(View view) {
-        engineOff = !engineOff;
+            labOn = false;
+            deckOn = false;
+            armoryOn = false;
+            engineOn = true;
     }
 
-    public void lockIn(View view) {
-        if (lockedIn = true){
-            return;
-        }
-        else {
-            Button armory = (Button) findViewById(R.id.Pipe_Armory);
-            armory.setClickable(false);
-            Button engine = (Button) findViewById(R.id.Pipe_Engine);
-            engine.setClickable(false);
-            Button lab = (Button) findViewById(R.id.Pipe_Lab);
-            lab.setClickable(false);
-            Button deck = (Button) findViewById(R.id.Pipe_Deck);
-            deck.setClickable(false);
-            lockedIn = true;
-            progress.incrementProgressBy(40);
+    public void removeBolts(View view) {
+        if(progress.getProgress() < 25) {
+            if(removedbolts != 5 ) {
+                progress.incrementProgressBy(5);
+                removedbolts++;
+            }
         }
     }
+
+    public void repairPipe(View view) {
+        if(progress.getProgress() < 75 && progress.getProgress() >=25) {
+            if(removedbolts == 5) {
+                progress.incrementProgressBy(5);
+            }
+        }
+    }
+
+    public void insertBolts(View view) {
+        if(progress.getProgress() < 100 && progress.getProgress() >=75) {
+            if(removedbolts != 0 ) {
+                progress.incrementProgressBy(5);
+                removedbolts--;
+            }
+        }
+    }
+
+
+
 
     /**
      * If the event is completed, send the message to the server.
