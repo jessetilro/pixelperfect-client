@@ -68,9 +68,9 @@ public class AsteroidImpactActivity extends AppCompatActivity  {
                 EventCompletedMessage message = new EventCompletedMessage("Asteroid Impact Event", ship.getEventLog().pop(Events.ASTEROID).getId());
                 Map<String, Integer> parameters = new HashMap<String, Integer>();
                 if(repairingEnergyShield){
-                    parameters.put("Asteroid Impact", 0);
+                    parameters.put("locationDamageImpact", 0);
                 } else {
-                    parameters.put("Asteroid Impact", 1);
+                    parameters.put("locationDamageImpact", 1);
                 }
                 message.setParameters(parameters);
                 game.sendMessage(message);
