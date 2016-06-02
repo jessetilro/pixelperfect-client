@@ -4,8 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import nl.tudelft.pixelperfect.client.message.EventsMessage;
-
 /**
  * Test case for the event message class.
  *
