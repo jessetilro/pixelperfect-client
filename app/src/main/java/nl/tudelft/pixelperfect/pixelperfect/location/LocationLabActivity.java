@@ -7,8 +7,7 @@ import android.view.View;
 
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
-import nl.tudelft.pixelperfect.event.Event;
-import nl.tudelft.pixelperfect.event.Events;
+import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
 import nl.tudelft.pixelperfect.pixelperfect.mini_game.AsteroidImpactActivity;
@@ -35,25 +34,12 @@ public class LocationLabActivity extends AppCompatActivity {
     }
 
     /**
-     * Updates the eventLog of the ship.
-     *
-     * @param mission the mission to update the EventLog with.
-     */
-    public static void updateEventLog(Event mission){
-        ship.updateEventLog(mission);
-    }
-
-    /**
      * Whenever the button to complete the Fire Event is pressed this will happen.
      *
      * @param view , the view of the page.
      */
-    public void completeFireEvent(View view){
-        if(ship.getEventLog().contains(Events.FIRE)){
-            game.sendMessage(new EventCompletedMessage("Fire Event", ship.getEventLog().pop(Events.FIRE).getId()));
-        } else {
-            game.sendMessage(new EventCompletedMessage("WRONG ANSWER", -1));
-        }
+    public void completeFireEvent(View view) {
+        game.sendMessage(new EventCompletedMessage(EventTypes.FIRE_OUTBREAK.ordinal()));
     }
 
     /**
@@ -61,7 +47,7 @@ public class LocationLabActivity extends AppCompatActivity {
      *
      * @param view , the view of the page.
      */
-    public void completeAsteroidFieldEvent(View view){
+    public void completeAsteroidFieldEvent(View view) {
         Intent intent = new Intent(this, AsteroidImpactActivity.class);
         startActivity(intent);
     }

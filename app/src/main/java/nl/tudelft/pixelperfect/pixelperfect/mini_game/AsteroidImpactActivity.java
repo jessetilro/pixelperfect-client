@@ -11,7 +11,7 @@ import java.util.Map;
 
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
-import nl.tudelft.pixelperfect.event.Events;
+import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
 
@@ -21,7 +21,7 @@ import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
  *
  * @author Floris Doolaard
  */
-public class AsteroidImpactActivity extends AppCompatActivity  {
+public class AsteroidImpactActivity extends AppCompatActivity {
     private Spaceship ship = Spaceship.getInstance();
     private GameClient game = GameClient.getInstance();
     private ProgressBar progressBarEnergyShield;
@@ -50,7 +50,7 @@ public class AsteroidImpactActivity extends AppCompatActivity  {
      * @param view the View of the button.
      */
     public void createProgress(View view) {
-        if(repairingEnergyShield){
+        if (repairingEnergyShield) {
             increaseProgress(progressBarEnergyShield);
         } else {
             increaseProgress(progressBarHyperdrive);
@@ -62,20 +62,16 @@ public class AsteroidImpactActivity extends AppCompatActivity  {
      *
      * @param progressBar the progressBar on which progress must increase.
      */
-    public void increaseProgress(ProgressBar progressBar){
-        if(progressBar.getProgress() == 95) {
-            if(ship.getEventLog().contains(Events.ASTEROID)){
-                EventCompletedMessage message = new EventCompletedMessage("Asteroid Impact Event", ship.getEventLog().pop(Events.ASTEROID).getId());
-                Map<String, Integer> parameters = new HashMap<String, Integer>();
-                parameters.put("locationDamageImpact", (repairingEnergyShield ? 0 : 1));
-                message.setParameters(parameters);
-                game.sendMessage(message);
-            } else {
-                game.sendMessage(new EventCompletedMessage("WRONG ANSWER", -1));
-            }
+    public void increaseProgress(ProgressBar progressBar) {
+        if (progressBar.getProgress() >= 95) {
+            EventCompletedMessage message = new EventCompletedMessage(EventTypes.ASTEROID_IMPACT.ordinal());
+            Map<String, Integer> parameters = new HashMap<String, Integer>();
+            parameters.put("locationDamageImpact", (repairingEnergyShield ? 0 : 1));
+            message.setParameters(parameters);
+            game.sendMessage(message);
         }
 
-        if(progressBar.getProgress() != 100) {
+        if (progressBar.getProgress() != 100) {
             progressBar.incrementProgressBy(5);
         }
     }
@@ -89,15 +85,15 @@ public class AsteroidImpactActivity extends AppCompatActivity  {
     public void onRadioButtonClicked(View view) {
         boolean checked = ((RadioButton) view).isChecked();
 
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.mini_game_asteroid_impact_radio1:
                 if (checked)
                     repairingEnergyShield = true;
-                    break;
+                break;
             case R.id.mini_game_asteroid_impact_radio2:
                 if (checked)
                     repairingEnergyShield = false;
-                    break;
+                break;
         }
     }
 
