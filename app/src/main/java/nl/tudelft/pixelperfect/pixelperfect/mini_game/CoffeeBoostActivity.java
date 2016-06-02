@@ -11,10 +11,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
 
+import nl.tudelft.pixelperfect.client.GameClient;
+import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
+import nl.tudelft.pixelperfect.event.Events;
 import nl.tudelft.pixelperfect.pixelperfect.R;
+import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
 
 public class CoffeeBoostActivity extends Activity {
-
+    private GameClient game = GameClient.getInstance();
+    private static Spaceship ship = Spaceship.getInstance();
     private Button[] buttons = new Button[9];
     private static final Integer[] original_order = new Integer[] {0, 1, 2, 3, 4, 5, 6, 7, 8};
     private ArrayList<Integer> current_order = new ArrayList<Integer>();
@@ -128,8 +133,7 @@ public class CoffeeBoostActivity extends Activity {
 
     public void confirmCoffeeEvent(View view) {
         if (gameComplete()) {
-
-            System.out.println("GEWONNNEN");
+            game.sendMessage(new EventCompletedMessage("Coffee Event", ship.getEventLog().pop(Events.COFFEE).getId()));
         }
     }
 }
