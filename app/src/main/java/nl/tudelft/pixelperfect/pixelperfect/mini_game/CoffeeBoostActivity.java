@@ -40,6 +40,7 @@ public class CoffeeBoostActivity extends Activity {
         GridLayout.Spec col3 = GridLayout.spec(2);
         rows.add(row1); rows.add(row2); rows.add(row3);
         columns.add(col1); columns.add(col2); columns.add(col3);
+        shuffle();
     }
 
     private void shuffle() {
@@ -47,7 +48,7 @@ public class CoffeeBoostActivity extends Activity {
         random.setSeed(System.currentTimeMillis());
         int limit = random.nextInt(10);
         for (int i = 0; i < limit; i++) {
-            makeMove(buttons[random.nextInt(2)+1]);
+            makeMove(buttons[random.nextInt(7)+1]);
         }
     }
 
@@ -75,13 +76,11 @@ public class CoffeeBoostActivity extends Activity {
             );
         }
 
-//        shuffle();
     }
 
     private void makeMove(final Button clicked) {
         int number = Integer.parseInt((String) clicked.getText())-1;
         int position = current_order.indexOf(number);
-        System.out.println("CLICKED: "+ number +"  AT POSITION:  " + position);
         int empty_space_position = current_order.indexOf(0);
 
         if (sameRowOrColumn(empty_space_position, position) &&
@@ -129,7 +128,7 @@ public class CoffeeBoostActivity extends Activity {
 
     public void confirmCoffeeEvent(View view) {
         if (gameComplete()) {
-            //TODO networking
+
             System.out.println("GEWONNNEN");
         }
     }
