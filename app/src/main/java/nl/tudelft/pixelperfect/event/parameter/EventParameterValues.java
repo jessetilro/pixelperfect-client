@@ -27,6 +27,30 @@ public enum EventParameterValues {
         public String toString() {
             return "Titanium";
         }
+    },
+    PLASMA_LEAK_PIPE_LAB {
+        @Override
+        public String toString() {
+            return "Lab";
+        }
+    },
+    PLASMA_LEAK_PIPE_ENGINE {
+        @Override
+        public String toString() {
+            return "Engine";
+        }
+    },
+    PLASMA_LEAK_PIPE_DECK {
+        @Override
+        public String toString() {
+            return "Deck";
+        }
+    },
+    PLASMA_LEAK_PIPE_ARMORY {
+        @Override
+        public String toString() {
+            return "Armory";
+        }
     };
 
     /**
