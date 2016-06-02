@@ -3,6 +3,7 @@ package nl.tudelft.pixelperfect.client.message;
 import com.jme3.network.AbstractMessage;
 import com.jme3.network.serializing.Serializable;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import nl.tudelft.pixelperfect.event.parameter.EventParameter;
@@ -36,6 +37,7 @@ public class EventCompletedMessage extends AbstractMessage {
     public EventCompletedMessage(String label, @SuppressWarnings("SameParameterValue") int completed) {
         this.label = label;
         this.completed = completed;
+        this.parameters = new ArrayList<EventParameter>();
     }
 
     /**
@@ -54,5 +56,24 @@ public class EventCompletedMessage extends AbstractMessage {
      */
     public String getLabel() {
         return label;
+    }
+
+    /**
+     * Set the submitted parameters.
+     *
+     * @param parameters
+     *          The submitted parameters.
+     */
+    public void setParameters(Collection<EventParameter> parameters) {
+        this.parameters = parameters;
+    }
+
+    /**
+     * Get the submitted parameters.
+     *
+     * @return The submitted parameters.
+     */
+    public Collection<EventParameter> getParameters() {
+        return parameters;
     }
 }
