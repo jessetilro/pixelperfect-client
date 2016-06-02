@@ -6,8 +6,15 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
+import android.widget.Space;
 
+import nl.tudelft.pixelperfect.client.GameClient;
+import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
+import nl.tudelft.pixelperfect.event.AsteroidFieldEvent;
+import nl.tudelft.pixelperfect.event.Event;
+import nl.tudelft.pixelperfect.event.Events;
 import nl.tudelft.pixelperfect.pixelperfect.R;
+import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
 
 /**
  * The mini-game Asteroid Impact in which the use must click a wrench-button a certain amount of
@@ -16,9 +23,10 @@ import nl.tudelft.pixelperfect.pixelperfect.R;
  * @author Floris Doolaard
  */
 public class AsteroidImpactActivity extends AppCompatActivity  {
+    private Spaceship ship;
+    private GameClient game;
     private ProgressBar progressBarEnergyShield;
     private ProgressBar progressBarHyperdrive;
-    private SeekBar seekBar;
     private Boolean repairingEnergyShield;
 
     /**
@@ -34,6 +42,8 @@ public class AsteroidImpactActivity extends AppCompatActivity  {
         progressBarEnergyShield = (ProgressBar) findViewById(R.id.mini_game_asteroid_impact_progressBar1);
         progressBarHyperdrive = (ProgressBar) findViewById(R.id.mini_game_asteroid_impact_progressBar2);
 
+        game = GameClient.getInstance();
+        ship = Spaceship.getInstance();
         repairingEnergyShield = true;
     }
 
@@ -59,7 +69,13 @@ public class AsteroidImpactActivity extends AppCompatActivity  {
         if(progressBar.getProgress() != 100) {
             progressBar.incrementProgressBy(5);
         } else {
-            //TO DO - Send message to Server.
+            if(ship.getEventLog().contains(Events.ASTEROID)){
+                Event event = ship.getEventLog().peek(Events.ASTEROID);
+
+                game.sendMessage(new EventCompletedMessage("Asteroid Field Event", ship.getEventLog().pop(Events.ASTEROID).getId()));
+            } else {
+                game.sendMessage(new EventCompletedMessage("WRONG ANSWER", -1));
+            }
         }
     }
 

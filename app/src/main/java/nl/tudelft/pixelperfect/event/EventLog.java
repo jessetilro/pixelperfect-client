@@ -35,6 +35,14 @@ public class EventLog {
     }
 
     /**
+     * Peeks from the EventLog and retrieves the first object fromt the same type.
+     *
+     * @param type , the type of the Event.
+     * @return the event that was peeked.
+     */
+    public Event peek(Events type) { return type.peek(events); }
+
+    /**
      * Pops the first item from the start that has   right type.
      *
      * @param type , the type of the event.
