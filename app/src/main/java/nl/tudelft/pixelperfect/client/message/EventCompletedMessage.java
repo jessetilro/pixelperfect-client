@@ -1,5 +1,6 @@
 package nl.tudelft.pixelperfect.client.message;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import com.jme3.network.AbstractMessage;
@@ -20,7 +21,8 @@ public class EventCompletedMessage extends AbstractMessage {
      * The EventCompletedMessage constructor.
      */
     public EventCompletedMessage() {
-
+        type = 0;
+        parameters = new HashMap<String, Integer>();
     }
 
     /**
@@ -31,6 +33,7 @@ public class EventCompletedMessage extends AbstractMessage {
      */
     public EventCompletedMessage(int type) {
         this.type = type;
+        parameters = new HashMap<String, Integer>();
     }
 
     /**

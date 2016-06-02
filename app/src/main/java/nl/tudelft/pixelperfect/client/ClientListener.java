@@ -5,15 +5,6 @@ import com.jme3.network.Message;
 import com.jme3.network.MessageListener;
 
 import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
-import nl.tudelft.pixelperfect.event.AsteroidFieldEvent;
-import nl.tudelft.pixelperfect.event.Event;
-import nl.tudelft.pixelperfect.event.FireEvent;
-import nl.tudelft.pixelperfect.event.HostileShipEvent;
-import nl.tudelft.pixelperfect.event.PlasmaLeakEvent;
-import nl.tudelft.pixelperfect.pixelperfect.location.LocationArmoryActivity;
-import nl.tudelft.pixelperfect.pixelperfect.location.LocationDeckActivity;
-import nl.tudelft.pixelperfect.pixelperfect.location.LocationEngineroomActivity;
-import nl.tudelft.pixelperfect.pixelperfect.location.LocationLabActivity;
 import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
 
 /**

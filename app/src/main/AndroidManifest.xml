@@ -49,6 +49,14 @@
             android:screenOrientation="landscape"
             android:configChanges="keyboardHidden|orientation">
         </activity>
+        <activity
+            android:name=".mini_game.AsteroidImpactActivity"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboardHidden|orientation" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="nl.tudelft.pixelperfect.pixelperfect.location.LocationLabActivity" />
+        </activity>
     </application>
 
 </manifest>

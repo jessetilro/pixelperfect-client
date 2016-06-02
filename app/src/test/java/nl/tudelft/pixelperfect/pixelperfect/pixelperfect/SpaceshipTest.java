@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import nl.tudelft.pixelperfect.event.Event;
-import nl.tudelft.pixelperfect.event.Events;
 import nl.tudelft.pixelperfect.event.FireEvent;
 import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
 
