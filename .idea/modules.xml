@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PixelPerfect.iml" filepath="$PROJECT_DIR$/PixelPerfect.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/pixelperfect-client.iml" filepath="$PROJECT_DIR$/pixelperfect-client.iml" />
     </modules>
   </component>
 </project>
