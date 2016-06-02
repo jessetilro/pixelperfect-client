@@ -166,8 +166,11 @@ public class CoffeeBoostActivity extends Activity {
 
     /**
      * Check if the game is complete and send a message.
+     *
+     * @param view
+     *          A view.
      */
-    public void confirmCoffeeEvent() {
+    public void confirmCoffeeEvent(View view) {
         if (gameComplete()) {
             game.sendMessage(new EventCompletedMessage(EventTypes.COFFEE_BOOST.ordinal()));
         }
