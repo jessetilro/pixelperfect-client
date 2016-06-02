@@ -3,13 +3,12 @@ package nl.tudelft.pixelperfect.pixelperfect.mini_game;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AbsoluteLayout;
 import android.widget.Button;
+import android.widget.GridLayout;
 
 import nl.tudelft.pixelperfect.pixelperfect.R;
 
@@ -18,97 +17,96 @@ import nl.tudelft.pixelperfect.pixelperfect.R;
 public class CoffeeBoostActivity extends Activity {
 
     private Button[] buttons = new Button[9];
-    private Boolean movable;
     private static final Integer[] original_order = new Integer[] {0, 1, 2, 3, 4, 5, 6, 7, 8};
     private ArrayList<Integer> current_order = new ArrayList<Integer>();
+
+    private GridLayout gridLayout;
+
+    ArrayList<GridLayout.Spec> rows = new ArrayList<GridLayout.Spec>();
+    ArrayList<GridLayout.Spec> columns = new ArrayList<GridLayout.Spec>();
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coffee_boost);
-
         initialize();
-        draw();
+        gridLayout = (GridLayout) findViewById(R.id.gridLayout);
+
+        GridLayout.Spec row1 = GridLayout.spec(0);
+        GridLayout.Spec row2 = GridLayout.spec(1);
+        GridLayout.Spec row3 = GridLayout.spec(2);
+        GridLayout.Spec col1 = GridLayout.spec(0);
+        GridLayout.Spec col2 = GridLayout.spec(1);
+        GridLayout.Spec col3 = GridLayout.spec(2);
+        rows.add(row1); rows.add(row2); rows.add(row3);
+        columns.add(col1); columns.add(col2); columns.add(col3);
+
     }
 
     private void initialize() {
-        buttons[0] = (Button) findViewById(R.id.Button0);
-        buttons[1] = (Button) findViewById(R.id.Button1);
-        buttons[2] = (Button) findViewById(R.id.Button2);
-        buttons[3] = (Button) findViewById(R.id.Button3);
-        buttons[4] = (Button) findViewById(R.id.Button4);
-        buttons[5] = (Button) findViewById(R.id.Button5);
-        buttons[6] = (Button) findViewById(R.id.Button6);
-        buttons[7] = (Button) findViewById(R.id.Button7);
-        buttons[8] = (Button) findViewById(R.id.Button8);
+        buttons[0] = (Button) findViewById(R.id.button1);
+        buttons[1] = (Button) findViewById(R.id.button2);
+        buttons[2] = (Button) findViewById(R.id.button3);
+        buttons[3] = (Button) findViewById(R.id.button4);
+        buttons[4] = (Button) findViewById(R.id.button5);
+        buttons[5] = (Button) findViewById(R.id.button6);
+        buttons[6] = (Button) findViewById(R.id.button7);
+        buttons[7] = (Button) findViewById(R.id.button8);
+        buttons[8] = (Button) findViewById(R.id.button9);
 
         for(int i = 0; i < 9; i++) {
             current_order.add(i);
         }
-        Collections.shuffle(this.current_order);
 
         for (int i = 1; i < 9; i++) {
             buttons[i].setOnClickListener(new View.OnClickListener() {
-                                              public void onClick(View v) {
-                                                  makeMove((Button) v);
-                                              }
-                                          }
+                                               public void onClick(View v) {
+                                                   makeMove((Button) v);
+                                               }
+                                           }
             );
         }
     }
 
     private void makeMove(final Button clicked) {
-        movable = false;
-        int number = Integer.parseInt((String) clicked.getText());
+        int number = Integer.parseInt((String) clicked.getText())-1;
         int position = current_order.indexOf(number);
+        System.out.println("CLICKED: "+ number +"  AT POSITION:  " + position);
         int empty_space_position = current_order.indexOf(0);
-        switch(empty_space_position) {
-            case(0):
-                if (position == 1 || position == 3)
-                    movable = true;
-                break;
-            case(1):
-                if (position == 0 || position == 2 || position == 4)
-                    movable = true;
-                break;
-            case(2):
-                if (position == 1 || position == 5)
-                    movable = true;
-                break;
-            case(3):
-                if (position == 0 || position == 4 || position == 6)
-                    movable = true;
-                break;
-            case(4):
-                if (position == 1 || position == 3 || position == 5 || position == 7)
-                    movable = true;
-                break;
-            case(5):
-                if (position == 2 || position == 4 || position == 8)
-                    movable = true;
-                break;
-            case(6):
-                if (position == 3 || position == 7)
-                    movable = true;
-                break;
-            case(7):
-                if (position == 4 || position == 6 || position == 8)
-                    movable = true;
-                break;
-            case(8):
-                if (position == 5 || position == 7)
-                    movable = true;
-                break;
-        }
 
-        if (movable) {
+        if (sameRowOrColumn(empty_space_position, position) &&
+                areNeighbours(empty_space_position, position)) {
+
+
+            gridLayout.removeView(buttons[0]);
+            gridLayout.removeView(buttons[number]);
+
+            gridLayout.addView(buttons[0], new GridLayout.LayoutParams(rows.get((position/3)), columns.get((position%3))));
+            gridLayout.addView(buttons[number], new GridLayout.LayoutParams(rows.get((empty_space_position/3)), columns.get((empty_space_position%3))));
+
             current_order.remove(position);
             current_order.add(position, 0);
             current_order.remove(empty_space_position);
             current_order.add(empty_space_position, number);
 
-            draw();
         }
+
+    }
+
+    private boolean sameRowOrColumn(int loc1, int loc2) {
+        if ((loc1/3) == (loc2/3) || (loc1%3) == (loc2%3)) {
+            return true;
+        }
+        return false;
+    }
+    private boolean areNeighbours(int loc1, int loc2) {
+        if ( (Math.abs((loc1/3) - (loc2/3)) == 1)
+                || Math.abs((loc1%3) - (loc2%3))  == 1 ) {
+            return true;
+        }
+        return false;
     }
 
     public boolean gameComplete() {
@@ -120,54 +118,6 @@ public class CoffeeBoostActivity extends Activity {
         return true;
     }
 
-
-    private void draw() {
-        for (int i = 0; i < 9; i++) {
-            int original_location = current_order.get(i);
-            AbsoluteLayout.LayoutParams layout =
-                    (AbsoluteLayout.LayoutParams) buttons[original_location].getLayoutParams();
-            switch(i) {
-                case(0):
-                    layout.x = 0;
-                    layout.y = 0;
-                    break;
-                case(1):
-                    layout.x = 200;
-                    layout.y = 0;
-                    break;
-                case(2):
-                    layout.x = 400;
-                    layout.y = 0;
-                    break;
-                case(3):
-                    layout.x = 0;
-                    layout.y = 200;
-                    break;
-                case(4):
-                    layout.x = 200;
-                    layout.y = 200;
-                    break;
-                case(5):
-                    layout.x = 400;
-                    layout.y = 200;
-                    break;
-                case(6):
-                    layout.x = 0;
-                    layout.y = 400;
-                    break;
-                case(7):
-                    layout.x = 200;
-                    layout.y = 400;
-                    break;
-                case(8):
-                    layout.x = 400;
-                    layout.y = 400;
-                    break;
-
-            }
-            buttons[original_location].setLayoutParams(layout);
-        }
-    }
 
     public void confirmCoffeeEvent(View view) {
         if (gameComplete()) {
