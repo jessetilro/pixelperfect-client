@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,7 @@ import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
+import nl.tudelft.pixelperfect.pixelperfect.location.LocationDeckActivity;
 
 /**
  * Mini-game for the Janitor.
@@ -173,6 +175,8 @@ public class CoffeeBoostActivity extends Activity {
     public void confirmCoffeeEvent(View view) {
         if (gameComplete()) {
             game.sendMessage(new EventCompletedMessage(EventTypes.COFFEE_BOOST.ordinal()));
+            Intent intent = new Intent(this, LocationDeckActivity.class);
+            startActivity(intent);
         }
     }
 }
