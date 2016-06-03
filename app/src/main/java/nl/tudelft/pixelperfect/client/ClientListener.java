@@ -4,14 +4,8 @@ import com.jme3.network.Client;
 import com.jme3.network.Message;
 import com.jme3.network.MessageListener;
 
-import nl.tudelft.pixelperfect.event.AsteroidFieldEvent;
-import nl.tudelft.pixelperfect.event.Event;
-import nl.tudelft.pixelperfect.event.FireEvent;
-import nl.tudelft.pixelperfect.event.HostileShipEvent;
-import nl.tudelft.pixelperfect.event.PlasmaLeakEvent;
-import nl.tudelft.pixelperfect.pixelperfect.LocationArmoryActivity;
-import nl.tudelft.pixelperfect.pixelperfect.LocationEngineroomActivity;
-import nl.tudelft.pixelperfect.pixelperfect.LocationLabActivity;
+import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
+import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
 
 /**
  * The ClientListeners waits for incoming messages from the server and interpret them.
@@ -22,34 +16,27 @@ import nl.tudelft.pixelperfect.pixelperfect.LocationLabActivity;
  */
 @SuppressWarnings("unused")
 public class ClientListener implements MessageListener<Client> {
+
+    /**
+     * Whenever the client listener receives a message from the Server it will determine what
+     * to do with it per message.
+     *
+     * @param source the source of the message.
+     * @param message the message received.
+     */
     public void messageReceived(Client source, Message message) {
-        if (message instanceof EventsMessage) {
-            Event mission;
-            EventsMessage eve = (EventsMessage) message;
-            System.out.println("Client #"+source.getId()+" received event: '"+eve.getType()+"'");
-            switch (eve.getType()) {
-                case "FireEvent":
-                    mission = new FireEvent(eve.getID(), "", "", eve.getTime(), eve.getDuration(), 0);
-                    LocationArmoryActivity.updateEventLog(mission);
-                    break;
-                case "AsteroidFieldEvent":
-                    mission = new AsteroidFieldEvent(eve.getID(), "", "", eve.getTime(), eve.getDuration(), 0);
-                    LocationLabActivity.updateEventLog(mission);
-                    break;
-                case "HostileShipEvent":
-                    mission = new HostileShipEvent(eve.getID(), "", "", eve.getTime(), eve.getDuration(), 0);
-                    LocationArmoryActivity.updateEventLog(mission);
-                    break;
-                case "PlasmaLeakEvent":
-                    mission = new PlasmaLeakEvent(eve.getID(), "", "", eve.getTime(), eve.getDuration(), 0);
-                    LocationEngineroomActivity.updateEventLog(mission);
-                    break;
-                default:
-                    break;
-            }
-        } else if (message instanceof RoleChosenMessage) {
-            RoleChosenMessage roleMessage = (RoleChosenMessage) message;
-            roleMessage.getRole().updateButtons();
+        if (message instanceof RoleChosenMessage) {
+            updateRoleAvailability(message);
         }
+    }
+
+    /**
+     * Updates the view of the roles in the RoleActivity so that no more than 1 player may choose
+     * the same role.
+     *
+     * @param message the message received.
+     */
+    public void updateRoleAvailability(Message message) {
+        
     }
 }

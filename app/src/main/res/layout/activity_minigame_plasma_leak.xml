@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_complete_plasma_leak_event"
+        android:layout_marginBottom="20dp"
+        android:onClick="complete"
+        android:id="@+id/button_complete_plasma"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mini_game_progress_bar"
+        android:minHeight="20dp"
+        android:minWidth="300dp"
+        android:clickable="false"
+        android:layout_above="@+id/button_complete_plasma"
+        android:layout_centerHorizontal="true" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="52dp">
+        <RadioButton android:id="@+id/radio1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lab"
+            android:onClick="switchLab"/>
+        <RadioButton android:id="@+id/radio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Armory"
+            android:onClick="switchArmory"/>
+        <RadioButton android:id="@+id/radio3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Engine"
+            android:onClick="switchEngine"/>
+        <RadioButton android:id="@+id/radio4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deck"
+            android:onClick="switchDeck"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="148dp"
+            android:text="INSTRUCTIONS: \n\n Select room \n Remove 5 bolts \n Repair pipe 10 times \n Re-insert the bolts"
+            android:clickable="false"
+            android:id="@+id/textView" />
+    </RadioGroup>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remove Bolts"
+        android:id="@+id/button"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:onClick="removeBolts"
+        android:layout_toRightOf="@+id/button_complete_plasma"
+        android:layout_toEndOf="@+id/button_complete_plasma" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Repair Pipes"
+        android:id="@+id/button2"
+        android:layout_below="@id/button"
+        android:onClick="repairPipe"
+        android:layout_toRightOf="@+id/button_complete_plasma"
+        android:layout_toEndOf="@+id/button_complete_plasma" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Insert Bolts"
+        android:id="@+id/button3"
+        android:onClick="insertBolts"
+        android:layout_below="@id/button2"
+        android:layout_toRightOf="@+id/button_complete_plasma"
+        android:layout_toEndOf="@+id/button_complete_plasma" />
+
+
+</RelativeLayout>

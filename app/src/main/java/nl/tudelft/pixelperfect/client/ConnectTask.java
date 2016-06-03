@@ -8,6 +8,9 @@ import com.jme3.network.serializing.Serializer;
 
 import java.io.IOException;
 
+import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
+import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
+
 /**
  * This class will initialize the Network.
  *
@@ -31,11 +34,9 @@ public class ConnectTask extends AsyncTask<String, Void, Client> {
         try {
             client = Network.connectToServer(ip[0], 6143);
             Serializer.registerClass(EventCompletedMessage.class);
-            Serializer.registerClass(EventsMessage.class);
             Serializer.registerClass(RoleChosenMessage.class);
             client.start();
             client.addMessageListener(new ClientListener(), EventCompletedMessage.class);
-            client.addMessageListener(new ClientListener(), EventsMessage.class);
             client.addMessageListener(new ClientListener(), RoleChosenMessage.class);
         } catch (IOException e) {
             client = null;

@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#d6f9cf"
-    tools:ignore="Overdraw">
+    android:background="#cd95c9">
 
     <Button
         android:layout_width="wrap_content"
@@ -12,24 +11,21 @@
         android:text="@string/button_complete_fire_event"
         android:id="@+id/button_complete_fire_event"
         android:onClick="completeFireEvent"
-        android:layout_marginLeft="118dp"
-        android:layout_marginStart="118dp"
-        android:layout_alignTop="@+id/button_complete_plasma_leak_event"
+        android:layout_marginLeft="113dp"
+        android:layout_marginStart="113dp"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
-
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_complete_plasma_leak_event"
-        android:id="@+id/button_complete_plasma_leak_event"
-        android:onClick="completePlasmaLeakEvent"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginRight="109dp"
-        android:layout_marginEnd="109dp"
-        android:layout_centerVertical="true"
+        android:text="@string/button_complete_coffee_boost_event"
+        android:id="@+id/button_complete_coffee_boost_event"
+        android:onClick="completeCoffeeEvent"
+        android:layout_marginRight="138dp"
+        android:layout_marginEnd="138dp"
+        android:layout_alignTop="@+id/button_complete_fire_event"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         tools:ignore="RelativeOverlap" />
