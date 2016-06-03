@@ -63,6 +63,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="nl.tudelft.pixelperfect.pixelperfect.location.LocationLabActivity" />
         </activity>
+        <activity
+            android:name=".mini_game.PlasmaLeakActivity"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboardHidden|orientation">
+        </activity>
     </application>
 
 </manifest>

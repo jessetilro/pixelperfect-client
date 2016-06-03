@@ -1,5 +1,6 @@
 package nl.tudelft.pixelperfect.pixelperfect.location;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.View;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
+import nl.tudelft.pixelperfect.pixelperfect.mini_game.PlasmaLeakActivity;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
 
@@ -46,6 +48,7 @@ public class LocationEngineroomActivity extends AppCompatActivity {
      * @param view , the view of the page.
      */
     public void completePlasmaLeakEvent(View view){
-        game.sendMessage(new EventCompletedMessage(EventTypes.PLASMA_LEAK.ordinal()));
+        Intent intent = new Intent(this, PlasmaLeakActivity.class);
+        startActivity(intent);
     }
 }
