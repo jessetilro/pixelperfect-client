@@ -1,5 +1,6 @@
 package nl.tudelft.pixelperfect.pixelperfect.minigame;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,6 +14,8 @@ import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
+import nl.tudelft.pixelperfect.pixelperfect.location.LocationDeckActivity;
+import nl.tudelft.pixelperfect.pixelperfect.location.LocationEngineroomActivity;
 
 /**
  * The mini-game Asteroid Impact in which the use must click a wrench-button a certain amount of
@@ -61,16 +64,17 @@ public class AsteroidImpactActivity extends AppCompatActivity {
      * @param progressBar the progressBar on which progress must increase.
      */
     public void increaseProgress(ProgressBar progressBar) {
+        progressBar.incrementProgressBy(5);
+
         if (progressBar.getProgress() >= 95) {
             EventCompletedMessage message = new EventCompletedMessage(EventTypes.ASTEROID_IMPACT.ordinal());
             Map<String, Integer> parameters = new HashMap<String, Integer>();
             parameters.put("locationDamageImpact", (repairingEnergyShield ? 0 : 1));
             message.setParameters(parameters);
             game.sendMessage(message);
-        }
 
-        if (progressBar.getProgress() != 100) {
-            progressBar.incrementProgressBy(5);
+            Intent intent = new Intent(this, LocationEngineroomActivity.class);
+            startActivity(intent);
         }
     }
 
