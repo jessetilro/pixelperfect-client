@@ -117,17 +117,6 @@ public class PlasmaLeakActivity extends AppCompatActivity{
     }
 
     /**
-     * Sends a faulty message.
-     *
-     */
-    public void sendFailure() {
-        game.sendMessage(new EventCompletedMessage(-1));
-        Intent intent = new Intent(this, LocationEngineroomActivity.class);
-        startActivity(intent);
-    }
-
-
-    /**
      * If the event is completed, send the message to the server.
      *
      * @param view, the view of the page.
@@ -141,9 +130,6 @@ public class PlasmaLeakActivity extends AppCompatActivity{
             game.sendMessage(message);
             Intent intent = new Intent(this, LocationEngineroomActivity.class);
             startActivity(intent);
-
-        } else {
-            sendFailure();
         }
     }
 
