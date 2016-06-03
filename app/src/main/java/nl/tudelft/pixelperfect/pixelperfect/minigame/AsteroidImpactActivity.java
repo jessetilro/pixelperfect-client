@@ -1,5 +1,6 @@
-package nl.tudelft.pixelperfect.pixelperfect.mini_game;
+package nl.tudelft.pixelperfect.pixelperfect.minigame;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,7 +14,8 @@ import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
-import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
+import nl.tudelft.pixelperfect.pixelperfect.location.LocationDeckActivity;
+import nl.tudelft.pixelperfect.pixelperfect.location.LocationEngineroomActivity;
 
 /**
  * The mini-game Asteroid Impact in which the use must click a wrench-button a certain amount of
@@ -22,7 +24,6 @@ import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
  * @author Floris Doolaard
  */
 public class AsteroidImpactActivity extends AppCompatActivity {
-    private Spaceship ship = Spaceship.getInstance();
     private GameClient game = GameClient.getInstance();
     private ProgressBar progressBarEnergyShield;
     private ProgressBar progressBarHyperdrive;
@@ -36,7 +37,7 @@ public class AsteroidImpactActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mini_game_asteroid_impact);
+        setContentView(R.layout.activity_minigame_asteroid_impact);
 
         progressBarEnergyShield = (ProgressBar) findViewById(R.id.mini_game_asteroid_impact_progressBar1);
         progressBarHyperdrive = (ProgressBar) findViewById(R.id.mini_game_asteroid_impact_progressBar2);
@@ -63,16 +64,17 @@ public class AsteroidImpactActivity extends AppCompatActivity {
      * @param progressBar the progressBar on which progress must increase.
      */
     public void increaseProgress(ProgressBar progressBar) {
+        progressBar.incrementProgressBy(5);
+
         if (progressBar.getProgress() >= 95) {
             EventCompletedMessage message = new EventCompletedMessage(EventTypes.ASTEROID_IMPACT.ordinal());
             Map<String, Integer> parameters = new HashMap<String, Integer>();
             parameters.put("locationDamageImpact", (repairingEnergyShield ? 0 : 1));
             message.setParameters(parameters);
             game.sendMessage(message);
-        }
 
-        if (progressBar.getProgress() != 100) {
-            progressBar.incrementProgressBy(5);
+            Intent intent = new Intent(this, LocationEngineroomActivity.class);
+            startActivity(intent);
         }
     }
 

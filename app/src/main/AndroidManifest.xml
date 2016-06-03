@@ -51,12 +51,12 @@
             android:configChanges="keyboardHidden|orientation">
         </activity>
         <activity
-            android:name=".mini_game.CoffeeBoostActivity"
+            android:name=".minigame.CoffeeBoostActivity"
             android:screenOrientation="sensorLandscape"
             android:configChanges="keyboardHidden|orientation">
         </activity>
         <activity
-            android:name=".mini_game.AsteroidImpactActivity"
+            android:name=".minigame.AsteroidImpactActivity"
             android:screenOrientation="landscape"
             android:configChanges="keyboardHidden|orientation" >
             <meta-data
@@ -64,7 +64,7 @@
                 android:value="nl.tudelft.pixelperfect.pixelperfect.location.LocationLabActivity" />
         </activity>
         <activity
-            android:name=".mini_game.PlasmaLeakActivity"
+            android:name=".minigame.PlasmaLeakActivity"
             android:screenOrientation="landscape"
             android:configChanges="keyboardHidden|orientation">
         </activity>

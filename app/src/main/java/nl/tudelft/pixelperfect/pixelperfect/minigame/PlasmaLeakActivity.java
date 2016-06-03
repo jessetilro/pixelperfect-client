@@ -1,4 +1,4 @@
-package nl.tudelft.pixelperfect.pixelperfect.mini_game;
+package nl.tudelft.pixelperfect.pixelperfect.minigame;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,9 +12,8 @@ import java.util.Map;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
-import nl.tudelft.pixelperfect.pixelperfect.location.LocationEngineroomActivity;
 import nl.tudelft.pixelperfect.pixelperfect.R;
-import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
+import nl.tudelft.pixelperfect.pixelperfect.location.LocationLabActivity;
 
 /**
  * Represent the screen the client gets when a PlasmaLeakEvent is active.
@@ -23,7 +22,6 @@ import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
  */
 public class PlasmaLeakActivity extends AppCompatActivity{
     private GameClient game = GameClient.getInstance();
-    private static Spaceship ship = Spaceship.getInstance();
     private ProgressBar progress;
     private int removedbolts;
     private int sector;
@@ -36,7 +34,7 @@ public class PlasmaLeakActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.minigame_plasma);
+        setContentView(R.layout.activity_minigame_plasma_leak);
         progress = (ProgressBar) findViewById(R.id.mini_game_progress_bar);
         removedbolts = 0;
     }
@@ -119,17 +117,6 @@ public class PlasmaLeakActivity extends AppCompatActivity{
     }
 
     /**
-     * Sends a faulty message.
-     *
-     */
-    public void sendFailure() {
-        game.sendMessage(new EventCompletedMessage(-1));
-        Intent intent = new Intent(this, LocationEngineroomActivity.class);
-        startActivity(intent);
-    }
-
-
-    /**
      * If the event is completed, send the message to the server.
      *
      * @param view, the view of the page.
@@ -141,11 +128,8 @@ public class PlasmaLeakActivity extends AppCompatActivity{
             parameters.put("sector", sector);
             message.setParameters(parameters);
             game.sendMessage(message);
-            Intent intent = new Intent(this, LocationEngineroomActivity.class);
+            Intent intent = new Intent(this, LocationLabActivity.class);
             startActivity(intent);
-
-        } else {
-            sendFailure();
         }
     }
 

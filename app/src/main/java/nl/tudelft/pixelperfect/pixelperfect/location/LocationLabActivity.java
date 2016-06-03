@@ -9,8 +9,7 @@ import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
-import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
-import nl.tudelft.pixelperfect.pixelperfect.mini_game.AsteroidImpactActivity;
+import nl.tudelft.pixelperfect.pixelperfect.minigame.PlasmaLeakActivity;
 
 /**
  * This class represents the location of the Lab occupied by the Scientist.
@@ -20,7 +19,6 @@ import nl.tudelft.pixelperfect.pixelperfect.mini_game.AsteroidImpactActivity;
 @SuppressWarnings({"CanBeFinal", "unused", "UnusedParameters"})
 public class LocationLabActivity extends AppCompatActivity {
     private GameClient game = GameClient.getInstance();
-    private static Spaceship ship = Spaceship.getInstance();
 
     /**
      * This method shows what happens when this Activity is created.
@@ -43,12 +41,12 @@ public class LocationLabActivity extends AppCompatActivity {
     }
 
     /**
-     * Whenever the button to complete the Asteroid Field Event is pressed this will happen.
+     * Whenever the button to complete the Plasma Leak Event is pressed this will happen.
      *
      * @param view , the view of the page.
      */
-    public void completeAsteroidFieldEvent(View view) {
-        Intent intent = new Intent(this, AsteroidImpactActivity.class);
+    public void completePlasmaLeakEvent(View view) {
+        Intent intent = new Intent(this, PlasmaLeakActivity.class);
         startActivity(intent);
     }
 }
