@@ -7,6 +7,7 @@ import android.view.View;
 
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
+import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.event.Event;
 import nl.tudelft.pixelperfect.event.Events;
 import nl.tudelft.pixelperfect.pixelperfect.mini_game.PlasmaLeakActivity;
@@ -35,25 +36,12 @@ public class LocationEngineroomActivity extends AppCompatActivity {
     }
 
     /**
-     * Updates the eventLog of the ship.
-     *
-     * @param mission the mission to update the EventLog with.
-     */
-    public static void updateEventLog(Event mission){
-        ship.updateEventLog(mission);
-    }
-
-    /**
      * Whenever the button to complete the Fire Event is pressed this will happen.
      *
      * @param view , the view of the page.
      */
     public void completeFireEvent(View view){
-        if(ship.getEventLog().contains(Events.PLASMA)){
-            game.sendMessage(new EventCompletedMessage("Fire Outbreak Event", ship.getEventLog().pop(Events.FIRE).getId()));
-        } else {
-            game.sendMessage(new EventCompletedMessage("WRONG ANSWER", -1));
-        };
+        game.sendMessage(new EventCompletedMessage(EventTypes.FIRE_OUTBREAK.ordinal()));
     }
 
     /**
