@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:text="@string/button_complete_coffee_boost_event"
         android:id="@+id/button_complete_coffee_boost_event"
+        android:onClick="completeCoffeeEvent"
         android:layout_marginRight="138dp"
         android:layout_marginEnd="138dp"
         android:layout_alignTop="@+id/button_complete_fire_event"

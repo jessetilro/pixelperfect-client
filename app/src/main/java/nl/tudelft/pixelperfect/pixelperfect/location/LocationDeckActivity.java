@@ -1,5 +1,6 @@
 package nl.tudelft.pixelperfect.pixelperfect.location;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,6 +10,7 @@ import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
+import nl.tudelft.pixelperfect.pixelperfect.mini_game.CoffeeBoostActivity;
 
 /**
  * The location of the Janitor where he can make some coffee.
@@ -38,5 +40,15 @@ public class LocationDeckActivity extends AppCompatActivity {
      */
     public void completeFireEvent(View view){
         game.sendMessage(new EventCompletedMessage(EventTypes.FIRE_OUTBREAK.ordinal()));
+    }
+
+    /**
+     * Whenever the button to complete the Plasma Leak Event is pressed this will happen.
+     *
+     * @param view , the view of the page.
+     */
+    public void completeCoffeeEvent(View view) {
+        Intent intent = new Intent(this, CoffeeBoostActivity.class);
+        startActivity(intent);
     }
 }

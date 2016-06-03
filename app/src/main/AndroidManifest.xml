@@ -13,6 +13,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:hardwareAccelerated="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
             android:name=".MainActivity">
@@ -47,6 +48,11 @@
         <activity
             android:name=".location.LocationDeckActivity"
             android:screenOrientation="landscape"
+            android:configChanges="keyboardHidden|orientation">
+        </activity>
+        <activity
+            android:name=".mini_game.CoffeeBoostActivity"
+            android:screenOrientation="sensorLandscape"
             android:configChanges="keyboardHidden|orientation">
         </activity>
         <activity
