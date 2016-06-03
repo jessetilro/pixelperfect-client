@@ -26,10 +26,7 @@ public class PlasmaLeakActivity extends AppCompatActivity{
     private static Spaceship ship = Spaceship.getInstance();
     private ProgressBar progress;
     private int removedbolts;
-    private boolean deckOn;
-    private boolean armoryOn;
-    private boolean engineOn;
-    private boolean labOn;
+    private int sector;
 
     /**
      * Initializing elements when the activity is created.
@@ -41,10 +38,6 @@ public class PlasmaLeakActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.minigame_plasma);
         progress = (ProgressBar) findViewById(R.id.mini_game_progress_bar);
-        deckOn = false;
-        armoryOn = false;
-        engineOn = false;
-        labOn = false;
         removedbolts = 0;
     }
 
@@ -54,10 +47,7 @@ public class PlasmaLeakActivity extends AppCompatActivity{
      * @param view, the view of the page.
      */
     public void switchLab(View view) {
-            labOn = true;
-            deckOn = false;
-            armoryOn = false;
-            engineOn = false;
+        sector = 0;
     }
 
     /**
@@ -66,10 +56,7 @@ public class PlasmaLeakActivity extends AppCompatActivity{
      * @param view, the view of the page.
      */
     public void switchArmory(View view) {
-            labOn = false;
-            deckOn = false;
-            armoryOn = true;
-            engineOn = false;
+        sector = 1;
     }
 
     /**
@@ -78,10 +65,7 @@ public class PlasmaLeakActivity extends AppCompatActivity{
      * @param view, the view of the page.
      */
     public void switchDeck(View view) {
-            labOn = false;
-            deckOn = true;
-            armoryOn = false;
-            engineOn = false;
+        sector = 3;
     }
 
     /**
@@ -90,10 +74,7 @@ public class PlasmaLeakActivity extends AppCompatActivity{
      * @param view, the view of the page.
      */
     public void switchEngine(View view) {
-            labOn = false;
-            deckOn = false;
-            armoryOn = false;
-            engineOn = true;
+            sector = 2;
     }
 
     /**
@@ -157,18 +138,7 @@ public class PlasmaLeakActivity extends AppCompatActivity{
         if(progress.getProgress() == 100) {
             EventCompletedMessage message = new EventCompletedMessage(EventTypes.PLASMA_LEAK.ordinal());
             Map<String, Integer> parameters = new HashMap<String, Integer>();
-            if(labOn) {
-                parameters.put("sector", 0);
-            } else if(armoryOn) {
-                parameters.put("sector", 1);
-            } else if(engineOn) {
-                parameters.put("sector", 2);
-            } else if(deckOn) {
-                parameters.put("sector", 3);
-            } else {
-                sendFailure();
-                return;
-            }
+            parameters.put("sector", sector);
             message.setParameters(parameters);
             game.sendMessage(message);
             Intent intent = new Intent(this, LocationEngineroomActivity.class);
