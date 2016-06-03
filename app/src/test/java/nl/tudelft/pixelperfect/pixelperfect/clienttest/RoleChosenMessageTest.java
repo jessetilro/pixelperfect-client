@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
-import nl.tudelft.pixelperfect.pixelperfect.Roles;
+import nl.tudelft.pixelperfect.game.Roles;
 
 /**
  * Tests the RoleChosen message.

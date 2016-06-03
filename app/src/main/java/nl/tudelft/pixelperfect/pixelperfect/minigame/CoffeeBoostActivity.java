@@ -1,4 +1,4 @@
-package nl.tudelft.pixelperfect.pixelperfect.mini_game;
+package nl.tudelft.pixelperfect.pixelperfect.minigame;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -14,7 +14,6 @@ import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
-import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
 import nl.tudelft.pixelperfect.pixelperfect.location.LocationDeckActivity;
 
 /**
@@ -26,7 +25,6 @@ import nl.tudelft.pixelperfect.pixelperfect.location.LocationDeckActivity;
 public class CoffeeBoostActivity extends Activity {
 
     private final GameClient game = GameClient.getInstance();
-    private static Spaceship ship = Spaceship.getInstance();
     private Button[] buttons = new Button[9];
     private static final Integer[] original_order = new Integer[] {0, 1, 2, 3, 4, 5, 6, 7, 8};
     private GridLayout gridLayout;
@@ -44,7 +42,7 @@ public class CoffeeBoostActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_coffee_boost);
+        setContentView(R.layout.activity_minigame_coffee_boost);
         initialize();
 
 

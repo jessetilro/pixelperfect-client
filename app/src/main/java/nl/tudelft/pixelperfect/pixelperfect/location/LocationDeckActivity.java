@@ -9,8 +9,7 @@ import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
-import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
-import nl.tudelft.pixelperfect.pixelperfect.mini_game.CoffeeBoostActivity;
+import nl.tudelft.pixelperfect.pixelperfect.minigame.CoffeeBoostActivity;
 
 /**
  * The location of the Janitor where he can make some coffee.
@@ -20,7 +19,6 @@ import nl.tudelft.pixelperfect.pixelperfect.mini_game.CoffeeBoostActivity;
 @SuppressWarnings("CanBeFinal")
 public class LocationDeckActivity extends AppCompatActivity {
     private GameClient game = GameClient.getInstance();
-    private static Spaceship ship = Spaceship.getInstance();
 
     /**
      * This method shows what happens when this Activity is created.

@@ -1,4 +1,4 @@
-package nl.tudelft.pixelperfect.pixelperfect.mini_game;
+package nl.tudelft.pixelperfect.pixelperfect.minigame;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +13,6 @@ import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
-import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
 
 /**
  * The mini-game Asteroid Impact in which the use must click a wrench-button a certain amount of
@@ -22,7 +21,6 @@ import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
  * @author Floris Doolaard
  */
 public class AsteroidImpactActivity extends AppCompatActivity {
-    private Spaceship ship = Spaceship.getInstance();
     private GameClient game = GameClient.getInstance();
     private ProgressBar progressBarEnergyShield;
     private ProgressBar progressBarHyperdrive;
@@ -36,7 +34,7 @@ public class AsteroidImpactActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mini_game_asteroid_impact);
+        setContentView(R.layout.activity_minigame_asteroid_impact);
 
         progressBarEnergyShield = (ProgressBar) findViewById(R.id.mini_game_asteroid_impact_progressBar1);
         progressBarHyperdrive = (ProgressBar) findViewById(R.id.mini_game_asteroid_impact_progressBar2);

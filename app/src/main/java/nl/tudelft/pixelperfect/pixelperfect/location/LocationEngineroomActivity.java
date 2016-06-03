@@ -8,9 +8,9 @@ import android.view.View;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
-import nl.tudelft.pixelperfect.pixelperfect.mini_game.PlasmaLeakActivity;
+import nl.tudelft.pixelperfect.pixelperfect.minigame.AsteroidImpactActivity;
+import nl.tudelft.pixelperfect.pixelperfect.minigame.PlasmaLeakActivity;
 import nl.tudelft.pixelperfect.pixelperfect.R;
-import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
 
 /**
  * This class represents the location of the Engine Room occupied by the Engineer.
@@ -20,7 +20,6 @@ import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
 @SuppressWarnings({"CanBeFinal", "unused", "UnusedParameters"})
 public class LocationEngineroomActivity extends AppCompatActivity {
     private GameClient game = GameClient.getInstance();
-    private static Spaceship ship = Spaceship.getInstance();
 
     /**
      * This method shows what happens when this Activity is created.
@@ -43,12 +42,12 @@ public class LocationEngineroomActivity extends AppCompatActivity {
     }
 
     /**
-     * Whenever the button to complete the Plasma Leak Event is pressed this will happen.
+     * Whenever the button to complete the Asteroid Impact Event is pressed this will happen.
      *
      * @param view , the view of the page.
      */
-    public void completePlasmaLeakEvent(View view){
-        Intent intent = new Intent(this, PlasmaLeakActivity.class);
+    public void completeAsteroidImpactEvent(View view){
+        Intent intent = new Intent(this, AsteroidImpactActivity.class);
         startActivity(intent);
     }
 }
