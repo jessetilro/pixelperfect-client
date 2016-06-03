@@ -9,7 +9,6 @@ import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
-import nl.tudelft.pixelperfect.pixelperfect.minigame.AsteroidImpactActivity;
 import nl.tudelft.pixelperfect.pixelperfect.minigame.PlasmaLeakActivity;
 
 /**

@@ -12,8 +12,8 @@ import java.util.Map;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
-import nl.tudelft.pixelperfect.pixelperfect.location.LocationEngineroomActivity;
 import nl.tudelft.pixelperfect.pixelperfect.R;
+import nl.tudelft.pixelperfect.pixelperfect.location.LocationLabActivity;
 
 /**
  * Represent the screen the client gets when a PlasmaLeakEvent is active.
@@ -128,7 +128,7 @@ public class PlasmaLeakActivity extends AppCompatActivity{
             parameters.put("sector", sector);
             message.setParameters(parameters);
             game.sendMessage(message);
-            Intent intent = new Intent(this, LocationEngineroomActivity.class);
+            Intent intent = new Intent(this, LocationLabActivity.class);
             startActivity(intent);
         }
     }
