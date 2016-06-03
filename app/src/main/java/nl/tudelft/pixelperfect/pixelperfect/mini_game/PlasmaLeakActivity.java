@@ -11,9 +11,7 @@ import java.util.Map;
 
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
-import nl.tudelft.pixelperfect.event.Events;
-import nl.tudelft.pixelperfect.event.parameter.EventParameter;
-import nl.tudelft.pixelperfect.event.parameter.EventParameterValues;
+import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.location.LocationEngineroomActivity;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
@@ -144,7 +142,7 @@ public class PlasmaLeakActivity extends AppCompatActivity{
      *
      */
     public void sendFailure() {
-        game.sendMessage(new EventCompletedMessage("WRONG ANSWER", -1));
+        game.sendMessage(new EventCompletedMessage(-1));
         Intent intent = new Intent(this, LocationEngineroomActivity.class);
         startActivity(intent);
     }
@@ -156,8 +154,8 @@ public class PlasmaLeakActivity extends AppCompatActivity{
      * @param view, the view of the page.
      */
     public void complete(View view) {
-        if(ship.getEventLog().contains(Events.PLASMA) && progress.getProgress() == 100) {
-            EventCompletedMessage message = new EventCompletedMessage("Plasma Event", ship.getEventLog().pop(Events.PLASMA).getId());
+        if(progress.getProgress() == 100) {
+            EventCompletedMessage message = new EventCompletedMessage(EventTypes.PLASMA_LEAK.ordinal());
             Map<String, Integer> parameters = new HashMap<String, Integer>();
             if(labOn) {
                 parameters.put("sector", 0);

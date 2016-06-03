@@ -8,8 +8,6 @@ import android.view.View;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
-import nl.tudelft.pixelperfect.event.Event;
-import nl.tudelft.pixelperfect.event.Events;
 import nl.tudelft.pixelperfect.pixelperfect.mini_game.PlasmaLeakActivity;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
