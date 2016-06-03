@@ -146,10 +146,7 @@ public class RoleActivity extends AppCompatActivity {
         scientistView.setEnabled(false);
         janitorView.setEnabled(false);
 
-        if(chosenRole == null) {
-            RoleChosenMessage role = new RoleChosenMessage("gunner", Roles.GUNNER);
-            game.sendMessage(role);
-        }
+
 
         chosenRole = Roles.GUNNER;
         Intent intent = new Intent(this, LocationArmoryActivity.class);
@@ -166,10 +163,7 @@ public class RoleActivity extends AppCompatActivity {
         scientistView.setEnabled(false);
         janitorView.setEnabled(false);
 
-        if(chosenRole == null) {
-            RoleChosenMessage role = new RoleChosenMessage("engineer", Roles.ENGINEER);
-            game.sendMessage(role);
-        }
+
 
         chosenRole = Roles.ENGINEER;
 
@@ -187,10 +181,7 @@ public class RoleActivity extends AppCompatActivity {
         engineerView.setEnabled(false);
         janitorView.setEnabled(false);
 
-        if(chosenRole == null) {
-            RoleChosenMessage role = new RoleChosenMessage("scientist", Roles.SCIENTIST);
-            game.sendMessage(role);
-        }
+
 
         chosenRole = Roles.SCIENTIST;
 
@@ -208,10 +199,7 @@ public class RoleActivity extends AppCompatActivity {
         engineerView.setEnabled(false);
         scientistView.setEnabled(false);
 
-        if(chosenRole == null) {
-            RoleChosenMessage role = new RoleChosenMessage("janitor", Roles.JANITOR);
-            game.sendMessage(role);
-        }
+        
 
         chosenRole = Roles.JANITOR;
 

@@ -37,26 +37,6 @@ public class ClientListener implements MessageListener<Client> {
      * @param message the message received.
      */
     public void updateRoleAvailability(Message message) {
-        RoleChosenMessage roleMessage = (RoleChosenMessage) message;
-        switch (roleMessage.getRole()) {
-            case GUNNER:
-                RoleActivity.getGunnerView().setAlpha(0.5f);
-                RoleActivity.getGunnerView().setEnabled(false);
-                break;
-            case ENGINEER:
-                RoleActivity.getEngineerView().setAlpha(0.5f);
-                RoleActivity.getEngineerView().setEnabled(false);
-                break;
-            case SCIENTIST:
-                RoleActivity.getScientistView().setAlpha(0.5f);
-                RoleActivity.getScientistView().setEnabled(false);
-                break;
-            case JANITOR:
-                RoleActivity.getJanitorView().setAlpha(0.5f);
-                RoleActivity.getScientistView().setEnabled(false);
-                break;
-            default:
-                break;
-        }
+        
     }
 }
