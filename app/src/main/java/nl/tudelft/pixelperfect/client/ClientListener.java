@@ -1,14 +1,10 @@
 package nl.tudelft.pixelperfect.client;
 
-import android.app.Activity;
-import android.view.View;
-
 import com.jme3.network.Client;
 import com.jme3.network.Message;
 import com.jme3.network.MessageListener;
 
 import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
-import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
 
 /**

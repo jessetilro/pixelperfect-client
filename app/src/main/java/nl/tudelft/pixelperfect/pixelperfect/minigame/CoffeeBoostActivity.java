@@ -170,6 +170,7 @@ public class CoffeeBoostActivity extends Activity {
      * @param view
      *          A view.
      */
+    @SuppressWarnings("UnusedParameters")
     public void confirmCoffeeEvent(View view) {
         if (gameComplete()) {
             game.sendMessage(new EventCompletedMessage(EventTypes.COFFEE_BOOST.ordinal()));
