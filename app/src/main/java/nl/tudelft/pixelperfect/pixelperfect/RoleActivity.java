@@ -110,19 +110,15 @@ public class RoleActivity extends AppCompatActivity {
         switch(message.getRole()){
             case GUNNER:
                 gunnerView.setEnabled(false);
-                gunnerView.setAlpha(0.5f);
                 break;
             case ENGINEER:
                 engineerView.setEnabled(false);
-                engineerView.setAlpha(0.5f);
                 break;
             case JANITOR:
                 janitorView.setEnabled(false);
-                janitorView.setAlpha(0.5f);
                 break;
             case SCIENTIST:
                 scientistView.setEnabled(false);
-                scientistView.setAlpha(0.5f);
                 break;
             default:
                 break;
