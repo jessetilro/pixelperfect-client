@@ -1,5 +1,6 @@
 package nl.tudelft.pixelperfect.pixelperfect;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -101,39 +102,32 @@ public class RoleActivity extends AppCompatActivity {
     }
 
     /**
-     * Gets the View of the Gunner button.
+     * Updates the view of the roles in the RoleActivity so that no more than 1 player may choose
+     * the same role.
      *
-     * @return a View of the button.
+     * @param message the message received.
      */
-    public static View getGunnerView() {
-        return gunnerView;
-    }
-
-    /**
-     * Gets the View of the Engineer button.
-     *
-     * @return a View of the button.
-     */
-    public static View getEngineerView() {
-        return engineerView;
-    }
-
-    /**
-     * Gets the View of the Scientist button.
-     *
-     * @return a View of the button.
-     */
-    public static View getScientistView() {
-        return scientistView;
-    }
-
-    /**
-     * Gets the View of the Janitor button.
-     *
-     * @return a View of the button.
-     */
-    public static View getJanitorView() {
-        return janitorView;
+    public static void updateRoleAvailability(RoleChosenMessage message) {
+        switch(message.getRole()){
+            case GUNNER:
+                gunnerView.setEnabled(false);
+                gunnerView.setAlpha(0.5f);
+                break;
+            case ENGINEER:
+                engineerView.setEnabled(false);
+                engineerView.setAlpha(0.5f);
+                break;
+            case JANITOR:
+                janitorView.setEnabled(false);
+                janitorView.setAlpha(0.5f);
+                break;
+            case SCIENTIST:
+                scientistView.setEnabled(false);
+                scientistView.setAlpha(0.5f);
+                break;
+            default:
+                break;
+        }
     }
 
     /**
@@ -146,7 +140,10 @@ public class RoleActivity extends AppCompatActivity {
         scientistView.setEnabled(false);
         janitorView.setEnabled(false);
 
-
+        if(chosenRole == null) {
+            RoleChosenMessage role = new RoleChosenMessage("gunner", Roles.GUNNER);
+            game.sendMessage(role);
+        }
 
         chosenRole = Roles.GUNNER;
         Intent intent = new Intent(this, LocationArmoryActivity.class);
@@ -163,10 +160,12 @@ public class RoleActivity extends AppCompatActivity {
         scientistView.setEnabled(false);
         janitorView.setEnabled(false);
 
-
+        if(chosenRole == null) {
+            RoleChosenMessage role = new RoleChosenMessage("engineer", Roles.ENGINEER);
+            game.sendMessage(role);
+        }
 
         chosenRole = Roles.ENGINEER;
-
         Intent intent = new Intent(this, LocationEngineroomActivity.class);
         startActivity(intent);
     }
@@ -181,10 +180,12 @@ public class RoleActivity extends AppCompatActivity {
         engineerView.setEnabled(false);
         janitorView.setEnabled(false);
 
-
+        if(chosenRole == null) {
+            RoleChosenMessage role = new RoleChosenMessage("scientist", Roles.SCIENTIST);
+            game.sendMessage(role);
+        }
 
         chosenRole = Roles.SCIENTIST;
-
         Intent intent = new Intent(this, LocationLabActivity.class);
         startActivity(intent);
     }
@@ -199,10 +200,12 @@ public class RoleActivity extends AppCompatActivity {
         engineerView.setEnabled(false);
         scientistView.setEnabled(false);
 
-        
+        if(chosenRole == null) {
+            RoleChosenMessage role = new RoleChosenMessage("janitor", Roles.JANITOR);
+            game.sendMessage(role);
+        }
 
         chosenRole = Roles.JANITOR;
-
         Intent intent = new Intent(this, LocationDeckActivity.class);
         startActivity(intent);
     }
