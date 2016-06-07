@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#ff9999"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:nestedScrollingEnabled="true"
+    android:longClickable="true">
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Extinguisher"
+        android:id="@+id/extinguishBox"
+        android:layout_alignTop="@+id/automatedKillerBox"
+        android:layout_alignParentLeft="true"></CheckBox>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Automatic Fire-O-Killer"
+        android:id="@+id/automatedKillerBox"
+        android:layout_alignTop="@+id/bucketBox"
+        android:layout_toRightOf="@+id/extinguishBox"></CheckBox>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Water Bucket"
+        android:id="@+id/bucketBox"
+        android:layout_alignTop="@+id/blanketBox"
+        android:layout_toRightOf="@+id/automatedKillerBox"></CheckBox>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fire Blanket"
+        android:id="@+id/blanketBox"
+        android:layout_alignTop="@+id/hammerBox"
+        android:layout_toRightOf="@+id/bucketBox"></CheckBox>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hammer"
+        android:id="@+id/hammerBox"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/blanketBox"
+        android:layout_marginTop="39dp"></CheckBox>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Select the solutions, and then press the button to deploy them."
+        android:id="@+id/objectiveText"
+        android:layout_above="@+id/engineButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="29dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Engine Room"
+        android:id="@+id/engineButton"
+        android:onClick="onEnginePress"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="88dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Air Support System"
+        android:id="@+id/airSupportButton"
+        android:onClick="onAirButtonPress"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/engineButton"
+        android:layout_marginBottom="88dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wing Plasma Pipes"
+        android:id="@+id/wingPlasmaButton"
+        android:onClick="onPlasmaPress"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/engineButton"
+        android:layout_marginBottom="88dp" />
+</RelativeLayout>
