@@ -1,4 +1,4 @@
-package nl.tudelft.pixelperfect.pixelperfect.mini_game;
+package nl.tudelft.pixelperfect.pixelperfect.minigame;
 
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
@@ -10,10 +10,7 @@ import android.widget.ProgressBar;
 
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
-import nl.tudelft.pixelperfect.event.Event;
-import nl.tudelft.pixelperfect.event.Events;
 import nl.tudelft.pixelperfect.pixelperfect.R;
-import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
 
 /**
  * Class responsible for the handling of the fire outbreak event.  A choice must
@@ -23,8 +20,7 @@ import nl.tudelft.pixelperfect.pixelperfect.Spaceship;
  * @author David Alderliesten
  *
  */
-public class FireActivity  extends AppCompatActivity {
-    private Spaceship ship;
+public class FireOutbreakActivity extends AppCompatActivity {
     private GameClient game;
 
     private int fireLocation;
@@ -61,7 +57,6 @@ public class FireActivity  extends AppCompatActivity {
         deployToWingPlasma = (Button) findViewById(R.id.wingPlasmaButton);
 
         game = GameClient.getInstance();
-        ship = Spaceship.getInstance();
     }
 
     /**
@@ -71,17 +66,7 @@ public class FireActivity  extends AppCompatActivity {
      *      The given state of validation.
      */
     private void validateAction(int passedState) {
-        if(!ship.getEventLog().contains(Events.FIRE)) {
-            game.sendMessage(new EventCompletedMessage("WRONG FIRE ACTIVATION MOMENT", -1));
-        }
 
-        if(passedState < 0) {
-            game.sendMessage(new EventCompletedMessage("WRONG FIRE COMBINATION", -1));
-        } else {
-            Event event = ship.getEventLog().peek(Events.FIRE);
-
-            game.sendMessage(new EventCompletedMessage("Asteroid Field Event", ship.getEventLog().pop(Events.FIRE).getId()));
-        }
     }
 
     /**
