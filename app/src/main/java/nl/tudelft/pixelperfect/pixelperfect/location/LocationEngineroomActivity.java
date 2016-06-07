@@ -10,6 +10,7 @@ import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.minigame.AsteroidImpactActivity;
 import nl.tudelft.pixelperfect.pixelperfect.R;
+import nl.tudelft.pixelperfect.pixelperfect.minigame.FireOutbreakActivity;
 
 /**
  * This class represents the location of the Engine Room occupied by the Engineer.
@@ -37,7 +38,8 @@ public class LocationEngineroomActivity extends AppCompatActivity {
      * @param view , the view of the page.
      */
     public void completeFireEvent(View view){
-        game.sendMessage(new EventCompletedMessage(EventTypes.FIRE_OUTBREAK.ordinal()));
+        Intent intent = new Intent(this, FireOutbreakActivity.class);
+        startActivity(intent);
     }
 
     /**
