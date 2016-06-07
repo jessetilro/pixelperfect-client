@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
+import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 
 /**
@@ -66,7 +67,8 @@ public class FireOutbreakActivity extends AppCompatActivity {
      *      The given state of validation.
      */
     private void validateAction(int passedState) {
-
+        game.sendMessage(new EventCompletedMessage(EventTypes.FIRE_OUTBREAK.ordinal()));
+        finishActivity(0);
     }
 
     /**
