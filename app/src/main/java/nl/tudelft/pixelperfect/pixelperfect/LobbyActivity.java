@@ -28,6 +28,9 @@ public class LobbyActivity extends AppCompatActivity {
         mContext = this;
     }
 
+    /**
+     * Starts the game because a message was received from the server.
+     */
     public static void startGame() {
         Intent newGame = new Intent(mContext, RoleActivity.class);
         mContext.startActivity(newGame);
