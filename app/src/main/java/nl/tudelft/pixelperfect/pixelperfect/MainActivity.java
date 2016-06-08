@@ -50,10 +50,10 @@ public class MainActivity extends AppCompatActivity implements ConnectResponse {
     }
 
     /**
-     * Starts the game through an Intent.
+     * Starts the lobby.
      */
-    private void setupRole() {
-        Intent intent = new Intent(this, RoleActivity.class);
+    private void setupLobby() {
+        Intent intent = new Intent(this, LobbyActivity.class);
         startActivity(intent);
     }
 
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements ConnectResponse {
     public void connect(View view) {
         if (game.isConnected()) {
             showMessage("Already connected!");
-            setupRole();
+            setupLobby();
             return;
         }
         EditText text = (EditText) findViewById(R.id.ip_address);
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements ConnectResponse {
         if (client != null) {
             game.setClient(client);
             showMessage("Connection established!");
-            setupRole();
+            setupLobby();
         } else {
             showMessage("Connection failed...");
         }
