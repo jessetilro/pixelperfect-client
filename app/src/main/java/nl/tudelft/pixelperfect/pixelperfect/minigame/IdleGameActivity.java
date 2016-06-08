@@ -12,14 +12,13 @@ import android.widget.Toast;
 import java.util.Random;
 
 import nl.tudelft.pixelperfect.client.GameClient;
-import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.message.RepairMessage;
-import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.location.LocationLabActivity;
 
 /**
- * Created by Dmitry on 07/06/2016.
+ * The activity the players can do to repair the ship.
+ *
  */
 public class IdleGameActivity extends AppCompatActivity {
 
@@ -28,6 +27,11 @@ public class IdleGameActivity extends AppCompatActivity {
     private String code;
     private String template;
 
+    /**
+     * What the class should do if the activity is created.
+     *
+     * @param savedInstanceState , A bundle.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,9 +43,14 @@ public class IdleGameActivity extends AppCompatActivity {
         view.setText(code);
     }
 
+    /**
+     * Creates a random 5 letter string as a passcode.
+     *
+     * @return , The generated passcode.
+     */
     public String generateString()
     {
-        char[] code = new char[6];
+        char[] code = new char[5];
         for (int i = 0; i < 5; i++)
         {
             code[i] = template.charAt(rng.nextInt(template.length()));
@@ -49,26 +58,29 @@ public class IdleGameActivity extends AppCompatActivity {
         return new String(code);
     }
 
-    private void showMessage(CharSequence text) {
-        Context context = getApplicationContext();
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-    }
-
+    /**
+     * What it should when the repairs are submitted.
+     *
+     * @param view , The view of the page
+     */
     public void completeRepair(View view) {
         EditText prompt = (EditText) findViewById(R.id.passcode);
         String pass = prompt.getText().toString();
-        //if(pass.equals(code)) {
-            //showMessage("Correct");
-            RepairMessage message = new RepairMessage(10);
+        System.out.println(pass);
+        System.out.println(code);
+        if(pass.equals(code)) {
+            RepairMessage message = new RepairMessage();
             game.sendMessage(message);
-        //}
+        }
 
         back(view);
     }
 
+    /**
+     * Returns the player to the event screen.
+     *
+     * @param view , The view of the page.
+     */
     public void back(View view) {
         Intent intent = new Intent(this, LocationLabActivity.class);
         startActivity(intent);

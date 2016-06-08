@@ -51,6 +51,11 @@ public class LocationLabActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Whenever the button to execute repairs is pressed this will happen.
+     *
+     * @param view , the view of the page.
+     */
     public void completeRepairs(View view) {
         Intent intent = new Intent(this, IdleGameActivity.class);
         startActivity(intent);
