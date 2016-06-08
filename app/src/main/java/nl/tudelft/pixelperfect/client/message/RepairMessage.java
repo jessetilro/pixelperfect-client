@@ -17,7 +17,7 @@ public class RepairMessage extends AbstractMessage {
      * The empty constructor for the message.
      */
     public RepairMessage() {
-        amount = 1;
+        amount = 2;
     }
 
     /**
