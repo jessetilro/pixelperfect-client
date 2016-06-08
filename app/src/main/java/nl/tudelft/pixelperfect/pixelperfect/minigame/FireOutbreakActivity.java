@@ -45,7 +45,7 @@ public class FireOutbreakActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mini_game_fire);
+        setContentView(R.layout.activity_fire_outbreak);
 
         useFireExtinguisher = (CheckBox) findViewById(R.id.extinguishBox);
         useAutomator = (CheckBox) findViewById(R.id.automatedKillerBox);
