@@ -27,7 +27,7 @@
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="nl.tudelft.pixelperfect.pixelperfect.MainActivity" />
+                android:value="nl.tudelft.pixelperfect.pixelperfect.RoleActivity" />
         </activity>
         <activity
             android:name=".RoleActivity"
