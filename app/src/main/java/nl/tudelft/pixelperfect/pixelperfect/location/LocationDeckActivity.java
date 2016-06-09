@@ -37,6 +37,7 @@ public class LocationDeckActivity extends AppCompatActivity {
      *
      * @param view , the view of the page.
      */
+    @SuppressWarnings("UnusedParameters")
     public void completeFireEvent(View view){
         Intent intent = new Intent(this, FireOutbreakActivity.class);
         startActivity(intent);
@@ -47,6 +48,7 @@ public class LocationDeckActivity extends AppCompatActivity {
      *
      * @param view , the view of the page.
      */
+    @SuppressWarnings("UnusedParameters")
     public void completeCoffeeEvent(View view) {
         Intent intent = new Intent(this, CoffeeBoostActivity.class);
         startActivity(intent);

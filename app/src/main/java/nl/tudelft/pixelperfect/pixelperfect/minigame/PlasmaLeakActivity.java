@@ -20,10 +20,11 @@ import nl.tudelft.pixelperfect.pixelperfect.location.LocationLabActivity;
  *
  * @author Dmitry
  */
+@SuppressWarnings("UnusedParameters")
 public class PlasmaLeakActivity extends AppCompatActivity{
     private GameClient game = GameClient.getInstance();
     private ProgressBar progress;
-    private int removedbolts;
+    private int removedBolts;
     private int sector;
 
     /**
@@ -36,7 +37,7 @@ public class PlasmaLeakActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_minigame_plasma_leak);
         progress = (ProgressBar) findViewById(R.id.mini_game_progress_bar);
-        removedbolts = 0;
+        removedBolts = 0;
     }
 
     /**
@@ -82,9 +83,9 @@ public class PlasmaLeakActivity extends AppCompatActivity{
      */
     public void removeBolts(View view) {
         if(progress.getProgress() < 25) {
-            if(removedbolts != 5 ) {
+            if(removedBolts != 5 ) {
                 progress.incrementProgressBy(5);
-                removedbolts++;
+                removedBolts++;
             }
         }
     }
@@ -96,7 +97,7 @@ public class PlasmaLeakActivity extends AppCompatActivity{
      */
     public void repairPipe(View view) {
         if(progress.getProgress() < 75 && progress.getProgress() >=25) {
-            if(removedbolts == 5) {
+            if(removedBolts == 5) {
                 progress.incrementProgressBy(5);
             }
         }
@@ -109,9 +110,9 @@ public class PlasmaLeakActivity extends AppCompatActivity{
      */
     public void insertBolts(View view) {
         if(progress.getProgress() < 100 && progress.getProgress() >=75) {
-            if(removedbolts != 0 ) {
+            if(removedBolts != 0 ) {
                 progress.incrementProgressBy(5);
-                removedbolts--;
+                removedBolts--;
             }
         }
     }
