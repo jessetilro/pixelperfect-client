@@ -6,7 +6,8 @@
     <string name="button_connect">Connect</string>
     <string name="button_complete_asteroid_field_event">Asteroid Impact</string>
     <string name="button_complete_fire_event">Fire</string>
-    <string name="button_complete_hostile_ship_event">Hostile Ship</string>
+    <string name="button_start_hostile_ship_minigame">Fight a Hostile Ship</string>
+    <string name="button_complete_hostile_ship_minigame">Fire the cannons!</string>
     <string name="button_complete_plasma_leak_event">Plasma Leak</string>
     <string name="button_complete_coffee_boost_event">Coffee Boost</string>
     <string name="button_role_gunner">Gunner</string>
