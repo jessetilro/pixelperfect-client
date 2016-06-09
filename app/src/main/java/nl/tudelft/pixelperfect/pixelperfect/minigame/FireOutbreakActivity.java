@@ -68,7 +68,7 @@ public class FireOutbreakActivity extends AppCompatActivity {
      */
     private void validateAction(int passedState) {
         game.sendMessage(new EventCompletedMessage(EventTypes.FIRE_OUTBREAK.ordinal()));
-        finishActivity(0);
+        finish();
     }
 
     /**
