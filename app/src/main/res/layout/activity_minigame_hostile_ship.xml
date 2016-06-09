@@ -1,54 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
 
+    <TextView
+        android:id="@+id/text_position_x"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Position x-coordinate"/>
+
+    <EditText
+        android:id="@+id/position_x"
+        android:inputType="number"
+        android:hint="Enter x-coordinate"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_position_x" />
+
+    <TextView
+        android:id="@+id/text_position_y"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_below="@id/position_x"
+        android:text="Position y-coordinate"/>
+
+    <EditText
+        android:id="@+id/position_y"
+        android:inputType="number"
+        android:hint="Enter y-coordinate"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_position_y"
+        android:progress="0" />
+
+    <TextView
+        android:id="@+id/text_armor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_below="@id/position_y"
+        android:text="The hostile spaceship's armor type"/>
+
+    <RadioGroup
+        android:id="@+id/armor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/text_armor"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+        <RadioButton android:id="@+id/armor_energy_shield"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:button="@drawable/button_spaceship_energy_shield"
+            android:onClick="onSelectArmor"/>
+        <RadioButton android:id="@+id/armor_graphene"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:button="@drawable/button_spaceship_graphene"
+            android:onClick="onSelectArmor"/>
+        <RadioButton android:id="@+id/armor_titanium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/button_spaceship_titanium"
+            android:onClick="onSelectArmor"/>
+    </RadioGroup>
+
     <Button
+        android:id="@+id/button_complete_plasma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_complete_hostile_ship_minigame"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:onClick="complete"
-        android:id="@+id/button_complete_plasma"
-        android:layout_alignParentBottom="true"
+
+        android:layout_below="@id/armor"
         android:layout_centerHorizontal="true" />
 
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="52dp"
-        android:layout_marginTop="52dp">
-        <RadioButton android:id="@+id/radio1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lab"
-            android:onClick="switchLab"/>
-        <RadioButton android:id="@+id/radio2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Armory"
-            android:onClick="switchArmory"/>
-        <RadioButton android:id="@+id/radio3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Engine"
-            android:onClick="switchEngine"/>
-        <RadioButton android:id="@+id/radio4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Deck"
-            android:onClick="switchDeck"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="148dp"
-            android:text="INSTRUCTIONS: \n\n Select room \n Remove 5 bolts \n Repair pipe 10 times \n Re-insert the bolts"
-            android:clickable="false"
-            android:id="@+id/textView" />
-    </RadioGroup>
-
-
 </RelativeLayout>
+</ScrollView>
