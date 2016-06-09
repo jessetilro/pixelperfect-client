@@ -6,10 +6,11 @@
     android:background="#fff9b4"
     tools:ignore="Overdraw">
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_complete_fire_event"
+        android:src="@drawable/button_icon_fire_outbreak"
+        android:background="@drawable/button_fire_outbreak"
         android:id="@+id/button_complete_fire_event"
         android:onClick="completeFireEvent"
         android:layout_marginLeft="117dp"
@@ -18,10 +19,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_complete_asteroid_field_event"
+        android:src="@drawable/button_icon_asteroid_impact"
+        android:background="@drawable/button_asteroid_impact"
         android:id="@+id/button_complete_asteroid_field_event"
         android:onClick="completeAsteroidImpactEvent"
         android:layout_centerVertical="true"
