@@ -82,6 +82,6 @@ public class IdleGameActivity extends AppCompatActivity {
      * @param view , The view of the page.
      */
     public void back(View view) {
-        finishActivity(0);
+        finish();
     }
 }
