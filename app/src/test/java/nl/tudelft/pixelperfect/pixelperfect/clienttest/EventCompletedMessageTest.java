@@ -20,6 +20,7 @@ import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 public class EventCompletedMessageTest {
 
     private EventCompletedMessage object;
+    @SuppressWarnings("FieldCanBeLocal")
     private Map<String, Integer> map;
 
     /**

@@ -7,6 +7,7 @@ import com.jme3.network.MessageListener;
 import nl.tudelft.pixelperfect.client.message.NewGameMessage;
 import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
 import nl.tudelft.pixelperfect.pixelperfect.LobbyActivity;
+import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
 
 /**
  * The ClientListeners waits for incoming messages from the server and interpret them.
@@ -27,19 +28,9 @@ public class ClientListener implements MessageListener<Client> {
      */
     public void messageReceived(Client source, Message message) {
         if (message instanceof RoleChosenMessage) {
-            updateRoleAvailability(message);
+            RoleActivity.updateRoleAvailability((RoleChosenMessage) message);
         } else if (message instanceof NewGameMessage) {
             LobbyActivity.startGame();
         }
-    }
-
-    /**
-     * Updates the view of the roles in the RoleActivity so that no more than 1 player may choose
-     * the same role.
-     *
-     * @param message the message received.
-     */
-    public void updateRoleAvailability(Message message) {
-        
     }
 }
