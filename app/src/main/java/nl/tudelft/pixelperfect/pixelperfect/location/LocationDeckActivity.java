@@ -11,6 +11,7 @@ import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
 import nl.tudelft.pixelperfect.pixelperfect.minigame.CoffeeBoostActivity;
+import nl.tudelft.pixelperfect.pixelperfect.minigame.FireOutbreakActivity;
 
 /**
  * The location of the Janitor where he can make some coffee.
@@ -50,7 +51,8 @@ public class LocationDeckActivity extends AppCompatActivity {
      * @param view , the view of the page.
      */
     public void completeFireEvent(View view){
-        game.sendMessage(new EventCompletedMessage(EventTypes.FIRE_OUTBREAK.ordinal()));
+        Intent intent = new Intent(this, FireOutbreakActivity.class);
+        startActivity(intent);
     }
 
     /**
