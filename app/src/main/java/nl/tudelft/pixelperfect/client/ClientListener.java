@@ -4,7 +4,9 @@ import com.jme3.network.Client;
 import com.jme3.network.Message;
 import com.jme3.network.MessageListener;
 
+import nl.tudelft.pixelperfect.client.message.NewGameMessage;
 import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
+import nl.tudelft.pixelperfect.pixelperfect.LobbyActivity;
 import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
 
 /**
@@ -27,8 +29,8 @@ public class ClientListener implements MessageListener<Client> {
     public void messageReceived(Client source, Message message) {
         if (message instanceof RoleChosenMessage) {
             RoleActivity.updateRoleAvailability((RoleChosenMessage) message);
+        } else if (message instanceof NewGameMessage) {
+            LobbyActivity.startGame();
         }
     }
-
-
 }
