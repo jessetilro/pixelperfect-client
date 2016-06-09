@@ -8,6 +8,7 @@ import android.view.View;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
+import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
 import nl.tudelft.pixelperfect.pixelperfect.minigame.AsteroidImpactActivity;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 
@@ -29,6 +30,18 @@ public class LocationEngineroomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_engineroom);
+    }
+
+    /**
+     * When you press the back button the mobile device, you will go to the RoleActivity in which
+     * you still have the same role.
+     */
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(LocationEngineroomActivity.this, RoleActivity.class);
+        intent.putExtra("Game Started", true);
+        finish();
+        startActivity(intent);
     }
 
     /**
