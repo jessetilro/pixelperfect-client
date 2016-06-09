@@ -82,7 +82,6 @@ public class IdleGameActivity extends AppCompatActivity {
      * @param view , The view of the page.
      */
     public void back(View view) {
-        Intent intent = new Intent(this, LocationLabActivity.class);
-        startActivity(intent);
+        finishActivity(0);
     }
 }

@@ -10,6 +10,7 @@ import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.minigame.AsteroidImpactActivity;
 import nl.tudelft.pixelperfect.pixelperfect.R;
+import nl.tudelft.pixelperfect.pixelperfect.minigame.IdleGameActivity;
 
 /**
  * This class represents the location of the Engine Room occupied by the Engineer.
@@ -47,6 +48,16 @@ public class LocationEngineroomActivity extends AppCompatActivity {
      */
     public void completeAsteroidImpactEvent(View view){
         Intent intent = new Intent(this, AsteroidImpactActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Whenever the button to execute repairs is pressed this will happen.
+     *
+     * @param view , the view of the page.
+     */
+    public void completeRepairs(View view) {
+        Intent intent = new Intent(this, IdleGameActivity.class);
         startActivity(intent);
     }
 }

@@ -1,5 +1,6 @@
 package nl.tudelft.pixelperfect.pixelperfect.location;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,6 +12,7 @@ import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
+import nl.tudelft.pixelperfect.pixelperfect.minigame.IdleGameActivity;
 
 
 /**
@@ -53,5 +55,15 @@ public class LocationArmoryActivity extends AppCompatActivity {
         parameters.put("testParam", 42);
         message.setParameters(parameters);
         game.sendMessage(message);
+    }
+
+    /**
+     * Whenever the button to execute repairs is pressed this will happen.
+     *
+     * @param view , the view of the page.
+     */
+    public void completeRepairs(View view) {
+        Intent intent = new Intent(this, IdleGameActivity.class);
+        startActivity(intent);
     }
 }
