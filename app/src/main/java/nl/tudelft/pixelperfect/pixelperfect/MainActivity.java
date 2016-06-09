@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements ConnectResponse {
 
     private GameClient game;
     private AlertDialog dialog;
+    private boolean gameStarted;
 
     /**
      * Whenever this activity is created, the game will be initialized and a dialog will lead
@@ -36,6 +37,10 @@ public class MainActivity extends AppCompatActivity implements ConnectResponse {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         game = GameClient.getInstance();
+        Bundle extras = getIntent().getExtras();
+        if(extras != null){
+            gameStarted = extras.getBoolean("Game Started");
+        }
         buildDialog();
     }
 
@@ -50,10 +55,11 @@ public class MainActivity extends AppCompatActivity implements ConnectResponse {
     }
 
     /**
-     * Starts the game through an Intent.
+     * Starts the roles.
      */
-    private void setupRole() {
+    private void setupRoles() {
         Intent intent = new Intent(this, RoleActivity.class);
+        intent.putExtra("Game Started", gameStarted);
         startActivity(intent);
     }
 
@@ -78,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements ConnectResponse {
     public void connect(View view) {
         if (game.isConnected()) {
             showMessage("Already connected!");
-            setupRole();
+            setupRoles();
             return;
         }
         EditText text = (EditText) findViewById(R.id.ip_address);
@@ -101,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements ConnectResponse {
         if (client != null) {
             game.setClient(client);
             showMessage("Connection established!");
-            setupRole();
+            setupRoles();
         } else {
             showMessage("Connection failed...");
         }

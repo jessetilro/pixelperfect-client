@@ -27,6 +27,7 @@ public class RoleActivity extends AppCompatActivity {
     private static View engineerView;
     private static View scientistView;
     private static View janitorView;
+    private boolean gameStarted;
     private GameClient game;
     private Roles chosenRole;
 
@@ -46,13 +47,18 @@ public class RoleActivity extends AppCompatActivity {
             engineerView = findViewById(R.id.button_role_engineer);
             scientistView = findViewById(R.id.button_role_scientist);
             janitorView = findViewById(R.id.button_role_janitor);
+            gameStarted = false;
+        }
+        Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            gameStarted = getIntent().getExtras().getBoolean("Game Started");
         }
         game = GameClient.getInstance();
     }
 
     /**
-     * When the home button is pressed in the actionbar, a new connection should be made to ensure
-     * no second role can be chosen. This has the same function as the back button on the device
+     * When the home button is pressed in the actionbar, the user will go to the MainActivity.
+     * This has the same function as the back button on the device
      * itself.
      *
      * @param item the item in the action bar.
@@ -69,13 +75,12 @@ public class RoleActivity extends AppCompatActivity {
     }
 
     /**
-     * When you press the back button the mobile device, you will go to the mainActivity and will
-     * be disconnected so no cheating can take place and the Server will nicely end the connection.
+     * When you press the back button the mobile device, you will go to the mainActivity.
      */
     @Override
     public void onBackPressed() {
-        game.disconnect();
         Intent intent = new Intent(RoleActivity.this, MainActivity.class);
+        intent.putExtra("Game Started", gameStarted);
         startActivity(intent);
         finish();
     }
@@ -141,8 +146,12 @@ public class RoleActivity extends AppCompatActivity {
         }
 
         chosenRole = Roles.GUNNER;
-        Intent intent = new Intent(this, LocationArmoryActivity.class);
-        startActivity(intent);
+        if(gameStarted){
+            Intent intent = new Intent(this, LocationArmoryActivity.class);
+            startActivity(intent);
+        } else {
+            enterLobby();
+        }
     }
 
     /**
@@ -159,10 +168,14 @@ public class RoleActivity extends AppCompatActivity {
             RoleChosenMessage role = new RoleChosenMessage("engineer", Roles.ENGINEER);
             game.sendMessage(role);
         }
-
         chosenRole = Roles.ENGINEER;
-        Intent intent = new Intent(this, LocationEngineroomActivity.class);
-        startActivity(intent);
+
+        if(gameStarted){
+            Intent intent = new Intent(this, LocationEngineroomActivity.class);
+            startActivity(intent);
+        } else {
+            enterLobby();
+        }
     }
 
     /**
@@ -179,10 +192,14 @@ public class RoleActivity extends AppCompatActivity {
             RoleChosenMessage role = new RoleChosenMessage("scientist", Roles.SCIENTIST);
             game.sendMessage(role);
         }
-
         chosenRole = Roles.SCIENTIST;
-        Intent intent = new Intent(this, LocationLabActivity.class);
-        startActivity(intent);
+
+        if(gameStarted){
+            Intent intent = new Intent(this, LocationLabActivity.class);
+            startActivity(intent);
+        } else {
+            enterLobby();
+        }
     }
 
     /**
@@ -199,9 +216,19 @@ public class RoleActivity extends AppCompatActivity {
             RoleChosenMessage role = new RoleChosenMessage("janitor", Roles.JANITOR);
             game.sendMessage(role);
         }
-
         chosenRole = Roles.JANITOR;
-        Intent intent = new Intent(this, LocationDeckActivity.class);
-        startActivity(intent);
+
+        if(gameStarted){
+            Intent intent = new Intent(this, LocationDeckActivity.class);
+            startActivity(intent);
+        } else {
+            enterLobby();
+        }
+    }
+
+    public void enterLobby(){
+        Intent lobby = new Intent(this, LobbyActivity.class);
+        lobby.putExtra("Role", chosenRole);
+        startActivity(lobby);
     }
 }
