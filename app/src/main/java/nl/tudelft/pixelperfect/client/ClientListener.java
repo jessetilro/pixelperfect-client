@@ -26,17 +26,9 @@ public class ClientListener implements MessageListener<Client> {
      */
     public void messageReceived(Client source, Message message) {
         if (message instanceof RoleChosenMessage) {
-            updateRoleAvailability(message);
+            RoleActivity.updateRoleAvailability((RoleChosenMessage) message);
         }
     }
 
-    /**
-     * Updates the view of the roles in the RoleActivity so that no more than 1 player may choose
-     * the same role.
-     *
-     * @param message the message received.
-     */
-    public void updateRoleAvailability(Message message) {
-        
-    }
+
 }

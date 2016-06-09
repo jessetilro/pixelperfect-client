@@ -16,12 +16,13 @@ import nl.tudelft.pixelperfect.game.Roles;
 public class RoleChosenMessage extends AbstractMessage {
     private Roles role;
     private String label;
+    private Boolean isEmpty;
 
     /**
      * The empty Constructor.
      */
     public RoleChosenMessage() {
-
+        this.isEmpty = true;
     }
 
     /**
@@ -33,6 +34,7 @@ public class RoleChosenMessage extends AbstractMessage {
     public RoleChosenMessage(String label, Roles role) {
         this.role = role;
         this.label = label;
+        this.isEmpty = false;
     }
 
     /**
@@ -51,6 +53,16 @@ public class RoleChosenMessage extends AbstractMessage {
      */
     public Roles getRole() {
         return role;
+    }
+
+    /**
+     * Returns whether the message is empty or not. If the message is empty it is likely to be used
+     * for sending back all roles chosen.
+     *
+     * @return a boolean.
+     */
+    public Boolean isEmpty() {
+        return isEmpty;
     }
 
 }
