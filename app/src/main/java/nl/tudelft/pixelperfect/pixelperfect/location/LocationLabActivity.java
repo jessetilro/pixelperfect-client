@@ -9,6 +9,7 @@ import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
+import nl.tudelft.pixelperfect.pixelperfect.minigame.FireOutbreakActivity;
 import nl.tudelft.pixelperfect.pixelperfect.minigame.PlasmaLeakActivity;
 
 /**
@@ -37,7 +38,8 @@ public class LocationLabActivity extends AppCompatActivity {
      * @param view , the view of the page.
      */
     public void completeFireEvent(View view) {
-        game.sendMessage(new EventCompletedMessage(EventTypes.FIRE_OUTBREAK.ordinal()));
+       Intent intent = new Intent(this, FireOutbreakActivity.class);
+        startActivity(intent);
     }
 
     /**
