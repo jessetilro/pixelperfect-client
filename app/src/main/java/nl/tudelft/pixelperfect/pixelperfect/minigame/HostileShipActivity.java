@@ -40,10 +40,11 @@ public class HostileShipActivity extends AppCompatActivity {
 
     /**
      * Handler called when the selection for the armor field is updated.
+     *
      * @param view The view element.
      */
     public void onSelectArmor(View view) {
-        int[] ids = { R.id.armor_energy_shield, R.id.armor_graphene, R.id.armor_titanium };
+        int[] ids = {R.id.armor_energy_shield, R.id.armor_graphene, R.id.armor_titanium};
         for (int index = 0; index < ids.length; index++) {
             if (ids[index] == view.getId()) {
                 armor = index;
@@ -53,6 +54,7 @@ public class HostileShipActivity extends AppCompatActivity {
 
     /**
      * Read the entered x-coordinate from the view.
+     *
      * @return The entered position x parameter value.
      */
     private int readPositionX() {
@@ -62,6 +64,8 @@ public class HostileShipActivity extends AppCompatActivity {
 
     /**
      * Read an entered integer value from the view.
+     *
+     * @param id The view element id to read from.
      * @return The entered integer value.
      */
     private int readInteger(int id) {
@@ -82,7 +86,7 @@ public class HostileShipActivity extends AppCompatActivity {
         parameters.put("armor", armor);
         message.setParameters(parameters);
         game.sendMessage(message);
-        
+
         Intent intent = new Intent(this, LocationArmoryActivity.class);
         startActivity(intent);
     }

@@ -14,7 +14,6 @@ import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
-import nl.tudelft.pixelperfect.pixelperfect.location.LocationDeckActivity;
 import nl.tudelft.pixelperfect.pixelperfect.location.LocationEngineroomActivity;
 
 /**
@@ -23,6 +22,7 @@ import nl.tudelft.pixelperfect.pixelperfect.location.LocationEngineroomActivity;
  *
  * @author Floris Doolaard
  */
+@SuppressWarnings("unused")
 public class AsteroidImpactActivity extends AppCompatActivity {
     private GameClient game = GameClient.getInstance();
     private ProgressBar progressBarEnergyShield;
@@ -50,6 +50,7 @@ public class AsteroidImpactActivity extends AppCompatActivity {
      *
      * @param view the View of the button.
      */
+    @SuppressWarnings("UnusedParameters")
     public void createProgress(View view) {
         if (repairingEnergyShield) {
             increaseProgress(progressBarEnergyShield);

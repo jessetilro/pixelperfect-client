@@ -8,6 +8,7 @@ import android.view.View;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.minigame.HostileShipActivity;
+import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
 import nl.tudelft.pixelperfect.pixelperfect.minigame.FireOutbreakActivity;
 
 
@@ -29,6 +30,18 @@ public class LocationArmoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_armory);
+    }
+
+    /**
+     * When you press the back button the mobile device, you will go to the RoleActivity in which
+     * you still have the same role.
+     */
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(LocationArmoryActivity.this, RoleActivity.class);
+        intent.putExtra("Game Started", true);
+        finish();
+        startActivity(intent);
     }
 
     /**
