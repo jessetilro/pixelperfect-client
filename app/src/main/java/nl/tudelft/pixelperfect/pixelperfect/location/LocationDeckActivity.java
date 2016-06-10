@@ -12,6 +12,7 @@ import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
 import nl.tudelft.pixelperfect.pixelperfect.minigame.CoffeeBoostActivity;
 import nl.tudelft.pixelperfect.pixelperfect.minigame.FireOutbreakActivity;
+import nl.tudelft.pixelperfect.pixelperfect.minigame.IdleGameActivity;
 
 /**
  * The location of the Janitor where he can make some coffee.
@@ -64,6 +65,16 @@ public class LocationDeckActivity extends AppCompatActivity {
     @SuppressWarnings("UnusedParameters")
     public void completeCoffeeEvent(View view) {
         Intent intent = new Intent(this, CoffeeBoostActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Whenever the button to execute repairs is pressed this will happen.
+     *
+     * @param view , the view of the page.
+     */
+    public void completeRepairs(View view) {
+        Intent intent = new Intent(this, IdleGameActivity.class);
         startActivity(intent);
     }
 }

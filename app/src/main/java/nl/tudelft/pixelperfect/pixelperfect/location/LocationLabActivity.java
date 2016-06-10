@@ -9,6 +9,7 @@ import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
 import nl.tudelft.pixelperfect.pixelperfect.minigame.FireOutbreakActivity;
+import nl.tudelft.pixelperfect.pixelperfect.minigame.IdleGameActivity;
 import nl.tudelft.pixelperfect.pixelperfect.minigame.PlasmaLeakActivity;
 
 /**
@@ -60,6 +61,16 @@ public class LocationLabActivity extends AppCompatActivity {
      */
     public void completePlasmaLeakEvent(View view) {
         Intent intent = new Intent(this, PlasmaLeakActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Whenever the button to execute repairs is pressed this will happen.
+     *
+     * @param view , the view of the page.
+     */
+    public void completeRepairs(View view) {
+        Intent intent = new Intent(this, IdleGameActivity.class);
         startActivity(intent);
     }
 }

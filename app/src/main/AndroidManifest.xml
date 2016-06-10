@@ -73,8 +73,14 @@
             android:screenOrientation="landscape"></activity>
         <activity
             android:name=".minigame.FireOutbreakActivity"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape"
+            android:configChanges="keyboardHidden|orientation">
+        </activity>
+        <activity
+            android:name=".minigame.IdleGameActivity"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboardHidden|orientation">
+        </activity>
     </application>
 
 </manifest>

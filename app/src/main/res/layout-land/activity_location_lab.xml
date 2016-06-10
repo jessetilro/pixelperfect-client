@@ -36,4 +36,13 @@
         android:layout_alignParentEnd="true"
         tools:ignore="RelativeOverlap" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Repair"
+        android:id="@+id/button_repair"
+        android:onClick="completeRepairs"
+        android:layout_below="@+id/button_complete_plasma_leak_event"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
