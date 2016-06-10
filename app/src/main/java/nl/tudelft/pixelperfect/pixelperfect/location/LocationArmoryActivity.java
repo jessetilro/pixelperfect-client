@@ -14,6 +14,7 @@ import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
 import nl.tudelft.pixelperfect.pixelperfect.minigame.FireOutbreakActivity;
+import nl.tudelft.pixelperfect.pixelperfect.minigame.IdleGameActivity;
 
 
 /**
@@ -69,5 +70,15 @@ public class LocationArmoryActivity extends AppCompatActivity {
         parameters.put("testParam", 42);
         message.setParameters(parameters);
         game.sendMessage(message);
+    }
+
+    /**
+     * Whenever the button to execute repairs is pressed this will happen.
+     *
+     * @param view , the view of the page.
+     */
+    public void completeRepairs(View view) {
+        Intent intent = new Intent(this, IdleGameActivity.class);
+        startActivity(intent);
     }
 }
