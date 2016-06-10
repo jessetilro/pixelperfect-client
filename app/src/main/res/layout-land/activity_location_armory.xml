@@ -6,10 +6,11 @@
     android:background="@color/colorPrimary"
     tools:ignore="Overdraw">
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_complete_fire_event"
+        android:src="@drawable/button_icon_fire_outbreak"
+        android:background="@drawable/button_fire_outbreak"
         android:id="@+id/button_complete_fire_event"
         android:onClick="completeFireEvent"
         android:layout_alignTop="@+id/button_complete_hostile_ship_event"
@@ -18,10 +19,11 @@
         android:layout_marginLeft="125dp"
         android:layout_marginStart="125dp" />
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_complete_hostile_ship_event"
+        android:src="@drawable/button_icon_hostile_ship"
+        android:background="@drawable/button_hostile_ship"
         android:id="@+id/button_complete_hostile_ship_event"
         android:onClick="completeHostileShipEvent"
         android:layout_gravity="center_horizontal"
@@ -31,5 +33,14 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         tools:ignore="RelativeOverlap" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Repair"
+        android:id="@+id/button_repair"
+        android:onClick="completeRepairs"
+        android:layout_below="@+id/button_complete_hostile_ship_event"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

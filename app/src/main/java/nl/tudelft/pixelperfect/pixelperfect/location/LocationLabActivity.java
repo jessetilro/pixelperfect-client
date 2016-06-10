@@ -5,10 +5,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
-import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
+import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
+import nl.tudelft.pixelperfect.pixelperfect.minigame.FireOutbreakActivity;
+import nl.tudelft.pixelperfect.pixelperfect.minigame.IdleGameActivity;
 import nl.tudelft.pixelperfect.pixelperfect.minigame.PlasmaLeakActivity;
 
 /**
@@ -32,12 +33,25 @@ public class LocationLabActivity extends AppCompatActivity {
     }
 
     /**
+     * When you press the back button the mobile device, you will go to the RoleActivity in which
+     * you still have the same role.
+     */
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(LocationLabActivity.this, RoleActivity.class);
+        intent.putExtra("Game Started", true);
+        finish();
+        startActivity(intent);
+    }
+
+    /**
      * Whenever the button to complete the Fire Event is pressed this will happen.
      *
      * @param view , the view of the page.
      */
     public void completeFireEvent(View view) {
-        game.sendMessage(new EventCompletedMessage(EventTypes.FIRE_OUTBREAK.ordinal()));
+       Intent intent = new Intent(this, FireOutbreakActivity.class);
+        startActivity(intent);
     }
 
     /**
@@ -47,6 +61,16 @@ public class LocationLabActivity extends AppCompatActivity {
      */
     public void completePlasmaLeakEvent(View view) {
         Intent intent = new Intent(this, PlasmaLeakActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Whenever the button to execute repairs is pressed this will happen.
+     *
+     * @param view , the view of the page.
+     */
+    public void completeRepairs(View view) {
+        Intent intent = new Intent(this, IdleGameActivity.class);
         startActivity(intent);
     }
 }

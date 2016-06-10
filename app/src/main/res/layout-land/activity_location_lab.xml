@@ -6,10 +6,11 @@
     android:background="#d6f9cf"
     tools:ignore="Overdraw">
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_complete_fire_event"
+        android:src="@drawable/button_icon_fire_outbreak"
+        android:background="@drawable/button_fire_outbreak"
         android:id="@+id/button_complete_fire_event"
         android:onClick="completeFireEvent"
         android:layout_marginLeft="118dp"
@@ -20,10 +21,11 @@
 
 
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_complete_plasma_leak_event"
+        android:src="@drawable/button_icon_plasma_leak"
+        android:background="@drawable/button_plasma_leak"
         android:id="@+id/button_complete_plasma_leak_event"
         android:onClick="completePlasmaLeakEvent"
         android:layout_gravity="center_horizontal"
@@ -33,5 +35,14 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         tools:ignore="RelativeOverlap" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Repair"
+        android:id="@+id/button_repair"
+        android:onClick="completeRepairs"
+        android:layout_below="@+id/button_complete_plasma_leak_event"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

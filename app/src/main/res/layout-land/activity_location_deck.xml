@@ -5,10 +5,11 @@
     android:layout_height="match_parent"
     android:background="#cd95c9">
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_complete_fire_event"
+        android:src="@drawable/button_icon_fire_outbreak"
+        android:background="@drawable/button_fire_outbreak"
         android:id="@+id/button_complete_fire_event"
         android:onClick="completeFireEvent"
         android:layout_marginLeft="113dp"
@@ -17,10 +18,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_complete_coffee_boost_event"
+        android:src="@drawable/button_icon_coffee_boost"
+        android:background="@drawable/button_coffee_boost"
         android:id="@+id/button_complete_coffee_boost_event"
         android:onClick="completeCoffeeEvent"
         android:layout_marginRight="138dp"
@@ -29,5 +31,14 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         tools:ignore="RelativeOverlap" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Repair"
+        android:id="@+id/button_repair"
+        android:onClick="completeRepairs"
+        android:layout_below="@+id/button_complete_coffee_boost_event"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
