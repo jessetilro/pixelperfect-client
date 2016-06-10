@@ -44,8 +44,6 @@ public class CoffeeBoostActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_minigame_coffee_boost);
         initialize();
-
-
     }
 
     /**
@@ -54,9 +52,12 @@ public class CoffeeBoostActivity extends Activity {
     private void shuffle() {
         Random random = new Random();
         random.setSeed(System.currentTimeMillis());
-        int limit = random.nextInt(10) + 5;
+        int limit = 100;
         for (int i = 0; i < limit; i++) {
             makeMove(buttons[random.nextInt(7)+1]);
+        }
+        if (gameComplete()){
+            shuffle();
         }
     }
 
