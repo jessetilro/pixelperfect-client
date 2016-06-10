@@ -28,7 +28,17 @@ public class ClientListener implements MessageListener<Client> {
      */
     public void messageReceived(Client source, Message message) {
         if (message instanceof RoleChosenMessage) {
-            RoleActivity.updateRoleAvailability((RoleChosenMessage) message);
+            RoleChosenMessage chosenRole = (RoleChosenMessage) message;
+            if (chosenRole.isAllocated()) {
+                System.out.println("Server granted request for " + chosenRole.getRole().toString());
+                RoleActivity.enterLobby(chosenRole.getRole());
+            } else {
+                //RoleActivity.updateRoleAvailability((RoleChosenMessage) message);
+                //StringBuilder sb = new StringBuilder();
+                //sb.append("The role ").append(chosenRole.getRole().toString()).append(" is already taken!");
+                //RoleActivity.showMessage(sb.toString());
+            }
+
         } else if (message instanceof NewGameMessage) {
             LobbyActivity.startGame();
         }

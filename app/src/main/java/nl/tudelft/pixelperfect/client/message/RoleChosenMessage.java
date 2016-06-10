@@ -11,58 +11,46 @@ import nl.tudelft.pixelperfect.game.Roles;
  *
  * @author Floris Doolaard
  */
-@SuppressWarnings("unused")
 @Serializable
 public class RoleChosenMessage extends AbstractMessage {
     private Roles role;
-    private String label;
-    private Boolean isEmpty;
+    private boolean allocated;
 
     /**
      * The empty Constructor.
      */
     public RoleChosenMessage() {
-        this.isEmpty = true;
     }
 
     /**
      * The constructor for creating RoleChosen messages.
      *
-     * @param label , the label of the chosen role as a String.
-     * @param role , the role in terms of an Enum.
+     * @param role
+     *          The Role.
+     * @param allocated
+     *          Allocated.
      */
-    public RoleChosenMessage(String label, Roles role) {
+    public RoleChosenMessage(Roles role, boolean allocated) {
         this.role = role;
-        this.label = label;
-        this.isEmpty = false;
+        this.allocated = false;
     }
 
     /**
-     * Returns the label of the chosen role.
+     * Returns the role chosen as an Enum.
      *
-     * @return a String.
-     */
-    public String getLabel() {
-        return label;
-    }
-
-    /**
-     * Returns the role chosen as an integer.
-     *
-     * @return role as an Integer.
+     * @return role as an Enum.
      */
     public Roles getRole() {
         return role;
     }
 
     /**
-     * Returns whether the message is empty or not. If the message is empty it is likely to be used
-     * for sending back all roles chosen.
+     * Check whether the role was allocated or not.
      *
-     * @return a boolean.
+     * @return Allocated.
      */
-    public Boolean isEmpty() {
-        return isEmpty;
+    public boolean isAllocated() {
+        return allocated;
     }
 
 }
