@@ -71,13 +71,15 @@ public class FireOutbreakActivity extends AppCompatActivity {
      *      The given state of validation.
      */
     private void validateAction(int passedState) {
-        Map<String, Integer> parameters = new HashMap<String, Integer>();
-        parameters.put("location", passedState);
+        if(passedState > -1) {
+            Map<String, Integer> parameters = new HashMap<String, Integer>();
+            parameters.put("location", passedState);
 
-        EventCompletedMessage message = new EventCompletedMessage(EventTypes.FIRE_OUTBREAK.ordinal());
-        message.setParameters(parameters);
+            EventCompletedMessage message = new EventCompletedMessage(EventTypes.FIRE_OUTBREAK.ordinal());
+            message.setParameters(parameters);
 
-        game.sendMessage(message);
+            game.sendMessage(message);
+        }
 
         finish();
     }
