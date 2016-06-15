@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ProgressBar;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
@@ -61,13 +64,21 @@ public class FireOutbreakActivity extends AppCompatActivity {
     }
 
     /**
-     * Class that validates the user action and returns the result to the server.
+     * Class that sends the completed message with the validated parameter
+     * to the game class.
      *
      * @param passedState
      *      The given state of validation.
      */
     private void validateAction(int passedState) {
-        game.sendMessage(new EventCompletedMessage(EventTypes.FIRE_OUTBREAK.ordinal()));
+        Map<String, Integer> parameters = new HashMap<String, Integer>();
+        parameters.put("location", passedState);
+
+        EventCompletedMessage message = new EventCompletedMessage(EventTypes.FIRE_OUTBREAK.ordinal());
+        message.setParameters(parameters);
+
+        game.sendMessage(message);
+
         finish();
     }
 
@@ -168,5 +179,4 @@ public class FireOutbreakActivity extends AppCompatActivity {
             validateAction(-3);
         }
     }
-
 }
