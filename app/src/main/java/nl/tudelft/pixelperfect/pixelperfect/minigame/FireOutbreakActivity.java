@@ -152,10 +152,10 @@ public class FireOutbreakActivity extends AppCompatActivity {
             if((2 < accumulation) && (accumulation < 10)) {
                 validateAction(1);
             } else {
-                validateAction(-2);
+                validateAction(-1);
             }
         } else {
-            validateAction(-2);
+            validateAction(-1);
         }
     }
 
@@ -173,10 +173,10 @@ public class FireOutbreakActivity extends AppCompatActivity {
             if((5 < accumulation) && (accumulation < 60)) {
                 validateAction(2);
             } else {
-                validateAction(-3);
+                validateAction(-1);
             }
         } else {
-            validateAction(-3);
+            validateAction(-1);
         }
     }
 }
