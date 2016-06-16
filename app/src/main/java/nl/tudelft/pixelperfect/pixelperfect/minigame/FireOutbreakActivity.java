@@ -27,17 +27,12 @@ import nl.tudelft.pixelperfect.pixelperfect.R;
 public class FireOutbreakActivity extends AppCompatActivity {
     private GameClient game;
 
-    private int fireLocation;
-
     private CheckBox useFireExtinguisher;
     private CheckBox useAutomator;
     private CheckBox useWaterBucket;
     private CheckBox useFireBlanket;
     private CheckBox useHammer;
 
-    private Button deployToAirSupport;
-    private Button deployToEngine;
-    private Button deployToWingPlasma;
 
     /**
      * On creation of the fire activity the content views will be initialized
@@ -55,10 +50,6 @@ public class FireOutbreakActivity extends AppCompatActivity {
         useWaterBucket = (CheckBox) findViewById(R.id.bucketBox);
         useFireBlanket = (CheckBox) findViewById(R.id.blanketBox);
         useHammer = (CheckBox) findViewById(R.id.hammerBox);
-
-        deployToAirSupport = (Button) findViewById(R.id.airSupportButton);
-        deployToEngine = (Button) findViewById(R.id.engineButton);
-        deployToWingPlasma = (Button) findViewById(R.id.wingPlasmaButton);
 
         game = GameClient.getInstance();
     }
@@ -127,14 +118,10 @@ public class FireOutbreakActivity extends AppCompatActivity {
      *      The passed view.
      */
     public void onAirButtonPress(View view) {
-        if(fireLocation == 0) {
-            int accumulation = accumulatedVerification();
-
-            if((0 <= accumulation) && (accumulation < 1000)) {
-                validateAction(2);
-            } else {
-                validateAction(-1);
-            }
+        int accumulation = accumulatedVerification();
+//
+        if((0 <= accumulation) && (accumulation < 1000)) {
+            validateAction(2);
         } else {
             validateAction(-1);
         }
@@ -148,14 +135,10 @@ public class FireOutbreakActivity extends AppCompatActivity {
      *      The passed view.
      */
     public void onEnginePress(View view) {
-        if(fireLocation == 1) {
-            int accumulation = accumulatedVerification();
+        int accumulation = accumulatedVerification();
 
-            if((0 <= accumulation) && (accumulation < 1000)) {
-                validateAction(1);
-            } else {
-                validateAction(-1);
-            }
+        if((0 <= accumulation) && (accumulation < 1000)) {
+            validateAction(1);
         } else {
             validateAction(-1);
         }
@@ -169,14 +152,10 @@ public class FireOutbreakActivity extends AppCompatActivity {
      *      The passed view.
      */
     public void onDeckPress(View view) {
-        if(fireLocation == 2) {
-            int accumulation = accumulatedVerification();
+        int accumulation = accumulatedVerification();
 
-            if((0 <= accumulation) && (accumulation <= 1000)) {
-                validateAction(0);
-            } else {
-                validateAction(-1);
-            }
+        if((0 <= accumulation) && (accumulation <= 1000)) {
+            validateAction(0);
         } else {
             validateAction(-1);
         }

@@ -75,9 +75,9 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Wing Plasma Pipes"
-        android:id="@+id/wingPlasmaButton"
-        android:onClick="onPlasmaPress"
+        android:text="Deck"
+        android:id="@+id/deckButton"
+        android:onClick="onDeckPress"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/engineButton"
         android:layout_marginBottom="88dp" />
