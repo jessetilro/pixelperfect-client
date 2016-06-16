@@ -131,7 +131,7 @@ public class FireOutbreakActivity extends AppCompatActivity {
             int accumulation = accumulatedVerification();
 
             if((0 <= accumulation) && (accumulation < 1000)) {
-                validateAction(0);
+                validateAction(2);
             } else {
                 validateAction(-1);
             }
@@ -173,7 +173,7 @@ public class FireOutbreakActivity extends AppCompatActivity {
             int accumulation = accumulatedVerification();
 
             if((0 <= accumulation) && (accumulation <= 1000)) {
-                validateAction(2);
+                validateAction(0);
             } else {
                 validateAction(-1);
             }
