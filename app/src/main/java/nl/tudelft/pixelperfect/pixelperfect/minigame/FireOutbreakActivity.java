@@ -58,7 +58,7 @@ public class FireOutbreakActivity extends AppCompatActivity {
 
         deployToAirSupport = (Button) findViewById(R.id.airSupportButton);
         deployToEngine = (Button) findViewById(R.id.engineButton);
-        deployToWingPlasma = (Button) findViewById(R.id.wingPlasmaButton);
+        deployToWingPlasma = (Button) findViewById(R.id.deckButton);
 
         game = GameClient.getInstance();
     }
