@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ProgressBar;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
@@ -61,13 +64,23 @@ public class FireOutbreakActivity extends AppCompatActivity {
     }
 
     /**
-     * Class that validates the user action and returns the result to the server.
+     * Class that sends the completed message with the validated parameter
+     * to the game class.
      *
      * @param passedState
      *      The given state of validation.
      */
     private void validateAction(int passedState) {
-        game.sendMessage(new EventCompletedMessage(EventTypes.FIRE_OUTBREAK.ordinal()));
+        if(passedState > -1) {
+            Map<String, Integer> parameters = new HashMap<String, Integer>();
+            parameters.put("location", passedState);
+
+            EventCompletedMessage message = new EventCompletedMessage(EventTypes.FIRE_OUTBREAK.ordinal());
+            message.setParameters(parameters);
+
+            game.sendMessage(message);
+        }
+
         finish();
     }
 
@@ -117,7 +130,7 @@ public class FireOutbreakActivity extends AppCompatActivity {
         if(fireLocation == 0) {
             int accumulation = accumulatedVerification();
 
-            if((49 < accumulation) && (accumulation < 53)) {
+            if((0 <= accumulation) && (accumulation < 1000)) {
                 validateAction(0);
             } else {
                 validateAction(-1);
@@ -138,13 +151,13 @@ public class FireOutbreakActivity extends AppCompatActivity {
         if(fireLocation == 1) {
             int accumulation = accumulatedVerification();
 
-            if((2 < accumulation) && (accumulation < 10)) {
+            if((0 <= accumulation) && (accumulation < 1000)) {
                 validateAction(1);
             } else {
-                validateAction(-2);
+                validateAction(-1);
             }
         } else {
-            validateAction(-2);
+            validateAction(-1);
         }
     }
 
@@ -159,14 +172,13 @@ public class FireOutbreakActivity extends AppCompatActivity {
         if(fireLocation == 2) {
             int accumulation = accumulatedVerification();
 
-            if((5 < accumulation) && (accumulation < 60)) {
+            if((0 <= accumulation) && (accumulation <= 1000)) {
                 validateAction(2);
             } else {
-                validateAction(-3);
+                validateAction(-1);
             }
         } else {
-            validateAction(-3);
+            validateAction(-1);
         }
     }
-
 }

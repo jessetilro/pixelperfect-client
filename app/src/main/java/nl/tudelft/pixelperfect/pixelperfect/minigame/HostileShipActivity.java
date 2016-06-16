@@ -44,7 +44,7 @@ public class HostileShipActivity extends AppCompatActivity {
      * @param view The view element.
      */
     public void onSelectArmor(View view) {
-        int[] ids = {R.id.armor_energy_shield, R.id.armor_graphene, R.id.armor_titanium};
+        int[] ids = {R.id.purple_armor, R.id.red_armor, R.id.green_armor};
         for (int index = 0; index < ids.length; index++) {
             if (ids[index] == view.getId()) {
                 armor = index;
