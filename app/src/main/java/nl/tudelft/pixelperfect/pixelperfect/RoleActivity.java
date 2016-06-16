@@ -82,6 +82,7 @@ public class RoleActivity extends AppCompatActivity {
      */
     @Override
     public void onBackPressed() {
+        game.disconnect();
         Intent intent = new Intent(RoleActivity.this, MainActivity.class);
         intent.putExtra("Game Started", gameStarted);
         startActivity(intent);
@@ -139,10 +140,6 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void gunnerChosen(View view) {
-        engineerView.setEnabled(false);
-        scientistView.setEnabled(false);
-        janitorView.setEnabled(false);
-
         RoleChosenMessage role = new RoleChosenMessage(Roles.GUNNER, false);
         game.sendMessage(role);
     }
@@ -153,10 +150,6 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void engineerChosen(View view) {
-        gunnerView.setEnabled(false);
-        scientistView.setEnabled(false);
-        janitorView.setEnabled(false);
-
         RoleChosenMessage role = new RoleChosenMessage(Roles.ENGINEER, false);
         game.sendMessage(role);
     }
@@ -167,10 +160,6 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void scientistChosen(View view) {
-        gunnerView.setEnabled(false);
-        engineerView.setEnabled(false);
-        janitorView.setEnabled(false);
-
         RoleChosenMessage role = new RoleChosenMessage(Roles.SCIENTIST, false);
         game.sendMessage(role);
     }
@@ -181,10 +170,6 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void janitorChosen(View view) {
-        gunnerView.setEnabled(false);
-        engineerView.setEnabled(false);
-        scientistView.setEnabled(false);
-
         RoleChosenMessage role = new RoleChosenMessage(Roles.JANITOR, false);
         game.sendMessage(role);
     }

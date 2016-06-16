@@ -4,6 +4,7 @@ import com.jme3.network.Client;
 import com.jme3.network.Message;
 import com.jme3.network.MessageListener;
 
+import nl.tudelft.pixelperfect.client.message.DisconnectMessage;
 import nl.tudelft.pixelperfect.client.message.NewGameMessage;
 import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
 import nl.tudelft.pixelperfect.pixelperfect.LobbyActivity;
@@ -41,6 +42,9 @@ public class ClientListener implements MessageListener<Client> {
 
         } else if (message instanceof NewGameMessage) {
             LobbyActivity.startGame();
+        } else if (message instanceof DisconnectMessage) {
+            GameClient game = GameClient.getInstance();
+            game.disconnect();
         }
     }
 }
