@@ -38,19 +38,19 @@
         <activity
             android:name=".location.LocationArmoryActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="sensorLandscape"></activity>
         <activity
             android:name=".location.LocationEngineroomActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="sensorLandscape"></activity>
         <activity
             android:name=".location.LocationLabActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="sensorLandscape"></activity>
         <activity
             android:name=".location.LocationDeckActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="sensorLandscape"></activity>
         <activity
             android:name=".minigame.CoffeeBoostActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -58,7 +58,7 @@
         <activity
             android:name=".minigame.AsteroidImpactActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="landscape">
+            android:screenOrientation="sensorLandscape">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="nl.tudelft.pixelperfect.pixelperfect.location.LocationLabActivity" />
@@ -66,19 +66,19 @@
         <activity
             android:name=".minigame.PlasmaLeakActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="sensorLandscape"></activity>
         <activity
             android:name=".minigame.HostileShipActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="sensorLandscape"></activity>
         <activity
             android:name=".minigame.FireOutbreakActivity"
-            android:screenOrientation="landscape"
+            android:screenOrientation="sensorLandscape"
             android:configChanges="keyboardHidden|orientation">
         </activity>
         <activity
             android:name=".minigame.IdleGameActivity"
-            android:screenOrientation="landscape"
+            android:screenOrientation="sensorLandscape"
             android:configChanges="keyboardHidden|orientation">
         </activity>
     </application>

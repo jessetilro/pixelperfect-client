@@ -53,12 +53,6 @@
             android:text="Deck"
             android:onClick="switchDeck"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="148dp"
-            android:text="INSTRUCTIONS: \n\n Select room \n Remove 5 bolts \n Repair pipe 10 times \n Re-insert the bolts"
-            android:clickable="false"
-            android:id="@+id/textView" />
     </RadioGroup>
 
     <Button
@@ -91,6 +85,16 @@
         android:layout_below="@id/button2"
         android:layout_toRightOf="@+id/button_complete_plasma"
         android:layout_toEndOf="@+id/button_complete_plasma" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="148dp"
+        android:text="INSTRUCTIONS: \n\n Select room \n Remove 5 bolts \n Repair pipe 10 times \n Re-insert the bolts"
+        android:clickable="false"
+        android:id="@+id/textView"
+        android:layout_alignBottom="@+id/button3"
+        android:layout_alignLeft="@+id/mini_game_progress_bar"
+        android:layout_alignStart="@+id/mini_game_progress_bar" />
 
 
 </RelativeLayout>
