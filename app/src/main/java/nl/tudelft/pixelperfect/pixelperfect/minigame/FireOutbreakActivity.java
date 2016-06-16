@@ -131,7 +131,7 @@ public class FireOutbreakActivity extends AppCompatActivity {
             int accumulation = accumulatedVerification();
 
             if((0 <= accumulation) && (accumulation < 1000)) {
-                validateAction(0);
+                validateAction(2);
             } else {
                 validateAction(-1);
             }
@@ -168,12 +168,12 @@ public class FireOutbreakActivity extends AppCompatActivity {
      * @param view
      *      The passed view.
      */
-    public void onPlasmaPress(View view) {
+    public void onDeckPress(View view) {
         if(fireLocation == 2) {
             int accumulation = accumulatedVerification();
 
             if((0 <= accumulation) && (accumulation <= 1000)) {
-                validateAction(2);
+                validateAction(0);
             } else {
                 validateAction(-1);
             }
