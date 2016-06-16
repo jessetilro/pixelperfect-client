@@ -130,8 +130,8 @@ public class FireOutbreakActivity extends AppCompatActivity {
         if(fireLocation == 0) {
             int accumulation = accumulatedVerification();
 
-            if((49 < accumulation) && (accumulation < 53)) {
-                validateAction(2);
+            if((0 <= accumulation) && (accumulation < 1000)) {
+                validateAction(0);
             } else {
                 validateAction(-1);
             }
@@ -151,7 +151,7 @@ public class FireOutbreakActivity extends AppCompatActivity {
         if(fireLocation == 1) {
             int accumulation = accumulatedVerification();
 
-            if((2 < accumulation) && (accumulation < 10)) {
+            if((0 <= accumulation) && (accumulation < 1000)) {
                 validateAction(1);
             } else {
                 validateAction(-1);
@@ -172,8 +172,8 @@ public class FireOutbreakActivity extends AppCompatActivity {
         if(fireLocation == 2) {
             int accumulation = accumulatedVerification();
 
-            if((5 < accumulation) && (accumulation < 60)) {
-                validateAction(0);
+            if((0 <= accumulation) && (accumulation <= 1000)) {
+                validateAction(2);
             } else {
                 validateAction(-1);
             }
