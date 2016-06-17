@@ -131,14 +131,32 @@ public class RoleActivity extends AppCompatActivity {
     }
 
     /**
+     * Whenever a role gets chosen, the other roles should be disabled.
+     *
+     * @param view the view of the button that was pressed.
+     */
+    public void disableOther(View view) {
+        if(view != gunnerView){
+            gunnerView.setEnabled(false);
+        }
+        if(view != engineerView){
+            engineerView.setEnabled(false);
+        }
+        if(view != scientistView){
+            scientistView.setEnabled(false);
+        }
+        if(view != janitorView){
+            janitorView.setEnabled(false);
+        }
+    }
+
+    /**
      * The method for clicking the Gunner button. The player will be transitioned to the Armory.
      *
      * @param view the view of the Button.
      */
     public void gunnerChosen(View view) {
-        engineerView.setEnabled(false);
-        scientistView.setEnabled(false);
-        janitorView.setEnabled(false);
+        disableOther(view);
 
         if(chosenRole == null) {
             RoleChosenMessage role = new RoleChosenMessage("gunner", Roles.GUNNER);
@@ -160,9 +178,7 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void engineerChosen(View view) {
-        gunnerView.setEnabled(false);
-        scientistView.setEnabled(false);
-        janitorView.setEnabled(false);
+        disableOther(view);
 
         if(chosenRole == null) {
             RoleChosenMessage role = new RoleChosenMessage("engineer", Roles.ENGINEER);
@@ -184,9 +200,7 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void scientistChosen(View view) {
-        gunnerView.setEnabled(false);
-        engineerView.setEnabled(false);
-        janitorView.setEnabled(false);
+        disableOther(view);
 
         if(chosenRole == null) {
             RoleChosenMessage role = new RoleChosenMessage("scientist", Roles.SCIENTIST);
@@ -208,9 +222,7 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void janitorChosen(View view) {
-        gunnerView.setEnabled(false);
-        engineerView.setEnabled(false);
-        scientistView.setEnabled(false);
+        disableOther(view);
 
         if(chosenRole == null) {
             RoleChosenMessage role = new RoleChosenMessage("janitor", Roles.JANITOR);
