@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import nl.tudelft.pixelperfect.client.GameClient;
-import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
+import nl.tudelft.pixelperfect.client.message.NewGameMessage;
 import nl.tudelft.pixelperfect.player.PlayerRoles;
 import nl.tudelft.pixelperfect.pixelperfect.location.LocationArmoryActivity;
 import nl.tudelft.pixelperfect.pixelperfect.location.LocationDeckActivity;
@@ -37,6 +37,8 @@ public class LobbyActivity extends AppCompatActivity {
         mContext = this;
         chosenRole = (PlayerRoles) getIntent().getSerializableExtra("Role");
         game = GameClient.getInstance();
+
+        game.sendMessage(new NewGameMessage());
     }
 
     /**
