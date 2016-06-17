@@ -29,22 +29,29 @@ public class ClientListener implements MessageListener<Client> {
      */
     public void messageReceived(Client source, Message message) {
         if (message instanceof RoleChosenMessage) {
-            RoleChosenMessage chosenRole = (RoleChosenMessage) message;
-            if (chosenRole.isAllocated()) {
-                System.out.println("Server granted request for " + chosenRole.getRole().toString());
-                RoleActivity.enterLobby(chosenRole.getRole());
-            } else {
-                //RoleActivity.updateRoleAvailability((RoleChosenMessage) message);
-                //StringBuilder sb = new StringBuilder();
-                //sb.append("The role ").append(chosenRole.getRole().toString()).append(" is already taken!");
-                //RoleActivity.showMessage(sb.toString());
-            }
-
+            handleRoleChosenMessage((RoleChosenMessage) message);
         } else if (message instanceof NewGameMessage) {
             LobbyActivity.startGame();
         } else if (message instanceof DisconnectMessage) {
             GameClient game = GameClient.getInstance();
             game.disconnect();
+        }
+    }
+
+    /**
+     * Handle a received RoleChoseMessage.
+     * @param message The message to handle.
+     */
+    public void handleRoleChosenMessage(RoleChosenMessage message) {
+        System.out.println("Received role chosen message.");
+        if (message.isAllocated()) {
+            System.out.println("Server granted request for " + message.getRole().toString());
+            RoleActivity.enterLobby(message.getRole());
+        } else {
+            //RoleActivity.updateRoleAvailability((RoleChosenMessage) message);
+            //StringBuilder sb = new StringBuilder();
+            //sb.append("The role ").append(chosenRole.getRole().toString()).append(" is already taken!");
+            //RoleActivity.showMessage(sb.toString());
         }
     }
 }

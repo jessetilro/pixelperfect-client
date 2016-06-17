@@ -11,6 +11,7 @@ import nl.tudelft.pixelperfect.pixelperfect.location.LocationArmoryActivity;
 import nl.tudelft.pixelperfect.pixelperfect.location.LocationDeckActivity;
 import nl.tudelft.pixelperfect.pixelperfect.location.LocationEngineroomActivity;
 import nl.tudelft.pixelperfect.pixelperfect.location.LocationLabActivity;
+import nl.tudelft.pixelperfect.pixelperfect.minigame.PlasmaLeakActivity;
 
 /**
  * The lobby is where the client user connects to the game and waits for the captain to start it.
@@ -39,8 +40,11 @@ public class LobbyActivity extends AppCompatActivity {
      * Starts the game because a message was received from the server.
      */
     public static void startGame() {
-        Intent newGame;
+        if (chosenRole == null) {
+            return;
+        }
 
+        Intent newGame;
         switch(chosenRole){
             case GUNNER:
                 newGame = new Intent(mContext, LocationArmoryActivity.class);

@@ -32,7 +32,7 @@ public class RoleChosenMessage extends AbstractMessage {
      */
     public RoleChosenMessage(Roles role, boolean allocated) {
         this.role = role;
-        this.allocated = false;
+        this.allocated = allocated;
     }
 
     /**
