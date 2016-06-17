@@ -63,8 +63,13 @@ public class LobbyActivity extends AppCompatActivity {
      */
     @Override
     public void onBackPressed() {
-        game.sendMessage(new RoleChosenMessage(chosenRole, true));
-        Intent intent = new Intent(this, RoleActivity.class);
+        Intent intent;
+        if (game.isConnected()) {
+            game.sendMessage(new RoleChosenMessage(chosenRole, true));
+            intent = new Intent(this, RoleActivity.class);
+        } else {
+            intent = new Intent(this, MainActivity.class);
+        }
         startActivity(intent);
         finish();
     }
