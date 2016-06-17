@@ -5,7 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import nl.tudelft.pixelperfect.client.GameClient;
+import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
+import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 
 /**
@@ -39,7 +44,7 @@ public class FireOutbreakActivity extends AppCompatActivity {
         waterBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                waterDisplay.setText(String.valueOf(progress));
+                waterDisplay.setText(String.valueOf(progress) + "Liters");
             }
 
             @Override
@@ -52,5 +57,26 @@ public class FireOutbreakActivity extends AppCompatActivity {
                 // Required method, is not used.
             }
         });
+    }
+
+    /**
+     * Method responsible for completing the event and sending the data to the server application.
+     *
+     * @param passedValue
+     *             the given water liter value.
+     * @param passedLocation
+     *             the given location value.
+     */
+    private void completeEvent(int passedValue, int passedLocation) {
+        EventCompletedMessage message = new EventCompletedMessage(EventTypes.FIRE_OUTBREAK.ordinal());
+
+        Map<String, Integer> parameters = new HashMap<String, Integer>();
+        parameters.put("location", passedLocation);
+        parameters.put("water", passedValue);
+
+        message.setParameters(parameters);
+        game.sendMessage(message);
+
+        finish();
     }
 }
