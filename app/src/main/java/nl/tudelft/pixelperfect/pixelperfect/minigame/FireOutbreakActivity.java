@@ -17,21 +17,15 @@ import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 
 /**
- * Class responsible for the handling of the fire outbreak event.  A choice must
- * be made between multiple solutions, and then selected where to
- * deploy them to combat the fire.
+ * Class responsible for the handling of the fire outbreak event.  An amount of liters must be
+ * selected with with a slider, and then the location of the fire must be chosen to deploy
+ * the dousing blanket.
  *
  * @author David Alderliesten
  *
  */
 public class FireOutbreakActivity extends AppCompatActivity {
     private GameClient game;
-
-    private CheckBox useFireExtinguisher;
-    private CheckBox useAutomator;
-    private CheckBox useWaterBucket;
-    private CheckBox useFireBlanket;
-    private CheckBox useHammer;
 
 
     /**
@@ -45,119 +39,6 @@ public class FireOutbreakActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fire_outbreak);
 
-        useFireExtinguisher = (CheckBox) findViewById(R.id.extinguishBox);
-        useAutomator = (CheckBox) findViewById(R.id.automatedKillerBox);
-        useWaterBucket = (CheckBox) findViewById(R.id.bucketBox);
-        useFireBlanket = (CheckBox) findViewById(R.id.blanketBox);
-        useHammer = (CheckBox) findViewById(R.id.hammerBox);
-
         game = GameClient.getInstance();
-    }
-
-    /**
-     * Class that sends the completed message with the validated parameter
-     * to the game class.
-     *
-     * @param passedState
-     *      The given state of validation.
-     */
-    private void validateAction(int passedState) {
-        if(passedState > -1) {
-            Map<String, Integer> parameters = new HashMap<String, Integer>();
-            parameters.put("location", passedState);
-
-            EventCompletedMessage message = new EventCompletedMessage(EventTypes.FIRE_OUTBREAK.ordinal());
-            message.setParameters(parameters);
-
-            game.sendMessage(message);
-        }
-
-        finish();
-    }
-
-    /**
-     * Class aimed at verifying the total score obtained to verify the selected methods.
-     * A small value is good for the engines, a large value is good for the wings.
-     *
-     * @return total score found.
-     */
-    private int accumulatedVerification() {
-        // Int for verifying the accumulated selection.
-        int verifyAccumulator = 0;
-
-        // Running through all cases and adding values as needed.
-        if(useFireExtinguisher.isEnabled()) {
-            verifyAccumulator += 5;
-        }
-
-        if(useAutomator.isEnabled()) {
-            verifyAccumulator += 50;
-        }
-
-        if(useWaterBucket.isEnabled()) {
-            verifyAccumulator += 3;
-        }
-
-        if(useFireBlanket.isEnabled()) {
-            verifyAccumulator += 8;
-        }
-
-        if(useHammer.isEnabled()) {
-            verifyAccumulator += 2;
-        }
-
-        // Returning the found accumulation.
-        return verifyAccumulator;
-    }
-
-    /**
-     * Class that handles the airSupportButton press event and validates
-     * the selected method.
-     *
-     * @param view
-     *      The passed view.
-     */
-    public void onAirButtonPress(View view) {
-        int accumulation = accumulatedVerification();
-//
-        if((0 <= accumulation) && (accumulation < 1000)) {
-            validateAction(2);
-        } else {
-            validateAction(-1);
-        }
-    }
-
-    /**
-     * Class that handles the engineButton press event and validates
-     * the selected method.
-     *
-     * @param view
-     *      The passed view.
-     */
-    public void onEnginePress(View view) {
-        int accumulation = accumulatedVerification();
-
-        if((0 <= accumulation) && (accumulation < 1000)) {
-            validateAction(1);
-        } else {
-            validateAction(-1);
-        }
-    }
-
-    /**
-     * Class that handles the engineButton press event and validates
-     * the selected method.
-     *
-     * @param view
-     *      The passed view.
-     */
-    public void onDeckPress(View view) {
-        int accumulation = accumulatedVerification();
-
-        if((0 <= accumulation) && (accumulation <= 1000)) {
-            validateAction(0);
-        } else {
-            validateAction(-1);
-        }
     }
 }
