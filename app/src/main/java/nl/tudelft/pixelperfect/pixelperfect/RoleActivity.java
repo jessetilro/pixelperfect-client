@@ -1,10 +1,12 @@
 package nl.tudelft.pixelperfect.pixelperfect;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
@@ -29,7 +31,7 @@ public class RoleActivity extends AppCompatActivity {
     private static View janitorView;
     private boolean gameStarted;
     private GameClient game;
-    private Roles chosenRole;
+    private static Context mContext;
 
     /**
      * This method shows what happens when this Activity is created.
@@ -54,6 +56,7 @@ public class RoleActivity extends AppCompatActivity {
             gameStarted = getIntent().getExtras().getBoolean("Game Started");
         }
         game = GameClient.getInstance();
+        mContext = this;
     }
 
     /**
@@ -79,6 +82,7 @@ public class RoleActivity extends AppCompatActivity {
      */
     @Override
     public void onBackPressed() {
+        game.disconnect();
         Intent intent = new Intent(RoleActivity.this, MainActivity.class);
         intent.putExtra("Game Started", gameStarted);
         startActivity(intent);
@@ -136,22 +140,8 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void gunnerChosen(View view) {
-        engineerView.setEnabled(false);
-        scientistView.setEnabled(false);
-        janitorView.setEnabled(false);
-
-        if(chosenRole == null) {
-            RoleChosenMessage role = new RoleChosenMessage("gunner", Roles.GUNNER);
-            game.sendMessage(role);
-        }
-
-        chosenRole = Roles.GUNNER;
-        if(gameStarted){
-            Intent intent = new Intent(this, LocationArmoryActivity.class);
-            startActivity(intent);
-        } else {
-            enterLobby();
-        }
+        RoleChosenMessage role = new RoleChosenMessage(Roles.GUNNER, false);
+        game.sendMessage(role);
     }
 
     /**
@@ -160,22 +150,8 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void engineerChosen(View view) {
-        gunnerView.setEnabled(false);
-        scientistView.setEnabled(false);
-        janitorView.setEnabled(false);
-
-        if(chosenRole == null) {
-            RoleChosenMessage role = new RoleChosenMessage("engineer", Roles.ENGINEER);
-            game.sendMessage(role);
-        }
-        chosenRole = Roles.ENGINEER;
-
-        if(gameStarted){
-            Intent intent = new Intent(this, LocationEngineroomActivity.class);
-            startActivity(intent);
-        } else {
-            enterLobby();
-        }
+        RoleChosenMessage role = new RoleChosenMessage(Roles.ENGINEER, false);
+        game.sendMessage(role);
     }
 
     /**
@@ -184,22 +160,8 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void scientistChosen(View view) {
-        gunnerView.setEnabled(false);
-        engineerView.setEnabled(false);
-        janitorView.setEnabled(false);
-
-        if(chosenRole == null) {
-            RoleChosenMessage role = new RoleChosenMessage("scientist", Roles.SCIENTIST);
-            game.sendMessage(role);
-        }
-        chosenRole = Roles.SCIENTIST;
-
-        if(gameStarted){
-            Intent intent = new Intent(this, LocationLabActivity.class);
-            startActivity(intent);
-        } else {
-            enterLobby();
-        }
+        RoleChosenMessage role = new RoleChosenMessage(Roles.SCIENTIST, false);
+        game.sendMessage(role);
     }
 
     /**
@@ -208,27 +170,20 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void janitorChosen(View view) {
-        gunnerView.setEnabled(false);
-        engineerView.setEnabled(false);
-        scientistView.setEnabled(false);
-
-        if(chosenRole == null) {
-            RoleChosenMessage role = new RoleChosenMessage("janitor", Roles.JANITOR);
-            game.sendMessage(role);
-        }
-        chosenRole = Roles.JANITOR;
-
-        if(gameStarted){
-            Intent intent = new Intent(this, LocationDeckActivity.class);
-            startActivity(intent);
-        } else {
-            enterLobby();
-        }
+        RoleChosenMessage role = new RoleChosenMessage(Roles.JANITOR, false);
+        game.sendMessage(role);
     }
 
-    public void enterLobby(){
-        Intent lobby = new Intent(this, LobbyActivity.class);
-        lobby.putExtra("Role", chosenRole);
-        startActivity(lobby);
+    public static void showMessage(String message) {
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(mContext, message, duration);
+        toast.show();
+    }
+
+    public static void enterLobby(Roles role){
+        System.out.println("HOWDY PARTNERS");
+        Intent lobby = new Intent(mContext, LobbyActivity.class);
+        lobby.putExtra("Role", role);
+        mContext.startActivity(lobby);
     }
 }
