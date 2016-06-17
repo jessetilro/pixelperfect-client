@@ -3,7 +3,7 @@ package nl.tudelft.pixelperfect.client.message;
 import com.jme3.network.AbstractMessage;
 import com.jme3.network.serializing.Serializable;
 
-import nl.tudelft.pixelperfect.game.Roles;
+import nl.tudelft.pixelperfect.player.PlayerRoles;
 
 /**
  * Whenever a role is chosen, the other crew players cannot choose the role. Therefor this message
@@ -13,7 +13,7 @@ import nl.tudelft.pixelperfect.game.Roles;
  */
 @Serializable
 public class RoleChosenMessage extends AbstractMessage {
-    private Roles role;
+    private PlayerRoles role;
     private boolean allocated;
 
     /**
@@ -30,7 +30,7 @@ public class RoleChosenMessage extends AbstractMessage {
      * @param allocated
      *          Allocated.
      */
-    public RoleChosenMessage(Roles role, boolean allocated) {
+    public RoleChosenMessage(PlayerRoles role, boolean allocated) {
         this.role = role;
         this.allocated = allocated;
     }
@@ -40,7 +40,7 @@ public class RoleChosenMessage extends AbstractMessage {
      *
      * @return role as an Enum.
      */
-    public Roles getRole() {
+    public PlayerRoles getRole() {
         return role;
     }
 

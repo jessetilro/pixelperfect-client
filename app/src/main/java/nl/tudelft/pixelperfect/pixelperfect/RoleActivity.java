@@ -10,11 +10,7 @@ import android.widget.Toast;
 
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
-import nl.tudelft.pixelperfect.game.Roles;
-import nl.tudelft.pixelperfect.pixelperfect.location.LocationArmoryActivity;
-import nl.tudelft.pixelperfect.pixelperfect.location.LocationDeckActivity;
-import nl.tudelft.pixelperfect.pixelperfect.location.LocationEngineroomActivity;
-import nl.tudelft.pixelperfect.pixelperfect.location.LocationLabActivity;
+import nl.tudelft.pixelperfect.player.PlayerRoles;
 
 
 /**
@@ -42,7 +38,7 @@ public class RoleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
             setContentView(R.layout.activity_role);
 
             gunnerView = findViewById(R.id.button_role_gunner);
@@ -52,11 +48,28 @@ public class RoleActivity extends AppCompatActivity {
             gameStarted = false;
         }
         Bundle extras = getIntent().getExtras();
-        if(extras != null) {
+        if (extras != null) {
             gameStarted = getIntent().getExtras().getBoolean("Game Started");
         }
         game = GameClient.getInstance();
         mContext = this;
+
+        checkForConnection();
+
+        // The hardcoded role is arbitrary. Because of the "true" parameter,
+        // the server will simply clear the role for this user.
+        game.sendMessage(new RoleChosenMessage(PlayerRoles.ENGINEER, true));
+    }
+
+    /**
+     * Check for connection with the server. If disconnected, go back to main activity.
+     */
+    public void checkForConnection() {
+        if (!game.isConnected()) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     /**
@@ -102,6 +115,7 @@ public class RoleActivity extends AppCompatActivity {
     /**
      * Whenever the Activity gets destroyed, this method will be called and the activity will be
      * saved.
+     *
      * @param savedInstanceState the state that will be saved.
      */
     @Override
@@ -116,7 +130,7 @@ public class RoleActivity extends AppCompatActivity {
      * @param message the message received.
      */
     public static void updateRoleAvailability(RoleChosenMessage message) {
-        switch(message.getRole()){
+        switch (message.getRole()) {
             case GUNNER:
                 gunnerView.setEnabled(false);
                 break;
@@ -140,7 +154,7 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void gunnerChosen(View view) {
-        RoleChosenMessage role = new RoleChosenMessage(Roles.GUNNER, false);
+        RoleChosenMessage role = new RoleChosenMessage(PlayerRoles.GUNNER, false);
         game.sendMessage(role);
     }
 
@@ -150,7 +164,7 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void engineerChosen(View view) {
-        RoleChosenMessage role = new RoleChosenMessage(Roles.ENGINEER, false);
+        RoleChosenMessage role = new RoleChosenMessage(PlayerRoles.ENGINEER, false);
         game.sendMessage(role);
     }
 
@@ -160,7 +174,7 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void scientistChosen(View view) {
-        RoleChosenMessage role = new RoleChosenMessage(Roles.SCIENTIST, false);
+        RoleChosenMessage role = new RoleChosenMessage(PlayerRoles.SCIENTIST, false);
         game.sendMessage(role);
     }
 
@@ -170,7 +184,7 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void janitorChosen(View view) {
-        RoleChosenMessage role = new RoleChosenMessage(Roles.JANITOR, false);
+        RoleChosenMessage role = new RoleChosenMessage(PlayerRoles.JANITOR, false);
         game.sendMessage(role);
     }
 
@@ -180,8 +194,7 @@ public class RoleActivity extends AppCompatActivity {
         toast.show();
     }
 
-    public static void enterLobby(Roles role){
-        System.out.println("HOWDY PARTNERS");
+    public static void enterLobby(PlayerRoles role) {
         Intent lobby = new Intent(mContext, LobbyActivity.class);
         lobby.putExtra("Role", role);
         mContext.startActivity(lobby);
