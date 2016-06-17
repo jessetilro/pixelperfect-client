@@ -23,18 +23,8 @@ public class RoleChosenMessageTest {
      *
      */
     @Before
-    public void initialise() {
-        message = new RoleChosenMessage("Gunner", Roles.GUNNER);
-    }
-
-    /**
-     * Tests the empty constructor.
-     *
-     */
-    @Test
-    public void testEmptyConstructor() {
-        RoleChosenMessage message = new RoleChosenMessage();
-        Assert.assertEquals(null, message.getLabel());
+    public void initialize() {
+        message = new RoleChosenMessage(Roles.GUNNER, true);
     }
 
     /**
@@ -42,8 +32,8 @@ public class RoleChosenMessageTest {
      *
      */
     @Test
-    public void testGetLabel() {
-        Assert.assertEquals("Gunner", message.getLabel());
+    public void testIsAllocated() {
+        Assert.assertEquals(true, message.isAllocated());
     }
 
     /**
