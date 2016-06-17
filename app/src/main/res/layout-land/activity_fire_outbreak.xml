@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:background="#ff9999"
+    android:background="#b20000"
     android:layout_height="match_parent"
     android:weightSum="1"
     android:nestedScrollingEnabled="true"
@@ -15,7 +15,9 @@
         android:id="@+id/objectiveText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp" />
+        android:layout_marginTop="32dp"
+        android:textIsSelectable="false"
+        android:textColor="#ffffff" />
 
     <Button
         android:layout_width="wrap_content"
@@ -44,4 +46,29 @@
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/engineButton"
         android:layout_marginBottom="88dp" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/waterBar"
+        android:layout_above="@+id/engineButton"
+        android:layout_marginBottom="44dp"
+        android:layout_alignLeft="@+id/objectiveText"
+        android:layout_alignStart="@+id/objectiveText"
+        android:layout_alignRight="@+id/objectiveText"
+        android:layout_alignEnd="@+id/objectiveText"
+        android:indeterminate="false"
+        android:backgroundTint="#ffffff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="0 Liters"
+        android:id="@+id/literView"
+        android:layout_above="@+id/waterBar"
+        android:layout_toRightOf="@+id/airSupportButton"
+        android:layout_toEndOf="@+id/airSupportButton"
+        android:textColor="#cccccc" />
+
 </RelativeLayout>
