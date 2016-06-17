@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
-import nl.tudelft.pixelperfect.game.Roles;
+import nl.tudelft.pixelperfect.player.PlayerRoles;
 
 /**
  * Tests the RoleChosen message.
@@ -24,7 +24,7 @@ public class RoleChosenMessageTest {
      */
     @Before
     public void initialize() {
-        message = new RoleChosenMessage(Roles.GUNNER, true);
+        message = new RoleChosenMessage(PlayerRoles.GUNNER, true);
     }
 
     /**
@@ -42,6 +42,6 @@ public class RoleChosenMessageTest {
      */
     @Test
     public void testGetRole() {
-        Assert.assertEquals(Roles.GUNNER, message.getRole());
+        Assert.assertEquals(PlayerRoles.GUNNER, message.getRole());
     }
 }

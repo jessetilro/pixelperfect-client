@@ -72,7 +72,9 @@ public class GameClient {
      * @param message the message sent.
      */
     public void sendMessage(Message message) {
-        client.send(message);
+        if (isConnected()) {
+            client.send(message);
+        }
     }
 
     /**

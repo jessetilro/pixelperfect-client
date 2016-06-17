@@ -8,12 +8,11 @@ import android.view.MenuItem;
 
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
-import nl.tudelft.pixelperfect.game.Roles;
+import nl.tudelft.pixelperfect.player.PlayerRoles;
 import nl.tudelft.pixelperfect.pixelperfect.location.LocationArmoryActivity;
 import nl.tudelft.pixelperfect.pixelperfect.location.LocationDeckActivity;
 import nl.tudelft.pixelperfect.pixelperfect.location.LocationEngineroomActivity;
 import nl.tudelft.pixelperfect.pixelperfect.location.LocationLabActivity;
-import nl.tudelft.pixelperfect.pixelperfect.minigame.PlasmaLeakActivity;
 
 /**
  * The lobby is where the client user connects to the game and waits for the captain to start it.
@@ -22,7 +21,7 @@ import nl.tudelft.pixelperfect.pixelperfect.minigame.PlasmaLeakActivity;
  */
 public class LobbyActivity extends AppCompatActivity {
     private static Context mContext;
-    private static Roles chosenRole;
+    private static PlayerRoles chosenRole;
     private GameClient game;
 
     /**
@@ -36,7 +35,7 @@ public class LobbyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lobby);
 
         mContext = this;
-        chosenRole = (Roles) getIntent().getSerializableExtra("Role");
+        chosenRole = (PlayerRoles) getIntent().getSerializableExtra("Role");
         game = GameClient.getInstance();
     }
 
@@ -65,7 +64,6 @@ public class LobbyActivity extends AppCompatActivity {
     public void onBackPressed() {
         Intent intent;
         if (game.isConnected()) {
-            game.sendMessage(new RoleChosenMessage(chosenRole, true));
             intent = new Intent(this, RoleActivity.class);
         } else {
             intent = new Intent(this, MainActivity.class);
