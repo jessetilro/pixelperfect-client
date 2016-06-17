@@ -1,58 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:background="#ff9999"
+    android:background="#b20000"
     android:layout_height="match_parent"
     android:weightSum="1"
     android:nestedScrollingEnabled="true"
     android:longClickable="true">
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Extinguisher"
-        android:id="@+id/extinguishBox"
-        android:layout_alignTop="@+id/automatedKillerBox"
-        android:layout_alignParentLeft="true"></CheckBox>
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Automatic Fire-O-Killer"
-        android:id="@+id/automatedKillerBox"
-        android:layout_alignTop="@+id/bucketBox"
-        android:layout_toRightOf="@+id/extinguishBox"></CheckBox>
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Water Bucket"
-        android:id="@+id/bucketBox"
-        android:layout_alignTop="@+id/blanketBox"
-        android:layout_toRightOf="@+id/automatedKillerBox"></CheckBox>
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fire Blanket"
-        android:id="@+id/blanketBox"
-        android:layout_alignTop="@+id/hammerBox"
-        android:layout_toRightOf="@+id/bucketBox"></CheckBox>
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hammer"
-        android:id="@+id/hammerBox"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/blanketBox"
-        android:layout_marginTop="39dp"></CheckBox>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Select the solutions, and then press the button to deploy them."
+        android:text="Select the amount of liter to deply, and then choose where to deploy it."
         android:id="@+id/objectiveText"
-        android:layout_above="@+id/engineButton"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="29dp" />
+        android:layout_marginTop="32dp"
+        android:textIsSelectable="false"
+        android:textColor="#ffffff" />
 
     <Button
         android:layout_width="wrap_content"
@@ -71,14 +36,40 @@
         android:onClick="onAirButtonPress"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@id/engineButton"
-        android:layout_marginBottom="88dp" />
+        android:layout_marginBottom="88dp"
+        android:nestedScrollingEnabled="true" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Wing Plasma Pipes"
-        android:id="@+id/wingPlasmaButton"
-        android:onClick="onPlasmaPress"
+        android:text="Deck"
+        android:id="@+id/deckButton"
+        android:onClick="onDeckPress"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/engineButton"
         android:layout_marginBottom="88dp" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/waterBar"
+        android:layout_above="@+id/engineButton"
+        android:layout_marginBottom="44dp"
+        android:layout_alignLeft="@+id/objectiveText"
+        android:layout_alignStart="@+id/objectiveText"
+        android:layout_alignRight="@+id/objectiveText"
+        android:layout_alignEnd="@+id/objectiveText"
+        android:indeterminate="false"
+        android:backgroundTint="#ffffff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="0 Liters"
+        android:id="@+id/literView"
+        android:layout_above="@+id/waterBar"
+        android:layout_toRightOf="@+id/airSupportButton"
+        android:layout_toEndOf="@+id/airSupportButton"
+        android:textColor="#cccccc" />
+
 </RelativeLayout>

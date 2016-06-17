@@ -4,6 +4,7 @@ import com.jme3.network.Client;
 import com.jme3.network.Message;
 import com.jme3.network.MessageListener;
 
+import nl.tudelft.pixelperfect.client.message.DisconnectMessage;
 import nl.tudelft.pixelperfect.client.message.NewGameMessage;
 import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
 import nl.tudelft.pixelperfect.pixelperfect.LobbyActivity;
@@ -28,9 +29,26 @@ public class ClientListener implements MessageListener<Client> {
      */
     public void messageReceived(Client source, Message message) {
         if (message instanceof RoleChosenMessage) {
-            RoleActivity.updateRoleAvailability((RoleChosenMessage) message);
+            handleRoleChosenMessage((RoleChosenMessage) message);
         } else if (message instanceof NewGameMessage) {
             LobbyActivity.startGame();
+        } else if (message instanceof DisconnectMessage) {
+            GameClient game = GameClient.getInstance();
+            game.disconnect();
+        }
+    }
+
+    /**
+     * Handle a received RoleChoseMessage.
+     * @param message The message to handle.
+     */
+    public void handleRoleChosenMessage(RoleChosenMessage message) {
+        System.out.println("Received role chosen message.");
+        if (message.isAllocated()) {
+            System.out.println("Server granted request for " + message.getRole().toString());
+            RoleActivity.enterLobby(message.getRole());
+        } else {
+            System.out.println("Server denied request for " + message.getRole().toString());
         }
     }
 }

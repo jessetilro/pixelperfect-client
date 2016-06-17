@@ -1,12 +1,13 @@
 package nl.tudelft.pixelperfect.pixelperfect.minigame;
 
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.ProgressBar;
+import android.widget.SeekBar;
+import android.widget.TextView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
@@ -14,31 +15,22 @@ import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 
 /**
- * Class responsible for the handling of the fire outbreak event.  A choice must
- * be made between multiple solutions, and then selected where to
- * deploy them to combat the fire.
+ * Class responsible for the handling of the fire outbreak event.  An amount of liters must be
+ * selected with with a slider, and then the location of the fire must be chosen to deploy
+ * the dousing blanket.
  *
  * @author David Alderliesten
  *
  */
 public class FireOutbreakActivity extends AppCompatActivity {
     private GameClient game;
+    private SeekBar waterBar;
 
-    private int fireLocation;
-
-    private CheckBox useFireExtinguisher;
-    private CheckBox useAutomator;
-    private CheckBox useWaterBucket;
-    private CheckBox useFireBlanket;
-    private CheckBox useHammer;
-
-    private Button deployToAirSupport;
-    private Button deployToEngine;
-    private Button deployToWingPlasma;
 
     /**
      * On creation of the fire activity the content views will be initialized
-     * and relevant information retrieved.
+     * and relevant information retrieved.  Also contains the seekbar value text/label
+     * updater method, which is required.
      *
      * @param savedInstanceState the instance to create.
      */
@@ -46,127 +38,77 @@ public class FireOutbreakActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fire_outbreak);
-
-        useFireExtinguisher = (CheckBox) findViewById(R.id.extinguishBox);
-        useAutomator = (CheckBox) findViewById(R.id.automatedKillerBox);
-        useWaterBucket = (CheckBox) findViewById(R.id.bucketBox);
-        useFireBlanket = (CheckBox) findViewById(R.id.blanketBox);
-        useHammer = (CheckBox) findViewById(R.id.hammerBox);
-
-        deployToAirSupport = (Button) findViewById(R.id.airSupportButton);
-        deployToEngine = (Button) findViewById(R.id.engineButton);
-        deployToWingPlasma = (Button) findViewById(R.id.wingPlasmaButton);
-
         game = GameClient.getInstance();
+
+        waterBar = (SeekBar)findViewById(R.id.waterBar);
+        final TextView waterDisplay = (TextView)findViewById(R.id.literView);
+
+        waterBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                waterDisplay.setText(String.valueOf(progress) + "Liters");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                //Required method, is not used.
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // Required method, is not used.
+            }
+        });
     }
 
     /**
-     * Class that validates the user action and returns the result to the server.
+     * Method responsible for completing the event and sending the data to the server application.
      *
-     * @param passedState
-     *      The given state of validation.
+     * @param passedValue
+     *             the given water liter value.
+     * @param passedLocation
+     *             the given location value.
      */
-    private void validateAction(int passedState) {
-        game.sendMessage(new EventCompletedMessage(EventTypes.FIRE_OUTBREAK.ordinal()));
+    private void completeEvent(int passedValue, int passedLocation) {
+        EventCompletedMessage message = new EventCompletedMessage(EventTypes.FIRE_OUTBREAK.ordinal());
+
+        Map<String, Integer> parameters = new HashMap<String, Integer>();
+        parameters.put("location", passedLocation);
+        parameters.put("water", passedValue);
+
+        message.setParameters(parameters);
+        game.sendMessage(message);
+
         finish();
     }
 
     /**
-     * Class aimed at verifying the total score obtained to verify the selected methods.
-     * A small value is good for the engines, a large value is good for the wings.
-     *
-     * @return total score found.
-     */
-    private int accumulatedVerification() {
-        // Int for verifying the accumulated selection.
-        int verifyAccumulator = 0;
-
-        // Running through all cases and adding values as needed.
-        if(useFireExtinguisher.isEnabled()) {
-            verifyAccumulator += 5;
-        }
-
-        if(useAutomator.isEnabled()) {
-            verifyAccumulator += 50;
-        }
-
-        if(useWaterBucket.isEnabled()) {
-            verifyAccumulator += 3;
-        }
-
-        if(useFireBlanket.isEnabled()) {
-            verifyAccumulator += 8;
-        }
-
-        if(useHammer.isEnabled()) {
-            verifyAccumulator += 2;
-        }
-
-        // Returning the found accumulation.
-        return verifyAccumulator;
-    }
-
-    /**
-     * Class that handles the airSupportButton press event and validates
-     * the selected method.
+     * Method for handling the air button douse event.
      *
      * @param view
-     *      The passed view.
+     *             the current view of the button, required as per API.
      */
     public void onAirButtonPress(View view) {
-        if(fireLocation == 0) {
-            int accumulation = accumulatedVerification();
-
-            if((49 < accumulation) && (accumulation < 53)) {
-                validateAction(0);
-            } else {
-                validateAction(-1);
-            }
-        } else {
-            validateAction(-1);
-        }
+        completeEvent(waterBar.getProgress(), 2);
     }
 
     /**
-     * Class that handles the engineButton press event and validates
-     * the selected method.
+     * Method for handling the engine button douse event.
      *
      * @param view
-     *      The passed view.
+     *             the current view of the button, required as per API.
      */
     public void onEnginePress(View view) {
-        if(fireLocation == 1) {
-            int accumulation = accumulatedVerification();
-
-            if((2 < accumulation) && (accumulation < 10)) {
-                validateAction(1);
-            } else {
-                validateAction(-2);
-            }
-        } else {
-            validateAction(-2);
-        }
+        completeEvent(waterBar.getProgress(), 1);
     }
 
     /**
-     * Class that handles the engineButton press event and validates
-     * the selected method.
+     * Method for handling the deck button douse event.
      *
      * @param view
-     *      The passed view.
+     *             the current view of the button, required as per API.
      */
-    public void onPlasmaPress(View view) {
-        if(fireLocation == 2) {
-            int accumulation = accumulatedVerification();
-
-            if((5 < accumulation) && (accumulation < 60)) {
-                validateAction(2);
-            } else {
-                validateAction(-3);
-            }
-        } else {
-            validateAction(-3);
-        }
+    public void onDeckPress(View view) {
+        completeEvent(waterBar.getProgress(), 0);
     }
-
 }

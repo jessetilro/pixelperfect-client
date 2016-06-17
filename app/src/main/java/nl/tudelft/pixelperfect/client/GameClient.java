@@ -1,6 +1,7 @@
 package nl.tudelft.pixelperfect.client;
 
 import com.jme3.network.Client;
+import com.jme3.network.ClientStateListener;
 import com.jme3.network.Message;
 
 /**
@@ -13,6 +14,7 @@ import com.jme3.network.Message;
 public class GameClient {
 
     private Client client;
+    private NetworkClientStateListener connectionListener;
 
     private static volatile GameClient instance;
 
@@ -20,6 +22,7 @@ public class GameClient {
      * Whenever the RouteGenerator is created a new Route will be created (in this factory).
      */
     private GameClient() {
+        connectionListener = new NetworkClientStateListener();
     }
 
     /**
@@ -40,6 +43,15 @@ public class GameClient {
 
     public void setClient(Client client) {
         this.client = client;
+        client.addClientStateListener(connectionListener);
+    }
+
+    /**
+     * Get the instance that listens for client
+     * @return
+     */
+    public ClientStateListener getConnectionListener() {
+        return connectionListener;
     }
 
     /**
@@ -60,7 +72,9 @@ public class GameClient {
      * @param message the message sent.
      */
     public void sendMessage(Message message) {
-        client.send(message);
+        if (isConnected()) {
+            client.send(message);
+        }
     }
 
     /**
@@ -69,8 +83,8 @@ public class GameClient {
     public void disconnect() {
         if (isConnected()) {
             client.close();
-            client = null;
         }
+        client = null;
     }
 
     /**
@@ -79,7 +93,7 @@ public class GameClient {
      * @return a Boolean.
      */
     public boolean isConnected() {
-        return (client != null);
+        return (client != null && client.isConnected());
     }
 
 }
