@@ -2,6 +2,7 @@ package nl.tudelft.pixelperfect.pixelperfect.minigame;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ import nl.tudelft.pixelperfect.pixelperfect.R;
  */
 public class FireOutbreakActivity extends AppCompatActivity {
     private GameClient game;
+    private SeekBar waterBar;
 
 
     /**
@@ -38,7 +40,7 @@ public class FireOutbreakActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fire_outbreak);
         game = GameClient.getInstance();
 
-        SeekBar waterBar = (SeekBar)findViewById(R.id.waterBar);
+        waterBar = (SeekBar)findViewById(R.id.waterBar);
         final TextView waterDisplay = (TextView)findViewById(R.id.literView);
 
         waterBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -78,5 +80,35 @@ public class FireOutbreakActivity extends AppCompatActivity {
         game.sendMessage(message);
 
         finish();
+    }
+
+    /**
+     * Method for handling the air button douse event.
+     *
+     * @param view
+     *             the current view of the button, required as per API.
+     */
+    public void onAirButtonPress(View view) {
+        completeEvent(waterBar.getProgress(), 2);
+    }
+
+    /**
+     * Method for handling the engine button douse event.
+     *
+     * @param view
+     *             the current view of the button, required as per API.
+     */
+    public void onEnginePress(View view) {
+        completeEvent(waterBar.getProgress(), 1);
+    }
+
+    /**
+     * Method for handling the deck button douse event.
+     *
+     * @param view
+     *             the current view of the button, required as per API.
+     */
+    public void onDeckPress(View view) {
+        completeEvent(waterBar.getProgress(), 0);
     }
 }

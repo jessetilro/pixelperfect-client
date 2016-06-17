@@ -36,7 +36,8 @@
         android:onClick="onAirButtonPress"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@id/engineButton"
-        android:layout_marginBottom="88dp" />
+        android:layout_marginBottom="88dp"
+        android:nestedScrollingEnabled="true" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
