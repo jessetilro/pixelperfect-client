@@ -1,19 +1,11 @@
 package nl.tudelft.pixelperfect.pixelperfect.minigame;
 
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.ProgressBar;
-
-import java.util.HashMap;
-import java.util.Map;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import nl.tudelft.pixelperfect.client.GameClient;
-import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
-import nl.tudelft.pixelperfect.event.type.EventTypes;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 
 /**
@@ -30,7 +22,8 @@ public class FireOutbreakActivity extends AppCompatActivity {
 
     /**
      * On creation of the fire activity the content views will be initialized
-     * and relevant information retrieved.
+     * and relevant information retrieved.  Also contains the seekbar value text/label
+     * updater method, which is required.
      *
      * @param savedInstanceState the instance to create.
      */
@@ -38,7 +31,26 @@ public class FireOutbreakActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fire_outbreak);
-
         game = GameClient.getInstance();
+
+        SeekBar waterBar = (SeekBar)findViewById(R.id.waterBar);
+        final TextView waterDisplay = (TextView)findViewById(R.id.literView);
+
+        waterBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                waterDisplay.setText(String.valueOf(progress));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                //Required method, is not used.
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // Required method, is not used.
+            }
+        });
     }
 }
