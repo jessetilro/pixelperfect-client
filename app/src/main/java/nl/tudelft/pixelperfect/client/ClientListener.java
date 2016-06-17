@@ -48,10 +48,7 @@ public class ClientListener implements MessageListener<Client> {
             System.out.println("Server granted request for " + message.getRole().toString());
             RoleActivity.enterLobby(message.getRole());
         } else {
-            //RoleActivity.updateRoleAvailability((RoleChosenMessage) message);
-            //StringBuilder sb = new StringBuilder();
-            //sb.append("The role ").append(chosenRole.getRole().toString()).append(" is already taken!");
-            //RoleActivity.showMessage(sb.toString());
+            System.out.println("Server denied request for " + message.getRole().toString());
         }
     }
 }

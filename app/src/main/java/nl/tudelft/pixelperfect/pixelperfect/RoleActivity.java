@@ -181,7 +181,6 @@ public class RoleActivity extends AppCompatActivity {
     }
 
     public static void enterLobby(Roles role){
-        System.out.println("HOWDY PARTNERS");
         Intent lobby = new Intent(mContext, LobbyActivity.class);
         lobby.putExtra("Role", role);
         mContext.startActivity(lobby);
