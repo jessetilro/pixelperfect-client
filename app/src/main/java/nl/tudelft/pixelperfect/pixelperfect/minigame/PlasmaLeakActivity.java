@@ -12,6 +12,7 @@ import java.util.Map;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
+import nl.tudelft.pixelperfect.pixelperfect.PixelPerfectActivity;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.location.LocationLabActivity;
 
@@ -21,7 +22,7 @@ import nl.tudelft.pixelperfect.pixelperfect.location.LocationLabActivity;
  * @author Dmitry
  */
 @SuppressWarnings("UnusedParameters")
-public class PlasmaLeakActivity extends AppCompatActivity{
+public class PlasmaLeakActivity extends PixelPerfectActivity{
     private GameClient game = GameClient.getInstance();
     private ProgressBar progress;
     private int removedBolts;
@@ -33,8 +34,7 @@ public class PlasmaLeakActivity extends AppCompatActivity{
      * @param savedInstanceState, a Bundle.
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initialize(Bundle savedInstanceState) {
         setContentView(R.layout.activity_minigame_plasma_leak);
         progress = (ProgressBar) findViewById(R.id.mini_game_progress_bar);
         removedBolts = 0;

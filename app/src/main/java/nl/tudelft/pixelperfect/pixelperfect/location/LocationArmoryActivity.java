@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import nl.tudelft.pixelperfect.client.GameClient;
+import nl.tudelft.pixelperfect.pixelperfect.PixelPerfectActivity;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.minigame.HostileShipActivity;
 import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
@@ -19,7 +20,7 @@ import nl.tudelft.pixelperfect.pixelperfect.minigame.IdleGameActivity;
  * @author Floris Doolaard
  */
 @SuppressWarnings({"CanBeFinal", "unused", "UnusedParameters"})
-public class LocationArmoryActivity extends AppCompatActivity {
+public class LocationArmoryActivity extends PixelPerfectActivity {
     private GameClient game = GameClient.getInstance();
 
     /**
@@ -28,8 +29,7 @@ public class LocationArmoryActivity extends AppCompatActivity {
      * @param savedInstanceState , a Bundle.
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initialize(Bundle savedInstanceState) {
         setContentView(R.layout.activity_location_armory);
     }
 

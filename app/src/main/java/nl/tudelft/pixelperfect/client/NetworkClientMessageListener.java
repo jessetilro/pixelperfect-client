@@ -8,6 +8,7 @@ import nl.tudelft.pixelperfect.client.message.DisconnectMessage;
 import nl.tudelft.pixelperfect.client.message.NewGameMessage;
 import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
 import nl.tudelft.pixelperfect.pixelperfect.LobbyActivity;
+import nl.tudelft.pixelperfect.pixelperfect.PixelPerfectActivity;
 import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
 
 /**
@@ -18,7 +19,13 @@ import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
  * @author Dmitry Malarev
  */
 @SuppressWarnings("unused")
-public class ClientListener implements MessageListener<Client> {
+public class NetworkClientMessageListener implements MessageListener<Client> {
+
+    private PixelPerfectActivity delegate;
+
+    public void delegateTo(PixelPerfectActivity activity) {
+        delegate = activity;
+    }
 
     /**
      * Whenever the client listener receives a message from the Server it will determine what

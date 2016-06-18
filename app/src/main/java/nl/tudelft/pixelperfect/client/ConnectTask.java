@@ -33,6 +33,8 @@ public class ConnectTask extends AsyncTask<String, Void, Client> {
      * @return a Client.
      */
     protected Client doInBackground(String... ip) {
+        GameClient game = GameClient.getInstance();
+        NetworkClientMessageListener messageListener;
         Client client;
         try {
             client = Network.connectToServer(ip[0], 6143);
@@ -42,15 +44,21 @@ public class ConnectTask extends AsyncTask<String, Void, Client> {
             Serializer.registerClass(RepairMessage.class);
             Serializer.registerClass(DisconnectMessage.class);
             client.start();
-            client.addMessageListener(new ClientListener(), EventCompletedMessage.class);
-            client.addMessageListener(new ClientListener(), RoleChosenMessage.class);
-            client.addMessageListener(new ClientListener(), RepairMessage.class);
-            client.addMessageListener(new ClientListener(), NewGameMessage.class);
-            client.addMessageListener(new ClientListener(), DisconnectMessage.class);
+            client.addMessageListener(makeMessageListener(), EventCompletedMessage.class);
+            client.addMessageListener(makeMessageListener(), RoleChosenMessage.class);
+            client.addMessageListener(makeMessageListener(), RepairMessage.class);
+            client.addMessageListener(makeMessageListener(), NewGameMessage.class);
+            client.addMessageListener(makeMessageListener(), DisconnectMessage.class);
         } catch (IOException e) {
             client = null;
         }
         return client;
+    }
+
+    private NetworkClientMessageListener makeMessageListener() {
+        NetworkClientMessageListener messageListener = new NetworkClientMessageListener();
+        GameClient.getInstance().registerMessageListener(messageListener);
+        return messageListener;
     }
 
     protected void onPostExecute(Client client) {

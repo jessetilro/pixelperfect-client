@@ -20,7 +20,7 @@ import nl.tudelft.pixelperfect.player.PlayerRoles;
  * @author Floris Doolaard
  */
 @SuppressWarnings("unused")
-public class RoleActivity extends AppCompatActivity {
+public class RoleActivity extends PixelPerfectActivity {
     private static View gunnerView;
     private static View engineerView;
     private static View scientistView;
@@ -35,9 +35,7 @@ public class RoleActivity extends AppCompatActivity {
      * @param savedInstanceState , a Bundle.
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+    protected void initialize(Bundle savedInstanceState) {
         if (savedInstanceState == null) {
             setContentView(R.layout.activity_role);
 
@@ -59,17 +57,6 @@ public class RoleActivity extends AppCompatActivity {
         // The hardcoded role is arbitrary. Because of the "true" parameter,
         // the server will simply clear the role for this user.
         game.sendMessage(new RoleChosenMessage(PlayerRoles.ENGINEER, true));
-    }
-
-    /**
-     * Check for connection with the server. If disconnected, go back to main activity.
-     */
-    public void checkForConnection() {
-        if (!game.isConnected()) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
     }
 
     /**
@@ -95,11 +82,7 @@ public class RoleActivity extends AppCompatActivity {
      */
     @Override
     public void onBackPressed() {
-        game.disconnect();
-        Intent intent = new Intent(RoleActivity.this, MainActivity.class);
-        intent.putExtra("Game Started", gameStarted);
-        startActivity(intent);
-        finish();
+        reset();
     }
 
     /**

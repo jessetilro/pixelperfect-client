@@ -19,10 +19,9 @@ import nl.tudelft.pixelperfect.pixelperfect.location.LocationLabActivity;
  *
  * @author Floris Doolaard
  */
-public class LobbyActivity extends AppCompatActivity {
+public class LobbyActivity extends PixelPerfectActivity {
     private static Context mContext;
     private static PlayerRoles chosenRole;
-    private GameClient game;
 
     /**
      * Whenever this activity is created the layout will be set.
@@ -30,15 +29,13 @@ public class LobbyActivity extends AppCompatActivity {
      * @param savedInstanceState a Bundle
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initialize(Bundle savedInstanceState) {
         setContentView(R.layout.activity_lobby);
 
         mContext = this;
         chosenRole = (PlayerRoles) getIntent().getSerializableExtra("Role");
-        game = GameClient.getInstance();
 
-        game.sendMessage(new NewGameMessage());
+        getGame().sendMessage(new NewGameMessage());
     }
 
     /**
@@ -65,7 +62,7 @@ public class LobbyActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent;
-        if (game.isConnected()) {
+        if (getGame().isConnected()) {
             intent = new Intent(this, RoleActivity.class);
         } else {
             intent = new Intent(this, MainActivity.class);
