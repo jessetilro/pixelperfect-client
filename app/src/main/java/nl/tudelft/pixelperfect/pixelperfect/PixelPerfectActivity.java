@@ -7,7 +7,15 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import nl.tudelft.pixelperfect.client.GameClient;
+import nl.tudelft.pixelperfect.pixelperfect.location.LocationArmoryActivity;
+import nl.tudelft.pixelperfect.pixelperfect.location.LocationDeckActivity;
+import nl.tudelft.pixelperfect.pixelperfect.location.LocationEngineroomActivity;
+import nl.tudelft.pixelperfect.pixelperfect.location.LocationLabActivity;
+import nl.tudelft.pixelperfect.player.PlayerRoles;
 
 /**
  * The super type of all activities in the application.
@@ -113,6 +121,42 @@ public abstract class PixelPerfectActivity extends AppCompatActivity {
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+    }
+
+    /**
+     * Enter the lobby activity.
+     */
+    public void enterLobby(PlayerRoles role) {
+        game.assignRole(role);
+        Intent lobby = new Intent(this, LobbyActivity.class);
+        startActivity(lobby);
+        finish();
+    }
+
+    /**
+     * Start the game.
+     */
+    public void startGame() {
+        Map<PlayerRoles, Intent> destination = new HashMap<>();
+        destination.put(PlayerRoles.GUNNER, new Intent(this, LocationArmoryActivity.class));
+        destination.put(PlayerRoles.ENGINEER, new Intent(this, LocationEngineroomActivity.class));
+        destination.put(PlayerRoles.SCIENTIST, new Intent(this, LocationLabActivity.class));
+        destination.put(PlayerRoles.JANITOR, new Intent(this, LocationDeckActivity.class));
+
+        if (game.getRole() != null && !game.isRunning()) {
+            game.start();
+            Intent newGame = destination.get(game.getRole());
+            startActivity(newGame);
+            finish();
+        } else {
+            System.out.print("Cannot start game: ");
+            if (game.getRole() == null) {
+                System.out.println("no role assigned.");
+            }
+            if (!game.isRunning()) {
+                System.out.println("the game is already running.");
+            }
+        }
     }
 
 }

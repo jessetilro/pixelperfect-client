@@ -54,6 +54,9 @@ public class RoleActivity extends PixelPerfectActivity {
 
         checkForConnection();
 
+        game.assignRole(null);
+        game.stop();
+
         // The hardcoded role is arbitrary. Because of the "true" parameter,
         // the server will simply clear the role for this user.
         game.sendMessage(new RoleChosenMessage(PlayerRoles.ENGINEER, true));
@@ -177,9 +180,4 @@ public class RoleActivity extends PixelPerfectActivity {
         toast.show();
     }
 
-    public static void enterLobby(PlayerRoles role) {
-        Intent lobby = new Intent(mContext, LobbyActivity.class);
-        lobby.putExtra("Role", role);
-        mContext.startActivity(lobby);
-    }
 }

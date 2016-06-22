@@ -76,6 +76,7 @@ public class GameClient {
         delegate = activity;
         connectionListener.delegateTo(activity);
         for (NetworkClientMessageListener messageListener : messageListeners) {
+            System.out.println("Delegating to the game's message listeners.");
             messageListener.delegateTo(activity);
         }
     }

@@ -18,6 +18,7 @@ import nl.tudelft.pixelperfect.pixelperfect.location.LocationLabActivity;
  * The lobby is where the client user connects to the game and waits for the captain to start it.
  *
  * @author Floris Doolaard
+ * @author Jesse Tilro
  */
 public class LobbyActivity extends PixelPerfectActivity {
     private static Context mContext;
@@ -34,6 +35,8 @@ public class LobbyActivity extends PixelPerfectActivity {
 
         mContext = this;
         chosenRole = (PlayerRoles) getIntent().getSerializableExtra("Role");
+
+        getGame().stop();
 
         getGame().sendMessage(new NewGameMessage());
     }
@@ -69,35 +72,5 @@ public class LobbyActivity extends PixelPerfectActivity {
         }
         startActivity(intent);
         finish();
-    }
-
-    /**
-     * Starts the game because a message was received from the server.
-     */
-    public static void startGame() {
-        if (chosenRole == null) {
-            return;
-        }
-
-        Intent newGame;
-        switch(chosenRole){
-            case GUNNER:
-                newGame = new Intent(mContext, LocationArmoryActivity.class);
-                break;
-            case ENGINEER:
-                newGame = new Intent(mContext, LocationEngineroomActivity.class);
-                break;
-            case SCIENTIST:
-                newGame = new Intent(mContext, LocationLabActivity.class);
-                break;
-            case JANITOR:
-                newGame = new Intent(mContext, LocationDeckActivity.class);
-                break;
-            default:
-                System.out.println("Error: something went wrong trying to select a role.");
-                newGame = new Intent(mContext, MainActivity.class);
-                break;
-        }
-        mContext.startActivity(newGame);
     }
 }
