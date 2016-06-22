@@ -1,7 +1,6 @@
 package nl.tudelft.pixelperfect.pixelperfect.minigame;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -37,16 +36,16 @@ public class FireOutbreakActivity extends PixelPerfectActivity {
      */
     @Override
     protected void initialize(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_fire_outbreak);
+        setContentView(R.layout.activity_minigame_fire_outbreak);
         game = GameClient.getInstance();
 
-        waterBar = (SeekBar)findViewById(R.id.waterBar);
-        final TextView waterDisplay = (TextView)findViewById(R.id.literView);
+        waterBar = (SeekBar)findViewById(R.id.water_input);
+        final TextView waterDisplay = (TextView)findViewById(R.id.water_value);
 
         waterBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                waterDisplay.setText(String.valueOf(progress) + "Liters");
+                waterDisplay.setText(String.valueOf(progress) + " liters");
             }
 
             @Override

@@ -3,36 +3,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorPrimaryLight"
     tools:ignore="Overdraw">
 
-    <ImageButton
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/button_icon_fire_outbreak"
-        android:background="@drawable/button_fire_outbreak"
-        android:id="@+id/button_complete_fire_event"
-        android:onClick="completeFireEvent"
-        android:layout_alignTop="@+id/button_complete_hostile_ship_event"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="125dp"
-        android:layout_marginStart="125dp" />
+        android:layout_marginLeft="32dp"
+        android:layout_centerVertical="true">
 
-    <ImageButton
-        android:layout_width="wrap_content"
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/button_icon_fire_outbreak"
+            android:background="@drawable/button_fire_outbreak"
+            android:id="@+id/button_complete_fire_event"
+            android:onClick="completeFireEvent"
+
+            android:layout_centerHorizontal="true"
+             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Extinguish Fire"
+            android:textColor="#fff"
+            android:textSize="16dp"
+            android:layout_below="@id/button_complete_fire_event"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/button_icon_hostile_ship"
-        android:background="@drawable/button_hostile_ship"
-        android:id="@+id/button_complete_hostile_ship_event"
-        android:onClick="completeHostileShipEvent"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginRight="118dp"
-        android:layout_marginEnd="118dp"
+        android:layout_marginRight="32dp"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        tools:ignore="RelativeOverlap" />
+        android:layout_alignParentEnd="true">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/button_icon_hostile_ship"
+            android:background="@drawable/button_hostile_ship"
+            android:id="@+id/button_complete_hostile_ship_event"
+            android:onClick="completeHostileShipEvent"
+
+            android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_start_hostile_ship_minigame"
+            android:textColor="#fff"
+            android:textSize="16dp"
+            android:layout_below="@id/button_complete_hostile_ship_event"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
 
     <Button
         android:layout_width="wrap_content"
@@ -41,6 +73,7 @@
         android:id="@+id/button_repair"
         android:onClick="completeRepairs"
         android:layout_below="@+id/button_complete_hostile_ship_event"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
 
 </RelativeLayout>
