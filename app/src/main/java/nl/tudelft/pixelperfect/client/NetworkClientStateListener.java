@@ -26,5 +26,8 @@ public class NetworkClientStateListener implements ClientStateListener {
     @Override
     public void clientDisconnected(Client c, DisconnectInfo info) {
         System.out.println("Disconnected");
+        if (delegate != null) {
+            delegate.reset();
+        }
     }
 }
