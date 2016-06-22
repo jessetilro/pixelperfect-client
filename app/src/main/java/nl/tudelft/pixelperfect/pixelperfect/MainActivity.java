@@ -1,5 +1,6 @@
 package nl.tudelft.pixelperfect.pixelperfect;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -23,6 +24,7 @@ import nl.tudelft.pixelperfect.client.GameClient;
 public class MainActivity extends PixelPerfectActivity implements ConnectResponse {
 
     private GameClient game;
+    private ProgressDialog dialog;
 
     /**
      * Whenever this activity is created, the game will be initialized and a dialog will lead
@@ -63,7 +65,7 @@ public class MainActivity extends PixelPerfectActivity implements ConnectRespons
             showMessage("Please enter an IP-Address");
             return;
         }
-        showDialog();
+        showProgressDialog();
         game.connect(ip, this);
     }
 
@@ -73,7 +75,7 @@ public class MainActivity extends PixelPerfectActivity implements ConnectRespons
      * @param client , the client can tell whether there is a connection.
      */
     public void connectFinish(Client client) {
-        dismissDialog();
+        dialog.dismiss();
         if (client != null) {
             game.setClient(client);
             showMessage("Connection established!");
@@ -81,5 +83,14 @@ public class MainActivity extends PixelPerfectActivity implements ConnectRespons
         } else {
             showMessage("Connection failed...");
         }
+    }
+
+    public void showProgressDialog() {
+        dialog = new ProgressDialog(this);
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setMessage("Connecting to server...");
+        dialog.setIndeterminate(true);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
     }
 }

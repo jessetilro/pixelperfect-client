@@ -15,14 +15,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LobbyActivity"
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".LobbyActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -38,23 +45,23 @@
         <activity
             android:name=".location.LocationArmoryActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="sensorLandscape"></activity>
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".location.LocationEngineroomActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="sensorLandscape"></activity>
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".location.LocationLabActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="sensorLandscape"></activity>
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".location.LocationDeckActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="sensorLandscape"></activity>
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".minigame.CoffeeBoostActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="sensorLandscape"></activity>
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".minigame.AsteroidImpactActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -66,21 +73,19 @@
         <activity
             android:name=".minigame.PlasmaLeakActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="sensorLandscape"></activity>
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".minigame.HostileShipActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="sensorLandscape"></activity>
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".minigame.FireOutbreakActivity"
-            android:screenOrientation="sensorLandscape"
-            android:configChanges="keyboardHidden|orientation">
-        </activity>
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".minigame.IdleGameActivity"
-            android:screenOrientation="sensorLandscape"
-            android:configChanges="keyboardHidden|orientation">
-        </activity>
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="sensorLandscape" />
     </application>
 
 </manifest>

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.client.message.NewGameMessage;
@@ -64,13 +65,18 @@ public class LobbyActivity extends PixelPerfectActivity {
      */
     @Override
     public void onBackPressed() {
-        Intent intent;
-        if (getGame().isConnected()) {
-            intent = new Intent(this, RoleActivity.class);
-        } else {
-            intent = new Intent(this, MainActivity.class);
-        }
+        Intent intent = new Intent(this, RoleActivity.class);
+        intent.putExtra("message", "You are no longer " + getGame().getRole());
         startActivity(intent);
         finish();
+    }
+
+    /**
+     * Refresh by asking the server whether the game has already started.
+     */
+    public void refresh(View element) {
+        showMessage("Refreshing...");
+        checkForConnection();
+        getGame().sendMessage(new NewGameMessage());
     }
 }

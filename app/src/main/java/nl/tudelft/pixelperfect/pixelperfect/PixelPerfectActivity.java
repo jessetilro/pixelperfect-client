@@ -38,6 +38,13 @@ public abstract class PixelPerfectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         game = GameClient.getInstance();
         game.delegateTo(this);
+
+        String message = getIntent().getStringExtra("message");
+        if (message != null) {
+            showMessage(message);
+            getIntent().removeExtra("message");
+        }
+
         initialize(savedInstanceState);
     }
 
@@ -66,6 +73,7 @@ public abstract class PixelPerfectActivity extends AppCompatActivity {
     public void reset() {
         GameClient.reset();
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("message", "Connection closed...");
         startActivity(intent);
         finish();
     }
@@ -129,6 +137,7 @@ public abstract class PixelPerfectActivity extends AppCompatActivity {
     public void enterLobby(PlayerRoles role) {
         game.assignRole(role);
         Intent lobby = new Intent(this, LobbyActivity.class);
+        lobby.putExtra("message", "You are the " + role.toString());
         startActivity(lobby);
         finish();
     }
@@ -148,14 +157,6 @@ public abstract class PixelPerfectActivity extends AppCompatActivity {
             Intent newGame = destination.get(game.getRole());
             startActivity(newGame);
             finish();
-        } else {
-            System.out.print("Cannot start game: ");
-            if (game.getRole() == null) {
-                System.out.println("no role assigned.");
-            }
-            if (!game.isRunning()) {
-                System.out.println("the game is already running.");
-            }
         }
     }
 
