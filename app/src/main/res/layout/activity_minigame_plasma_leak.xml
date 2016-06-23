@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_complete_plasma_leak_event"
+        android:text="@string/button_complete_plasma_leak_minigame"
         android:layout_marginBottom="20dp"
         android:onClick="complete"
         android:id="@+id/button_complete_plasma"
@@ -98,3 +104,4 @@
 
 
 </RelativeLayout>
+</ScrollView>
