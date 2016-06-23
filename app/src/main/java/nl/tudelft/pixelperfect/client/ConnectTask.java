@@ -10,10 +10,10 @@ import java.io.IOException;
 
 import nl.tudelft.pixelperfect.client.message.DisconnectMessage;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
+import nl.tudelft.pixelperfect.client.message.PlayerDetailsMessage;
 import nl.tudelft.pixelperfect.client.message.RepairMessage;
 import nl.tudelft.pixelperfect.client.message.NewGameMessage;
-import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
-import nl.tudelft.pixelperfect.player.PlayerRoles;
+import nl.tudelft.pixelperfect.client.message.RoleAllocationMessage;
 
 /**
  * This class will initialize the Network.
@@ -34,24 +34,34 @@ public class ConnectTask extends AsyncTask<String, Void, Client> {
      * @return a Client.
      */
     protected Client doInBackground(String... ip) {
+        GameClient game = GameClient.getInstance();
+        NetworkClientMessageListener messageListener;
         Client client;
         try {
             client = Network.connectToServer(ip[0], 6143);
             Serializer.registerClass(EventCompletedMessage.class);
-            Serializer.registerClass(RoleChosenMessage.class);
+            Serializer.registerClass(RoleAllocationMessage.class);
+            Serializer.registerClass(PlayerDetailsMessage.class);
             Serializer.registerClass(NewGameMessage.class);
             Serializer.registerClass(RepairMessage.class);
             Serializer.registerClass(DisconnectMessage.class);
             client.start();
-            client.addMessageListener(new ClientListener(), EventCompletedMessage.class);
-            client.addMessageListener(new ClientListener(), RoleChosenMessage.class);
-            client.addMessageListener(new ClientListener(), RepairMessage.class);
-            client.addMessageListener(new ClientListener(), NewGameMessage.class);
-            client.addMessageListener(new ClientListener(), DisconnectMessage.class);
+            client.addMessageListener(makeMessageListener(), EventCompletedMessage.class);
+            client.addMessageListener(makeMessageListener(), RoleAllocationMessage.class);
+            client.addMessageListener(makeMessageListener(), PlayerDetailsMessage.class);
+            client.addMessageListener(makeMessageListener(), RepairMessage.class);
+            client.addMessageListener(makeMessageListener(), NewGameMessage.class);
+            client.addMessageListener(makeMessageListener(), DisconnectMessage.class);
         } catch (IOException e) {
             client = null;
         }
         return client;
+    }
+
+    private NetworkClientMessageListener makeMessageListener() {
+        NetworkClientMessageListener messageListener = new NetworkClientMessageListener();
+        GameClient.getInstance().registerMessageListener(messageListener);
+        return messageListener;
     }
 
     protected void onPostExecute(Client client) {

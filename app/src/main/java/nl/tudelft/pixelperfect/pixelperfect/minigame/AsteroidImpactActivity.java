@@ -13,6 +13,7 @@ import java.util.Map;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
+import nl.tudelft.pixelperfect.pixelperfect.PixelPerfectActivity;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.location.LocationEngineroomActivity;
 
@@ -23,7 +24,7 @@ import nl.tudelft.pixelperfect.pixelperfect.location.LocationEngineroomActivity;
  * @author Floris Doolaard
  */
 @SuppressWarnings("unused")
-public class AsteroidImpactActivity extends AppCompatActivity {
+public class AsteroidImpactActivity extends PixelPerfectActivity {
     private GameClient game = GameClient.getInstance();
     private ProgressBar progressBarEnergyShield;
     private ProgressBar progressBarHyperdrive;
@@ -35,8 +36,7 @@ public class AsteroidImpactActivity extends AppCompatActivity {
      * @param savedInstanceState the instance to create.
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initialize(Bundle savedInstanceState) {
         setContentView(R.layout.activity_minigame_asteroid_impact);
 
         progressBarEnergyShield = (ProgressBar) findViewById(R.id.mini_game_asteroid_impact_progressBar1);

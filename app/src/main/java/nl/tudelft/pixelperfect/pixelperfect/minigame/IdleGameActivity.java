@@ -13,6 +13,7 @@ import java.util.Random;
 
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.client.message.RepairMessage;
+import nl.tudelft.pixelperfect.pixelperfect.PixelPerfectActivity;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.location.LocationLabActivity;
 
@@ -20,7 +21,7 @@ import nl.tudelft.pixelperfect.pixelperfect.location.LocationLabActivity;
  * The activity the players can do to repair the ship.
  *
  */
-public class IdleGameActivity extends AppCompatActivity {
+public class IdleGameActivity extends PixelPerfectActivity {
 
     private GameClient game = GameClient.getInstance();
     private Random rng;
@@ -33,8 +34,7 @@ public class IdleGameActivity extends AppCompatActivity {
      * @param savedInstanceState , A bundle.
      */
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void initialize(Bundle savedInstanceState) {
         setContentView(R.layout.activity_minigame_idle);
         template = "abcdefghijklmnopqrstuvwxyz";
         rng = new Random();

@@ -1,21 +1,36 @@
 <resources>
     <string name="app_name">Space Crew</string>
-    <string name="main_description">Welcome! Enter the IPv4-Address of the Game Server you would like to connect to below. By connecting you join the spaceship as a crew member!</string>
+    <string name="main_description">Welcome! Enter your name (optional) and the IPv4-Address of the Game Server you would like to connect to below. By connecting you join the spaceship as a crew member!</string>
     <string name="role_description">Choose your favourite role here</string>
+    <string name="name_hint">Your Name</string>
     <string name="ip_address_hint">IP-Address</string>
     <string name="textView_lobby">Waiting for other players...</string>
     <string name="button_connect">Connect</string>
-    <string name="button_complete_asteroid_field_event">Asteroid Impact</string>
-    <string name="button_complete_fire_event">Fire</string>
-    <string name="button_start_hostile_ship_minigame">Fight a Hostile Ship</string>
+
+    <string name="button_start_fire_outbreak_minigame">Extinguish a Fire</string>
+    <string name="button_complete_fire_outbreak_minigame_1">Air System</string>
+    <string name="button_complete_fire_outbreak_minigame_2">Engine Room</string>
+    <string name="button_complete_fire_outbreak_minigame_3">Deck</string>
+    <string name="description_fire_outbreak_minigame">Select how many liters of water to fight the fire with. Then choose where to deploy the water.</string>
+
+    <string name="button_start_hostile_ship_minigame">Fight Hostile Ship</string>
     <string name="button_complete_hostile_ship_minigame">Fire the cannons!</string>
-    <string name="button_complete_plasma_leak_event">Plasma Leak</string>
-    <string name="button_complete_coffee_boost_event">Coffee Boost</string>
+
+    <string name="button_start_asteroid_impact_minigame">Asteroid Impact</string>
+    <string name="button_mini_game_asteroid_impact">Wrench It</string>
+
+    <string name="button_start_coffee_boost_minigame">Coffee Boost</string>
+    <string name="button_complete_coffee_boost_minigame">Bring Coffee</string>
+
+    <string name="button_start_plasma_leak_minigame">Stop Plasma Leak</string>
+    <string name="button_complete_plasma_leak_minigame">Fix Pipes</string>
+    <string name="description_plasma_leak_minigame">Select the location of the leak on the left. Then press each button on right a couple of times until the progress bar is full.</string>
+
     <string name="button_role_gunner">Gunner</string>
     <string name="button_role_engineer">Engineer</string>
     <string name="button_role_scientist">Scientist</string>
     <string name="button_role_janitor">Janitor</string>
-    <string name="button_mini_game_asteroid_impact">Wrench It</string>
+
     <string name="mini_game_asteroid_impact_radio1">Energy Shield</string>
     <string name="mini_game_asteroid_impact_radio2">Hyperdrive Generator</string>
 
