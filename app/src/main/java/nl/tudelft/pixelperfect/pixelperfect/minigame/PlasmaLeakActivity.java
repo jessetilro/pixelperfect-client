@@ -36,7 +36,7 @@ public class PlasmaLeakActivity extends PixelPerfectActivity{
     @Override
     protected void initialize(Bundle savedInstanceState) {
         setContentView(R.layout.activity_minigame_plasma_leak);
-        progress = (ProgressBar) findViewById(R.id.mini_game_progress_bar);
+        progress = (ProgressBar) findViewById(R.id.progressbar);
         removedBolts = 0;
     }
 

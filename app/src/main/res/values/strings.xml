@@ -24,6 +24,7 @@
 
     <string name="button_start_plasma_leak_minigame">Stop Plasma Leak</string>
     <string name="button_complete_plasma_leak_minigame">Fix Pipes</string>
+    <string name="description_plasma_leak_minigame">Select the location of the leak on the left. Then press each button on right a couple of times until the progress bar is full.</string>
 
     <string name="button_role_gunner">Gunner</string>
     <string name="button_role_engineer">Engineer</string>
