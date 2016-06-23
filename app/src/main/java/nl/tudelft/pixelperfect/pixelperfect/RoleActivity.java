@@ -1,15 +1,13 @@
 package nl.tudelft.pixelperfect.pixelperfect;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import nl.tudelft.pixelperfect.client.GameClient;
-import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
+import nl.tudelft.pixelperfect.client.message.RoleAllocationMessage;
 import nl.tudelft.pixelperfect.player.PlayerRoles;
 
 
@@ -20,12 +18,11 @@ import nl.tudelft.pixelperfect.player.PlayerRoles;
  * @author Floris Doolaard
  */
 @SuppressWarnings("unused")
-public class RoleActivity extends AppCompatActivity {
+public class RoleActivity extends PixelPerfectActivity {
     private static View gunnerView;
     private static View engineerView;
     private static View scientistView;
     private static View janitorView;
-    private boolean gameStarted;
     private GameClient game;
     private static Context mContext;
 
@@ -35,9 +32,7 @@ public class RoleActivity extends AppCompatActivity {
      * @param savedInstanceState , a Bundle.
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+    protected void initialize(Bundle savedInstanceState) {
         if (savedInstanceState == null) {
             setContentView(R.layout.activity_role);
 
@@ -45,31 +40,18 @@ public class RoleActivity extends AppCompatActivity {
             engineerView = findViewById(R.id.button_role_engineer);
             scientistView = findViewById(R.id.button_role_scientist);
             janitorView = findViewById(R.id.button_role_janitor);
-            gameStarted = false;
-        }
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            gameStarted = getIntent().getExtras().getBoolean("Game Started");
         }
         game = GameClient.getInstance();
         mContext = this;
 
         checkForConnection();
 
+        game.assignRole(null);
+        game.stop();
+
         // The hardcoded role is arbitrary. Because of the "true" parameter,
         // the server will simply clear the role for this user.
-        game.sendMessage(new RoleChosenMessage(PlayerRoles.ENGINEER, true));
-    }
-
-    /**
-     * Check for connection with the server. If disconnected, go back to main activity.
-     */
-    public void checkForConnection() {
-        if (!game.isConnected()) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
+        game.sendMessage(new RoleAllocationMessage(PlayerRoles.ENGINEER, true));
     }
 
     /**
@@ -95,11 +77,7 @@ public class RoleActivity extends AppCompatActivity {
      */
     @Override
     public void onBackPressed() {
-        game.disconnect();
-        Intent intent = new Intent(RoleActivity.this, MainActivity.class);
-        intent.putExtra("Game Started", gameStarted);
-        startActivity(intent);
-        finish();
+        reset();
     }
 
     /**
@@ -129,7 +107,7 @@ public class RoleActivity extends AppCompatActivity {
      *
      * @param message the message received.
      */
-    public static void updateRoleAvailability(RoleChosenMessage message) {
+    public static void updateRoleAvailability(RoleAllocationMessage message) {
         switch (message.getRole()) {
             case GUNNER:
                 gunnerView.setEnabled(false);
@@ -154,7 +132,7 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void gunnerChosen(View view) {
-        RoleChosenMessage role = new RoleChosenMessage(PlayerRoles.GUNNER, false);
+        RoleAllocationMessage role = new RoleAllocationMessage(PlayerRoles.GUNNER, false);
         game.sendMessage(role);
     }
 
@@ -164,7 +142,7 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void engineerChosen(View view) {
-        RoleChosenMessage role = new RoleChosenMessage(PlayerRoles.ENGINEER, false);
+        RoleAllocationMessage role = new RoleAllocationMessage(PlayerRoles.ENGINEER, false);
         game.sendMessage(role);
     }
 
@@ -174,7 +152,7 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void scientistChosen(View view) {
-        RoleChosenMessage role = new RoleChosenMessage(PlayerRoles.SCIENTIST, false);
+        RoleAllocationMessage role = new RoleAllocationMessage(PlayerRoles.SCIENTIST, false);
         game.sendMessage(role);
     }
 
@@ -184,7 +162,7 @@ public class RoleActivity extends AppCompatActivity {
      * @param view the view of the Button.
      */
     public void janitorChosen(View view) {
-        RoleChosenMessage role = new RoleChosenMessage(PlayerRoles.JANITOR, false);
+        RoleAllocationMessage role = new RoleAllocationMessage(PlayerRoles.JANITOR, false);
         game.sendMessage(role);
     }
 
@@ -194,9 +172,4 @@ public class RoleActivity extends AppCompatActivity {
         toast.show();
     }
 
-    public static void enterLobby(PlayerRoles role) {
-        Intent lobby = new Intent(mContext, LobbyActivity.class);
-        lobby.putExtra("Role", role);
-        mContext.startActivity(lobby);
-    }
 }

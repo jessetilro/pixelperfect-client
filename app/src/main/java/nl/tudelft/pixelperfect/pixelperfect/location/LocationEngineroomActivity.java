@@ -3,11 +3,13 @@ package nl.tudelft.pixelperfect.pixelperfect.location;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
+import nl.tudelft.pixelperfect.pixelperfect.PixelPerfectActivity;
 import nl.tudelft.pixelperfect.pixelperfect.RoleActivity;
 import nl.tudelft.pixelperfect.pixelperfect.minigame.AsteroidImpactActivity;
 import nl.tudelft.pixelperfect.pixelperfect.R;
@@ -20,7 +22,7 @@ import nl.tudelft.pixelperfect.pixelperfect.minigame.IdleGameActivity;
  * @author Floris Doolaard
  */
 @SuppressWarnings({"CanBeFinal", "unused", "UnusedParameters"})
-public class LocationEngineroomActivity extends AppCompatActivity {
+public class LocationEngineroomActivity extends PixelPerfectActivity {
     private GameClient game = GameClient.getInstance();
 
     /**
@@ -29,9 +31,26 @@ public class LocationEngineroomActivity extends AppCompatActivity {
      * @param savedInstanceState , a Bundle.
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initialize(Bundle savedInstanceState) {
         setContentView(R.layout.activity_location_engineroom);
+    }
+
+    /**
+     * When the home button is pressed in the actionbar, the user will go to the MainActivity.
+     * This has the same function as the back button on the device
+     * itself.
+     *
+     * @param item the item in the action bar.
+     * @return states whether a function was executed.
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return false;
     }
 
     /**
@@ -40,8 +59,7 @@ public class LocationEngineroomActivity extends AppCompatActivity {
      */
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(LocationEngineroomActivity.this, RoleActivity.class);
-        intent.putExtra("Game Started", true);
+        Intent intent = new Intent(this, RoleActivity.class);
         finish();
         startActivity(intent);
     }

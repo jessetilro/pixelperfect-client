@@ -1,5 +1,6 @@
 package nl.tudelft.pixelperfect.pixelperfect;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -13,6 +14,7 @@ import com.jme3.network.Client;
 
 import nl.tudelft.pixelperfect.client.ConnectResponse;
 import nl.tudelft.pixelperfect.client.GameClient;
+import nl.tudelft.pixelperfect.client.message.PlayerDetailsMessage;
 
 /**
  * This is the first screen for the app on which one can insert an ip-address of the server.
@@ -20,38 +22,23 @@ import nl.tudelft.pixelperfect.client.GameClient;
  * @author Floris Doolaard
  */
 @SuppressWarnings({"UnusedParameters", "unused"})
-public class MainActivity extends AppCompatActivity implements ConnectResponse {
+public class MainActivity extends PixelPerfectActivity implements ConnectResponse {
 
     private GameClient game;
-    private AlertDialog dialog;
-    private boolean gameStarted;
+    private ProgressDialog dialog;
 
     /**
      * Whenever this activity is created, the game will be initialized and a dialog will lead
      * the user to the next page.
      *
-     * @param savedInstanceState , a Bundle.
+     * @param savedInstanceState A Bundle.
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initialize(Bundle savedInstanceState) {
+        game = getGame();
         setContentView(R.layout.activity_main);
-        game = GameClient.getInstance();
         Bundle extras = getIntent().getExtras();
-        if(extras != null){
-            gameStarted = extras.getBoolean("Game Started");
-        }
-        buildDialog();
-    }
-
-    /**
-     * Builds a dialog which informs the user.
-     */
-    private void buildDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Trying to establish a connection with the game server.")
-                .setTitle("Connecting");
-        dialog = builder.create();
+        buildDialog("Connecting", "Trying to establish a connection with the game server.");
     }
 
     /**
@@ -59,21 +46,7 @@ public class MainActivity extends AppCompatActivity implements ConnectResponse {
      */
     private void setupRoles() {
         Intent intent = new Intent(this, RoleActivity.class);
-        intent.putExtra("Game Started", gameStarted);
         startActivity(intent);
-    }
-
-    /**
-     * Shows a small popup which fades away after a time-out.
-     *
-     * @param text the text to be shown.
-     */
-    private void showMessage(CharSequence text) {
-        Context context = getApplicationContext();
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
     }
 
     /**
@@ -93,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements ConnectResponse {
             showMessage("Please enter an IP-Address");
             return;
         }
-        dialog.show();
+        showProgressDialog();
         game.connect(ip, this);
     }
 
@@ -107,9 +80,20 @@ public class MainActivity extends AppCompatActivity implements ConnectResponse {
         if (client != null) {
             game.setClient(client);
             showMessage("Connection established!");
+            EditText name = (EditText) findViewById(R.id.name);
+            game.sendMessage(new PlayerDetailsMessage(name.getText().toString()));
             setupRoles();
         } else {
             showMessage("Connection failed...");
         }
+    }
+
+    public void showProgressDialog() {
+        dialog = new ProgressDialog(this);
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setMessage("Connecting to server...");
+        dialog.setIndeterminate(true);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
     }
 }

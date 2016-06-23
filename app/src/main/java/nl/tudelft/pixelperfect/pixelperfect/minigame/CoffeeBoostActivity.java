@@ -13,6 +13,7 @@ import android.widget.GridLayout;
 import nl.tudelft.pixelperfect.client.GameClient;
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
 import nl.tudelft.pixelperfect.event.type.EventTypes;
+import nl.tudelft.pixelperfect.pixelperfect.PixelPerfectActivity;
 import nl.tudelft.pixelperfect.pixelperfect.R;
 import nl.tudelft.pixelperfect.pixelperfect.location.LocationDeckActivity;
 
@@ -22,7 +23,7 @@ import nl.tudelft.pixelperfect.pixelperfect.location.LocationDeckActivity;
  * @author Wouter Zirkzee
  *
  */
-public class CoffeeBoostActivity extends Activity {
+public class CoffeeBoostActivity extends PixelPerfectActivity {
 
     private final GameClient game = GameClient.getInstance();
     private Button[] buttons = new Button[9];
@@ -40,8 +41,7 @@ public class CoffeeBoostActivity extends Activity {
      *                      A bundle.
      */
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void initialize(Bundle savedInstanceState) {
         setContentView(R.layout.activity_minigame_coffee_boost);
         initialize();
     }

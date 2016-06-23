@@ -8,14 +8,16 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@color/colorSecondary">
 
     <TextView
         android:id="@+id/text_position_x"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Position x-coordinate"/>
+        android:text="Position x-coordinate"
+        android:textColor="@color/colorTextSecondary" />
 
     <EditText
         android:id="@+id/position_x"
@@ -25,7 +27,9 @@
         android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_position_x" />
+        android:layout_below="@id/text_position_x"
+        android:textColor="@color/colorTextSecondary"
+        android:textColorHint="#555" />
 
     <TextView
         android:id="@+id/text_position_y"
@@ -33,7 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_below="@id/position_x"
-        android:text="Position y-coordinate"/>
+        android:text="Position y-coordinate"
+        android:textColor="@color/colorTextSecondary" />
 
     <EditText
         android:id="@+id/position_y"
@@ -44,7 +49,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/text_position_y"
-        android:progress="0" />
+        android:progress="0"
+        android:textColor="@color/colorTextSecondary"
+        android:textColorHint="#555" />
 
     <TextView
         android:id="@+id/text_armor"
@@ -52,16 +59,15 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_below="@id/position_y"
-        android:text="The hostile spaceship's armor type"/>
+        android:text="The hostile spaceship's armor type"
+        android:textColor="@color/colorTextSecondary" />
 
     <RadioGroup
         android:id="@+id/armor"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_below="@id/text_armor"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="60dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:orientation="horizontal">

@@ -4,6 +4,11 @@ import com.jme3.network.Client;
 import com.jme3.network.ClientStateListener;
 import com.jme3.network.Message;
 
+import java.util.ArrayList;
+
+import nl.tudelft.pixelperfect.pixelperfect.PixelPerfectActivity;
+import nl.tudelft.pixelperfect.player.PlayerRoles;
+
 /**
  * The GameClient within the Android app.
  *
@@ -15,6 +20,11 @@ public class GameClient {
 
     private Client client;
     private NetworkClientStateListener connectionListener;
+    private ArrayList<NetworkClientMessageListener> messageListeners;
+    private PlayerRoles role;
+    private boolean running;
+
+    private PixelPerfectActivity delegate;
 
     private static volatile GameClient instance;
 
@@ -22,7 +32,9 @@ public class GameClient {
      * Whenever the RouteGenerator is created a new Route will be created (in this factory).
      */
     private GameClient() {
+        messageListeners = new ArrayList<>();
         connectionListener = new NetworkClientStateListener();
+        running = false;
     }
 
     /**
@@ -39,6 +51,54 @@ public class GameClient {
             }
         }
         return instance;
+    }
+
+    /**
+     * Reset the singleton to a fresh instance.
+     * Used to reset the game when getting disconnected.
+     */
+    public static void reset() {
+        if (instance != null) {
+            synchronized (GameClient.class) {
+                if (instance != null) {
+                    instance.disconnect();
+                    instance = new GameClient();
+                }
+            }
+        }
+    }
+
+    public void registerMessageListener(NetworkClientMessageListener messageListener) {
+        messageListeners.add(messageListener);
+    }
+
+    public void delegateTo(PixelPerfectActivity activity) {
+        delegate = activity;
+        connectionListener.delegateTo(activity);
+        for (NetworkClientMessageListener messageListener : messageListeners) {
+            System.out.println("Delegating to the game's message listeners.");
+            messageListener.delegateTo(activity);
+        }
+    }
+
+    public void start() {
+        running = true;
+    }
+
+    public void stop() {
+        running = false;
+    }
+
+    public boolean isRunning() {
+        return running;
+    }
+
+    public void assignRole(PlayerRoles role) {
+        this.role = role;
+    }
+
+    public PlayerRoles getRole() {
+        return role;
     }
 
     public void setClient(Client client) {
