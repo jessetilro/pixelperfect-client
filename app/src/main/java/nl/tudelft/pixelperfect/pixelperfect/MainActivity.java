@@ -14,6 +14,7 @@ import com.jme3.network.Client;
 
 import nl.tudelft.pixelperfect.client.ConnectResponse;
 import nl.tudelft.pixelperfect.client.GameClient;
+import nl.tudelft.pixelperfect.client.message.PlayerDetailsMessage;
 
 /**
  * This is the first screen for the app on which one can insert an ip-address of the server.
@@ -79,6 +80,8 @@ public class MainActivity extends PixelPerfectActivity implements ConnectRespons
         if (client != null) {
             game.setClient(client);
             showMessage("Connection established!");
+            EditText name = (EditText) findViewById(R.id.name);
+            game.sendMessage(new PlayerDetailsMessage(name.getText().toString()));
             setupRoles();
         } else {
             showMessage("Connection failed...");

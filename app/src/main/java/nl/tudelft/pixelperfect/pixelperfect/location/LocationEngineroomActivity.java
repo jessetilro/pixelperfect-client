@@ -3,6 +3,7 @@ package nl.tudelft.pixelperfect.pixelperfect.location;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 
 import nl.tudelft.pixelperfect.client.message.EventCompletedMessage;
@@ -35,13 +36,30 @@ public class LocationEngineroomActivity extends PixelPerfectActivity {
     }
 
     /**
+     * When the home button is pressed in the actionbar, the user will go to the MainActivity.
+     * This has the same function as the back button on the device
+     * itself.
+     *
+     * @param item the item in the action bar.
+     * @return states whether a function was executed.
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return false;
+    }
+
+    /**
      * When you press the back button the mobile device, you will go to the RoleActivity in which
      * you still have the same role.
      */
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(LocationEngineroomActivity.this, RoleActivity.class);
-        intent.putExtra("Game Started", true);
+        Intent intent = new Intent(this, RoleActivity.class);
         finish();
         startActivity(intent);
     }

@@ -45,39 +45,67 @@
         <activity
             android:name=".location.LocationArmoryActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="sensorLandscape" />
+            android:screenOrientation="sensorLandscape">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".RoleActivity" />
+        </activity>
         <activity
             android:name=".location.LocationEngineroomActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="sensorLandscape" />
+            android:screenOrientation="sensorLandscape">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".RoleActivity" />
+        </activity>
         <activity
             android:name=".location.LocationLabActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="sensorLandscape" />
+            android:screenOrientation="sensorLandscape">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".RoleActivity" />
+        </activity>
         <activity
             android:name=".location.LocationDeckActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="sensorLandscape" />
+            android:screenOrientation="sensorLandscape">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".RoleActivity" />
+        </activity>
         <activity
             android:name=".minigame.CoffeeBoostActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="sensorLandscape" />
+            android:screenOrientation="sensorLandscape">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".location.LocationDeckActivity" />
+        </activity>
         <activity
             android:name=".minigame.AsteroidImpactActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="sensorLandscape">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="nl.tudelft.pixelperfect.pixelperfect.location.LocationLabActivity" />
+                android:value=".location.LocationEngineroomActivity" />
         </activity>
         <activity
             android:name=".minigame.PlasmaLeakActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="sensorLandscape" />
+            android:screenOrientation="sensorLandscape">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".location.LocationLabActivity" />
+        </activity>
         <activity
             android:name=".minigame.HostileShipActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="sensorLandscape" />
+            android:screenOrientation="sensorLandscape">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".location.LocationArmoryActivity" />
+        </activity>
         <activity
             android:name=".minigame.FireOutbreakActivity"
             android:configChanges="keyboardHidden|orientation"

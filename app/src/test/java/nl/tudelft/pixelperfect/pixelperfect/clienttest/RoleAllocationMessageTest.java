@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
+import nl.tudelft.pixelperfect.client.message.RoleAllocationMessage;
 import nl.tudelft.pixelperfect.player.PlayerRoles;
 
 /**
@@ -14,9 +14,9 @@ import nl.tudelft.pixelperfect.player.PlayerRoles;
  * @author Dmitry Malarev
  */
 @SuppressWarnings("unused")
-public class RoleChosenMessageTest {
+public class RoleAllocationMessageTest {
 
-    private RoleChosenMessage message;
+    private RoleAllocationMessage message;
 
     /**
      * Set everything up.
@@ -24,7 +24,7 @@ public class RoleChosenMessageTest {
      */
     @Before
     public void initialize() {
-        message = new RoleChosenMessage(PlayerRoles.GUNNER, true);
+        message = new RoleAllocationMessage(PlayerRoles.GUNNER, true);
     }
 
     /**

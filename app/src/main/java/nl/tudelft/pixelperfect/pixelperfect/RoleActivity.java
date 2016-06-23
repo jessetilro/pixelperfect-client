@@ -1,15 +1,13 @@
 package nl.tudelft.pixelperfect.pixelperfect;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import nl.tudelft.pixelperfect.client.GameClient;
-import nl.tudelft.pixelperfect.client.message.RoleChosenMessage;
+import nl.tudelft.pixelperfect.client.message.RoleAllocationMessage;
 import nl.tudelft.pixelperfect.player.PlayerRoles;
 
 
@@ -25,7 +23,6 @@ public class RoleActivity extends PixelPerfectActivity {
     private static View engineerView;
     private static View scientistView;
     private static View janitorView;
-    private boolean gameStarted;
     private GameClient game;
     private static Context mContext;
 
@@ -43,11 +40,6 @@ public class RoleActivity extends PixelPerfectActivity {
             engineerView = findViewById(R.id.button_role_engineer);
             scientistView = findViewById(R.id.button_role_scientist);
             janitorView = findViewById(R.id.button_role_janitor);
-            gameStarted = false;
-        }
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            gameStarted = getIntent().getExtras().getBoolean("Game Started");
         }
         game = GameClient.getInstance();
         mContext = this;
@@ -59,7 +51,7 @@ public class RoleActivity extends PixelPerfectActivity {
 
         // The hardcoded role is arbitrary. Because of the "true" parameter,
         // the server will simply clear the role for this user.
-        game.sendMessage(new RoleChosenMessage(PlayerRoles.ENGINEER, true));
+        game.sendMessage(new RoleAllocationMessage(PlayerRoles.ENGINEER, true));
     }
 
     /**
@@ -115,7 +107,7 @@ public class RoleActivity extends PixelPerfectActivity {
      *
      * @param message the message received.
      */
-    public static void updateRoleAvailability(RoleChosenMessage message) {
+    public static void updateRoleAvailability(RoleAllocationMessage message) {
         switch (message.getRole()) {
             case GUNNER:
                 gunnerView.setEnabled(false);
@@ -140,7 +132,7 @@ public class RoleActivity extends PixelPerfectActivity {
      * @param view the view of the Button.
      */
     public void gunnerChosen(View view) {
-        RoleChosenMessage role = new RoleChosenMessage(PlayerRoles.GUNNER, false);
+        RoleAllocationMessage role = new RoleAllocationMessage(PlayerRoles.GUNNER, false);
         game.sendMessage(role);
     }
 
@@ -150,7 +142,7 @@ public class RoleActivity extends PixelPerfectActivity {
      * @param view the view of the Button.
      */
     public void engineerChosen(View view) {
-        RoleChosenMessage role = new RoleChosenMessage(PlayerRoles.ENGINEER, false);
+        RoleAllocationMessage role = new RoleAllocationMessage(PlayerRoles.ENGINEER, false);
         game.sendMessage(role);
     }
 
@@ -160,7 +152,7 @@ public class RoleActivity extends PixelPerfectActivity {
      * @param view the view of the Button.
      */
     public void scientistChosen(View view) {
-        RoleChosenMessage role = new RoleChosenMessage(PlayerRoles.SCIENTIST, false);
+        RoleAllocationMessage role = new RoleAllocationMessage(PlayerRoles.SCIENTIST, false);
         game.sendMessage(role);
     }
 
@@ -170,7 +162,7 @@ public class RoleActivity extends PixelPerfectActivity {
      * @param view the view of the Button.
      */
     public void janitorChosen(View view) {
-        RoleChosenMessage role = new RoleChosenMessage(PlayerRoles.JANITOR, false);
+        RoleAllocationMessage role = new RoleAllocationMessage(PlayerRoles.JANITOR, false);
         game.sendMessage(role);
     }
 
